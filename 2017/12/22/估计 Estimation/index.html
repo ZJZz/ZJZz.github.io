@@ -10,6 +10,9 @@
 
     <!--Description-->
     
+        <meta name="description" content="估计 Estimation样本均值的分布 Distribution of Sample means 抽样分布 sampling distribution正态的均值应等于总体的均值标准差=总体标准差/n的平方根n是每个样本的样本量抽样分布的标准差叫做叫做标准误差(standard error)
+为什么">
+    
 
     <!--Author-->
     
@@ -38,7 +41,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2017/10 - ZJZz&#39;s Garage</title>
+    <title>ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -140,49 +143,76 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2017/10</h1>
+                <div class="post-heading">
+                    <h1>Untitled</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-12-22
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2017/10/28/正态随机过程/">
-        <h1 class="post-title archive">
-            正态随机过程
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2017-10-28
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="估计-Estimation"><a href="#估计-Estimation" class="headerlink" title="估计 Estimation"></a>估计 Estimation</h1><h3 id="样本均值的分布-Distribution-of-Sample-means-抽样分布-sampling-distribution"><a href="#样本均值的分布-Distribution-of-Sample-means-抽样分布-sampling-distribution" class="headerlink" title="样本均值的分布 Distribution of Sample means 抽样分布 sampling distribution"></a>样本均值的分布 Distribution of Sample means 抽样分布 sampling distribution</h3><p>正态的<br>均值应等于总体的均值<br>标准差=总体标准差/n的平方根<br>n是每个样本的样本量<br>抽样分布的标准差叫做叫做标准误差(standard error)</p>
+<p>为什么知道抽样分布的形状很重要？</p>
+<h3 id="Z-Score"><a href="#Z-Score" class="headerlink" title="Z-Score"></a>Z-Score</h3><p>(x-抽样分布的均值)/standard deviations of sampling distribution(standard error)</p>
+<p>Z表格</p>
+<h2 id="点估计"><a href="#点估计" class="headerlink" title="点估计"></a>点估计</h2><p>对总体均值的估计<br>总体均值会在一个区间内，需要找出区间的上下界</p>
+<p>大约有68%样本均值落在距离总体均值的一个标准差距离内(68-95-99.7 rule)<br>这个距离叫做margin of error<br>这个均值有95%的概率会处在这个新的总体均值的2倍标准误差范围内</p>
+<p>95%的样本均值将位于总体均值的2个标准误差范围内，将在（Ubt-2(sigma/sqrtn),Ubt+2(sigma/sqrtn)）</p>
+<p>要猜测我们拥有的样本均值会成为落在这个区间内的95%均值之一吗？</p>
+<p>如果样本均值的确位于该区间内，那么总体均值会是多少？<br>将拥有的样本均值代入满足区间的不等式，解出总体均值的范围,<br>叫做均值的置信区间</p>
+<h2 id="置信区间-Confidence-Interval"><a href="#置信区间-Confidence-Interval" class="headerlink" title="置信区间 Confidence Interval"></a>置信区间 Confidence Interval</h2><p>用Z-score来精确估计边界<br>95% (-1.96, 1.96) z-score</p>
+<p>样本均值的95%落在距离总体均值1.96个标准差范围内</p>
+<p>用Z-Score来估计总体均值</p>
+<p><img src="media/15139193432746/Snip20171223_1.png" alt="Snip20171223_1"></p>
+<p><img src="media/15139193432746/Snip20171223_2.png" alt="Snip20171223_2"></p>
+<p><img src="media/15139193432746/Snip20171223_4.png" alt="Snip20171223_4"></p>
+<p>当样本容量越大，区间估计的范围越小，被偶然选中的可能性很小，所以在人为处理的情况</p>
+<h3 id="98-置信区间的Z临界值-2-33"><a href="#98-置信区间的Z临界值-2-33" class="headerlink" title="98%置信区间的Z临界值 2.33"></a>98%置信区间的Z临界值 2.33</h3><p>critical value of Z for 98% confidence</p>
+<h3 id="95-置信区间的Z临界值-1-96"><a href="#95-置信区间的Z临界值-1-96" class="headerlink" title="95%置信区间的Z临界值 1.96"></a>95%置信区间的Z临界值 1.96</h3><p>假设检验：正式判断某件事是否有效果 </p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
