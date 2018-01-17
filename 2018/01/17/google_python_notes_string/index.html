@@ -198,7 +198,7 @@ Python has a built-in string class named “str” with many handy features (the
 <ul>
 <li><p>String literals can be enclosed by either double or single quotes, although single quotes are more commonly used.</p>
 </li>
-<li><p>Backslash escapes work the usual way within both single and double quoted literals — e.g. \n \’ \“.</p>
+<li><p>Backslash escapes work the usual way within both single and double quoted literals — e.g. \n  \’  \”.</p>
 </li>
 <li><p>A double quoted string literal can contain single quotes without any fuss (e.g. “I didn’t do it”) and likewise single quoted string can contain double quotes.</p>
 </li>
@@ -261,13 +261,11 @@ Python has a built-in string class named “str” with many handy features (the
 <li><code>s[:]</code> is ‘Hello’ — omitting both always gives us a copy of the whole thing (this is the <strong>pythonic way to copy a sequence like a string or list</strong>)</li>
 <li><p><code>s[1:100]</code> is ‘ello’ — an index that is too big is truncated down to the string length</p>
 <p>The standard zero-based index numbers give easy access to chars near the start of the string. As an alternative, Python uses <strong>negative numbers</strong> to give <strong>easy access to the chars at the end of the string</strong>: <code>s[-1]</code> is the last char ‘o’, <code>s[-2]</code> is ‘l’ the next-to-last char, and so on. Negative index numbers count back from the end of the string:</p>
-<ul>
+</li>
 <li><code>s[-1]</code> is ‘o’ — last char (1st from the end)</li>
 <li><code>s[-4]</code> is ‘e’ — 4th from the end</li>
 <li><code>s[:-3]</code> is ‘He’ — going up to but not including the last 3 chars</li>
 <li><code>s[-3:]</code> is ‘llo’ — starting with the 3rd char from the end and extending to the end of the string.</li>
-</ul>
-</li>
 </ul>
 <p>It is a neat truism of slices that for any index n, <code>s[:n] + s[n:] == s</code>. This works <strong>even for n negative or out of bounds</strong>. Or put another way s[:n] and s[n:] always partition the string into two string parts, conserving all the characters. As we’ll see in the list section later, slices work with lists too.</p>
 <h2 id="String"><a href="#String" class="headerlink" title="String %"></a>String %</h2><hr>
