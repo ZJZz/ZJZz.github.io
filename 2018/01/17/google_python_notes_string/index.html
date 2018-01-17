@@ -198,7 +198,7 @@ Python has a built-in string class named “str” with many handy features (the
 <ul>
 <li><p>String literals can be enclosed by either double or single quotes, although single quotes are more commonly used.</p>
 </li>
-<li><p>Backslash escapes work the usual way within both single and double quoted literals — e.g. \n \’ \”.</p>
+<li><p>Backslash escapes work the usual way within both single and double quoted literals — e.g. \n \’ \“.</p>
 </li>
 <li><p>A double quoted string literal can contain single quotes without any fuss (e.g. “I didn’t do it”) and likewise single quoted string can contain double quotes.</p>
 </li>
@@ -207,31 +207,31 @@ Python has a built-in string class named “str” with many handy features (the
 <li><p>String literals inside triple quotes, ‘’’’’’ or ‘’’, can span multiple lines of text.</p>
 </li>
 </ul>
-<p>Python strings are “<strong>immutable</strong>“ which means they cannot be changed after they are created (Java strings also use this immutable style). Since strings can’t be changed, we construct <strong>new</strong> strings as we go to represent computed values. So for example the expression  (‘hello’ + ‘there’)  takes in the 2 strings <strong>‘hello’</strong> and <strong>‘there’</strong> and builds a new string <strong>‘hellothere’</strong>.</p>
+<p>Python strings are “<strong>immutable</strong>“ which means they cannot be changed after they are created (Java strings also use this immutable style). Since strings can’t be changed, we construct <strong>new</strong> strings as we go to represent computed values. So for example the expression  <code>(&#39;hello&#39; + &#39;there&#39;)</code>  takes in the 2 strings <strong>‘hello’</strong> and <strong>‘there’</strong> and builds a new string <strong>‘hellothere’</strong>.</p>
 <ul>
-<li><p>Characters in a string can be accessed using the standard [ ] syntax, and like Java and C++, Python uses zero-based indexing, so if str is ‘hello’ str[1] is ‘e’.</p>
+<li><p>Characters in a string can be accessed using the standard [ ] syntax, and like Java and C++, Python uses zero-based indexing, so if str is ‘hello’ <code>str[1]</code> is ‘e’.</p>
 </li>
 <li><p>If the index is out of bounds for the string, Python raises an error. The Python style (unlike Perl) is to halt if it can’t tell what to do, rather than just make up a default value.</p>
 </li>
 <li><p>The handy “slice” syntax (below) also works to extract any substring from a string.</p>
 </li>
-<li><p>The len(string) function returns the length of a string.</p>
+<li><p>The <code>len(string)</code> function returns the length of a string.</p>
 </li>
 <li><p>The [ ] syntax and the len() function actually work on any sequence type — strings, lists, etc..</p>
 </li>
-<li><p>Python tries to make its operations work consistently across different types. Python newbie gotcha: don’t use “len” as a variable name to avoid blocking out the len() function.</p>
+<li><p>Python tries to make its operations work consistently across different types. Python newbie gotcha: don’t use “len” as a variable name to avoid blocking out the <code>len()</code> function.</p>
 </li>
-<li><p>The ‘+’ operator can concatenate two strings. Notice in the code below that variables are not pre-declared — just assign to them and go.</p>
+<li><p>The <code>+</code> operator can concatenate two strings. Notice in the code below that variables are not pre-declared — just assign to them and go.</p>
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">'hi'</span></div><div class="line"><span class="keyword">print</span> s[<span class="number">1</span>]          <span class="comment">## i</span></div><div class="line"><span class="keyword">print</span> len(s)        <span class="comment">## 2</span></div><div class="line"><span class="keyword">print</span> s + <span class="string">' there'</span>  <span class="comment">## hi there</span></div></pre></td></tr></table></figure>
-<p>Unlike Java, the ‘+’ <strong>does not</strong> automatically convert numbers or other types <strong>to string form</strong>. The str() function converts values to a string form so they can be combined with other strings.</p>
+<p>Unlike Java, the <code>+</code> <strong>does not</strong> automatically convert numbers or other types <strong>to string form</strong>. The <code>str()</code> function converts values to a string form so they can be combined with other strings.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pi = <span class="number">3.14</span></div><div class="line"><span class="comment">##text = 'The value of pi is ' + pi      ## NO, does not work</span></div><div class="line">text = <span class="string">'The value of pi is '</span>  + str(pi)  <span class="comment">## yes</span></div></pre></td></tr></table></figure>
-<p>For <strong>numbers</strong>, the standard operators, +, /, * work in the usual way. There is <strong>no</strong> ++ operator, but +=, -=, etc. work. If you want integer division, it is most correct to use <strong>2 slashes</strong> — e.g. 6 // 5 is 1 (previous to python 3000, a single / does int division with ints anyway, but moving forward // is the preferred way to indicate that you want int division.)</p>
-<p>The “<strong>print</strong>“ operator prints out one or more python items followed by a newline (leave a trailing comma at the end of the items to inhibit the newline).<br>A “<strong>raw</strong>“ string literal is prefixed by an ‘<strong>r</strong>‘ and passes all the chars through without special treatment of backslashes, so <code>r&#39;x\nx&#39;</code> evaluates to the length-4 string ‘x\nx’.<br>A ‘<strong>u</strong>‘ prefix allows you to write a unicode string literal (Python has lots of other unicode support features — see the docs below).</p>
+<p>For <strong>numbers</strong>, the standard operators, <code>+</code>, <code>/</code>, <code>*</code> work in the usual way. There is <strong>no</strong> <code>++</code> operator, but <code>+=</code>, <code>-=</code>, etc. work. If you want integer division, it is most correct to use <strong>2 slashes</strong> — e.g. <code>6 // 5</code> is 1 (previous to python 3000, a single <code>/</code> does int division with ints anyway, but moving forward <code>//</code> is the preferred way to indicate that you want int division.)</p>
+<p>The <code>print</code> operator prints out one or more python items followed by a newline (leave a trailing comma at the end of the items to inhibit the newline).<br>A <strong>raw</strong> string literal is prefixed by an <code>r</code> and passes all the chars through without special treatment of backslashes, so <code>r&#39;x\nx&#39;</code> evaluates to the length-4 string <code>&#39;x\nx&#39;</code>.<br>A <code>u</code> prefix allows you to write a unicode string literal (Python has lots of other unicode support features — see the docs below).</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">raw = <span class="string">r'this\t\n and that'</span></div><div class="line"><span class="keyword">print</span> raw     <span class="comment">## this\t\n and that</span></div><div class="line"></div><div class="line">multi = <span class="string">"""It was the best of times.</span></div><div class="line"><span class="string">It was the worst of times."""</span></div></pre></td></tr></table></figure>
 <h2 id="String-Methods"><a href="#String-Methods" class="headerlink" title="String Methods"></a>String Methods</h2><hr>
-<p>Here are some of the most common string methods. A <strong>method</strong> is like a <strong>function</strong>, but it runs “on” an object. If the variable s is a string, then the code s.lower() runs the lower() method on that string object and returns the result (this idea of a method running on an object is one of the basic ideas that make up Object Oriented Programming). Here are some of the most common string methods:</p>
+<p>Here are some of the most common string methods. A <strong>method</strong> is like a <strong>function</strong>, but it runs “on” an object. If the variable s is a string, then the code <code>s.lower()</code> runs the <code>lower()</code> method on that string object and returns the result (this idea of a method running on an object is one of the basic ideas that make up Object Oriented Programming). Here are some of the most common string methods:</p>
 <ul>
 <li><p><code>help(len)</code>,<code>s.lower()</code>, <code>s.upper()</code> — returns the lowercase or uppercase version of the string</p>
 </li>
