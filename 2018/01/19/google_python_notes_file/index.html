@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="Google’s Python online tutorial Notes - FilesThe open() function opens and returns a file handle that can be used to read or write a file in the usual">
+    
 
     <!--Author-->
     
@@ -38,7 +40,7 @@
 
     <!-- Title -->
     
-    <title>Archiv: 2018/1 - ZJZz&#39;s Garage</title>
+    <title>ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -140,127 +142,70 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2018/1</h1>
+                <div class="post-heading">
+                    <h1>Untitled</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-01-19
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/01/19/google_python_notes_file/">
-        <h1 class="post-title archive">
-            Untitled
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-19
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Google’s-Python-online-tutorial-Notes-Files"><a href="#Google’s-Python-online-tutorial-Notes-Files" class="headerlink" title="Google’s Python online tutorial Notes - Files"></a>Google’s Python online tutorial Notes - Files</h1><p>The <code>open()</code> function opens and returns <strong>a file handle</strong> that can be used to read or write a file in the usual way. The code <code>f = open(&#39;name&#39;, &#39;r&#39;)</code> opens the file into the variable f, ready for reading operations, and use <code>f.close()</code> when finished. Instead of <code>&#39;r&#39;</code>, use <code>&#39;w&#39;</code> for writing, and <code>&#39;a&#39;</code> for append. The special mode <code>&#39;rU&#39;</code> is the “Universal” option for text files where it’s smart about converting different line-endings so they always come through as a simple ‘\n’. The standard for-loop works for text files, iterating through the lines of the file (this works <strong>only for</strong> text files, not binary files). The for-loop technique is a simple and efficient way to look at all the lines in a text file:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Echo the contents of a file</span></div><div class="line">f = open(<span class="string">'foo.txt'</span>, <span class="string">'rU'</span>)</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:   <span class="comment">## iterates over the lines of the file</span></div><div class="line">  <span class="keyword">print</span> line,    <span class="comment">## trailing , so print does not add an end-of-line char</span></div><div class="line">                 <span class="comment">## since 'line' already includes the end-of line.</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>Reading one line at a time has the nice quality that not all the file needs to fit in memory at one time — handy if you want to look at every line in a 10 gigabyte file without using 10 gigabytes of memory.</p>
+<p>The <code>f.readlines()</code> method reads the whole file into memory and returns <strong>its contents as a list of its lines</strong>.</p>
+<p>The <code>f.read()</code> method reads the whole file into <strong>a single string</strong>, which can be <strong>a handy way to deal with the text all at once</strong>, such as with <strong>regular expressions</strong> we’ll see later.</p>
+<p>For writing, <code>f.write(string)</code> method is the easiest way to write data to an open output file. Or you can use <code>print</code> with an open file, but the syntax is nasty: <code>print &gt;&gt; f, string</code>. In python 3000, the <code>print</code> syntax will be fixed to be a regular function call with a <code>file=</code> optional argument: <code>print(string, file=f)</code>.</p>
+<h2 id="Files-Unicode"><a href="#Files-Unicode" class="headerlink" title="Files Unicode"></a>Files Unicode</h2><hr>
+<p>The <code>codecs</code> module provides support for reading a unicode file.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> codecs</div><div class="line"></div><div class="line">f = codecs.open(<span class="string">'foo.txt'</span>, <span class="string">'rU'</span>, <span class="string">'utf-8'</span>)</div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">  <span class="comment"># here line is a *unicode* string</span></div></pre></td></tr></table></figure>
+<p>For writing, use <code>f.write()</code> since print does not fully support unicode.</p>
+<h2 id="Exercise-Incremental-Development-Googler’s-advice"><a href="#Exercise-Incremental-Development-Googler’s-advice" class="headerlink" title="Exercise Incremental Development - Googler’s advice"></a>Exercise Incremental Development - Googler’s advice</h2><hr>
+<p>Building a Python program, don’t write the whole thing in one step. Instead identify just a first milestone, e.g. “well the first step is to extract the list of words.” Write the code to get to that milestone, and just print your data structures at that point, and then you can do a <code>sys.exit(0)</code> so the program does not run ahead into its not-done parts. Once the milestone code is working, you can work on code for the next milestone. Being able to look at the printout of your variables at one state can help you think about how you need to transform those variables to get to the next state. Python is very quick with this pattern, allowing you to make a little change and run the program to see how it works. <strong>Take advantage of that quick turnaround to build your program in little steps</strong>.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2018/01/19/google_python_notes_dict/">
-        <h1 class="post-title archive">
-            Untitled
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-19
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/01/18/google_python_notes_tuples/">
-        <h1 class="post-title archive">
-            Google's Python online tutorial Notes - Tuples
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-18
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/18/google_python_notes_sorting/">
-        <h1 class="post-title archive">
-            Google's Python online tutorial Notes - Sorting
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-18
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/18/google_python_notes_lists/">
-        <h1 class="post-title archive">
-            Google's Python online tutorial Notes - Lists
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-18
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/17/google_python_notes_string/">
-        <h1 class="post-title archive">
-            Google's Python online tutorial Notes - Strings
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/01/17/google_python_notes_introduction/">
-        <h1 class="post-title archive">
-            Google's Python online tutorial Notes - Introduction
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-01-17
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
