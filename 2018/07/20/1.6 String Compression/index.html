@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="1.6 String Compression思路这道题我见过，只不过没有后面的要求：如果压缩后的字符串并没有比原字符串短，就返回原来的字符串。这也好解决，将压缩好的字符串和原字符串进行比较，返回较短的那个就可以。
+Hint 92Do the easy thing first. Compress th">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="1.6 String Compression"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>1.6 String Compression - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>1.6 String Compression</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-07-20
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="1-6-String-Compression"><a href="#1-6-String-Compression" class="headerlink" title="1.6 String Compression"></a>1.6 String Compression</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这道题我见过，只不过没有后面的要求：如果压缩后的字符串并没有比原字符串短，就返回原来的字符串。这也好解决，将压缩好的字符串和原字符串进行比较，返回较短的那个就可以。</p>
+<h3 id="Hint-92"><a href="#Hint-92" class="headerlink" title="Hint 92"></a>Hint 92</h3><p>Do the easy thing first. Compress the string, then compare the lengths.</p>
+<p>看来我的思路是easy thing 😅</p>
+<h3 id="Hint-110"><a href="#Hint-110" class="headerlink" title="Hint 110"></a>Hint 110</h3><p>Be careful that you aren’t repeatedly concatenating strings together. This can be very inefficient.</p>
+<p>我并没有重复拼接字符串，而是先统计个数再进行拼接。</p>
+<h3 id="参考代码思路理解-😲"><a href="#参考代码思路理解-😲" class="headerlink" title="参考代码思路理解 😲"></a>参考代码思路理解 😲</h3><p>虽然之前做过，但是有后面返回较短字符串这一要求，代码的编写思路还是很不一样的。</p>
+<p>首先参考代码的只用了一层循环就解决了问题,我的思路用了两层。</p>
+<p>其次，我之前的思路是先把字符串压缩后再与原字符串进行长度比较，以为这样好像没什么影响，但参考代码是先计算压缩串的长度，和原字符串长度比较后，发现短再压缩，讲究！我之前的思路果然是easy thing。</p>
+<hr>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><h4 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h4><ul>
+<li>统计每个字母出现的个数，计算出压缩后的字符串长度，与原始字符串的长度进行比较，如果大于就返回原字符串，小于就进行压缩</li>
+<li>比较简单的做法是根据之前的统计信息构造一个新的字符串，如果不允许创建新串，只能在原串上就行修改呢？</li>
+</ul>
+<h4 id="确定前条件-不变式-后条件"><a href="#确定前条件-不变式-后条件" class="headerlink" title="确定前条件/不变式/后条件"></a>确定前条件/不变式/后条件</h4><h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><ul>
+<li>Python</li>
+</ul>
+<p>统计每个字母出现的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line">counter = Counter()</div><div class="line"></div><div class="line"><span class="keyword">for</span> char <span class="keyword">in</span> str:</div><div class="line">    counter[char] += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>❗️注意，上面的想法有问题，这里不单是统计字符个数问题，与位置有关系，不能用Counter来去统计字符的个数,要计算一段连续的字符的个数</p>
+<p>我之前的想法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">s1 = <span class="string">"aabccccaaa"</span></div><div class="line">s2 = <span class="string">""</span></div><div class="line"></div><div class="line">i = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> i &lt; len(s1):</div><div class="line">    cnt = <span class="number">1</span></div><div class="line">    start = i</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,len(s1) - i):</div><div class="line">        <span class="keyword">if</span> s1[start] == s1[start + j]:</div><div class="line">            cnt += <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> cnt != <span class="number">1</span>:</div><div class="line">        s2 += s1[start] + str(cnt)</div><div class="line">        i = start + cnt</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        s2 += s1[start]</div><div class="line">        i += <span class="number">1</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> s2</div></pre></td></tr></table></figure>
+<p><code>while</code>循环里再套<code>for</code>循环，感觉有些低效，有没有更好的办法❓</p>
+<p>参考代码 Java版本</p>
+<p>用<code>i,i+1</code>来控制</p>
+<p><code>i</code>的取值范围：0 ~ length-1<br><code>i+1</code>的取值范围：1 ~ length (在length时需要终止)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> countConsecutive = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</div><div class="line">    countConsecutive++;</div><div class="line">			</div><div class="line">    <span class="comment">/* If next character is different than current, append this char to result.*/</span></div><div class="line">    <span class="keyword">if</span> (i + <span class="number">1</span> &gt;= str.length() || str.charAt(i) != str.charAt(i + <span class="number">1</span>)) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>❗️注意这里的逻辑运算符是<code>||</code></p>
+<p>参考代码 Python版本</p>
+<p>用<code>i,i-1</code>来控制</p>
+<p><code>i</code>的取值范围：0 ~ length-1<br><code>i-1</code>的取值范围：-1 ~ length-2 (在<code>i=0</code>时不能引入<code>i-1</code>) </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">compressed = []</div><div class="line">counter = <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(string)):</div><div class="line">    <span class="keyword">if</span> i != <span class="number">0</span> <span class="keyword">and</span> string[i] != string[i - <span class="number">1</span>]:</div><div class="line">    ...</div><div class="line"></div><div class="line"><span class="comment"># add last repeated character</span></div><div class="line">compressed.append(string[<span class="number">-1</span>] + str(counter))</div></pre></td></tr></table></figure>
+<p>❗️注意这里的逻辑运算符是<code>and</code></p>
+<p>计算压缩后的长度</p>
+<p>我的想法首先需要确定总共有多少个字母，再看每个字母有多少个，把每个字母对应的个数转为字符串连接起来，这样就得到了总长度。我觉得这样做比较麻烦，有没有更巧妙的方法❓</p>
+<p>参考代码 Java版本</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">compressedLength += <span class="number">1</span> + String.valueOf(countConsecutive).length();</div><div class="line">countConsecutive = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> consecutive = <span class="number">1</span>;</div><div class="line"><span class="built_in">string</span> compressed = <span class="string">""</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>( (i+<span class="number">1</span> &gt;= str.length()) || (str[i] != str[i+<span class="number">1</span>]) )</div><div class="line">    &#123;</div><div class="line">        compressed += str[i] + to_string(consecutive);</div><div class="line">        consecutive = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    consecutive++;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><ul>
+<li>Python</li>
+</ul>
+<p>版本1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress_string_length</span><span class="params">(str)</span>:</span></div><div class="line">    consecutive = <span class="number">0</span></div><div class="line">    compress_length = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str)):</div><div class="line">        <span class="keyword">if</span> (i+<span class="number">1</span> &gt;= len(str)) <span class="keyword">or</span> (str[i] != str[i+<span class="number">1</span>]):</div><div class="line">            compress_length += <span class="number">1</span> + len(str(consecutive))</div><div class="line">            consecutive = <span class="number">0</span></div><div class="line">        consecutive += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> compress_length</div><div class="line">            </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_compression</span><span class="params">(str)</span>:</span></div><div class="line">    final_length = compress_string_length(str)</div><div class="line">    <span class="keyword">if</span> final_length &gt;= len(str):</div><div class="line">        <span class="keyword">return</span> str</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        compressed = <span class="string">""</span></div><div class="line">        consecutive = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str)):</div><div class="line">            <span class="keyword">if</span> (i+<span class="number">1</span> &gt;= len(str)) <span class="keyword">or</span> (str[i] != str[i+<span class="number">1</span>]):</div><div class="line">                compressed += str[i] + str(consecutive)</div><div class="line">                consecutive = <span class="number">0</span></div><div class="line">            consecutive += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> compressed</div><div class="line">        </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    <span class="keyword">print</span> string_compression(<span class="string">"aabcccccaaa"</span>)</div></pre></td></tr></table></figure>
+<p>参数<code>str</code>和函数<code>str()</code>有冲突</p>
+<p>版本2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress_string_length</span><span class="params">(str1)</span>:</span></div><div class="line">    consecutive = <span class="number">0</span></div><div class="line">    compress_length = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str1)):</div><div class="line">        <span class="keyword">if</span> (i+<span class="number">1</span> &gt;= len(str1)) <span class="keyword">or</span> (str1[i] != str1[i+<span class="number">1</span>]):</div><div class="line">            compress_length += <span class="number">1</span> + len(str(consecutive))</div><div class="line">            consecutive = <span class="number">0</span></div><div class="line">        consecutive += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> compress_length</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_compression</span><span class="params">(str1)</span>:</span></div><div class="line">    final_length = compress_string_length(str1)</div><div class="line">    <span class="keyword">if</span> final_length &gt;= len(str1):</div><div class="line">        <span class="keyword">return</span> str1</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        compressed = <span class="string">""</span></div><div class="line">        consecutive = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str1)):</div><div class="line">            <span class="keyword">if</span> (i+<span class="number">1</span> &gt;= len(str1)) <span class="keyword">or</span> (str1[i] != str1[i+<span class="number">1</span>]):</div><div class="line">                compressed += str1[i] + str(consecutive)</div><div class="line">                consecutive = <span class="number">0</span></div><div class="line">            consecutive += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> compressed</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    <span class="keyword">print</span> string_compression(<span class="string">"aabcccccaaa"</span>)</div></pre></td></tr></table></figure>
+<p>有的字母个数少1</p>
+<p>版本3</p>
+<p>把第18行改为</p>
+<p><code>consecutive = 1</code></p>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">string_compression</span><span class="params">(<span class="built_in">string</span>&amp; str)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">        <span class="keyword">int</span> consecutive = <span class="number">1</span>;</div><div class="line">        <span class="built_in">string</span> compressed = <span class="string">""</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</div><div class="line">        &#123;</div><div class="line">                <span class="keyword">if</span>((i+<span class="number">1</span> &gt;= str.length()) || str[i] != str[i+<span class="number">1</span>] )</div><div class="line">                &#123;</div><div class="line">                        compressed += str[i] + to_string(consecutive);</div><div class="line">                        consecutive = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">                consecutive++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> compressed.length() &lt; str.length() ? compressed : str;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">        <span class="built_in">string</span> str1 = <span class="string">"abcd"</span>;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; string_compression(str1) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

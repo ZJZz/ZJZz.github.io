@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="1.7 Rotate Matrix思路分析1理解题意后发现这可能是在做矩阵转置操作。题目中要求in place，但我在纠结的问题是：按一个一个元素来变换？还是按行或列来变换，因为矩阵转置后就是把原来的列变成行，把行变成列。以列或行为单位进行变换的话会更方便一些。
+这就涉及in place该如何体现的">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="1.7 Rotate Matrix"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>1.7 Rotate Matrix - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>1.7 Rotate Matrix</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-07-21
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="1-7-Rotate-Matrix"><a href="#1-7-Rotate-Matrix" class="headerlink" title="1.7 Rotate Matrix"></a>1.7 Rotate Matrix</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="分析1"><a href="#分析1" class="headerlink" title="分析1"></a>分析1</h3><p>理解题意后发现这可能是在做矩阵转置操作。题目中要求in place，但我在纠结的问题是：按一个一个元素来变换？还是按行或列来变换，因为矩阵转置后就是把原来的列变成行，把行变成列。以列或行为单位进行变换的话会更方便一些。</p>
+<p>这就涉及in place该如何体现的问题了，最多允许开一个临时变量呢？还是允许开很多临时变量？</p>
+<h3 id="Hint-51"><a href="#Hint-51" class="headerlink" title="Hint 51"></a>Hint 51</h3><p>Try thinking about it layer by layer. Can you rotate a specific layer ?</p>
+<p>layer by layer是说的按列或行来旋转吗？</p>
+<h3 id="Hint-100"><a href="#Hint-100" class="headerlink" title="Hint 100"></a>Hint 100</h3><p>Rotating  a specific layer would just mean swapping the values in four arrays. If you were asked to swap the values in two arrays, could you do this ？Can you then extend it to four arrays ?</p>
+<h3 id="分析2"><a href="#分析2" class="headerlink" title="分析2"></a>分析2</h3><p>题中给出的每个像素占4 bytes有什么含义 ？</p>
+<h3 id="分析3"><a href="#分析3" class="headerlink" title="分析3"></a>分析3</h3><p>对于2维数组来说，有些地方是我的知识盲区，处理这些问题没有像一维数组那样看得清楚，需要在这方面练习。</p>
+<h3 id="参考代码思路理解-😲"><a href="#参考代码思路理解-😲" class="headerlink" title="参考代码思路理解 😲"></a>参考代码思路理解 😲</h3><p>看了参考代码，首先惊叹一下方法的巧妙，之前的方法一直禁锢在矩阵的数学操作中，其实真正要实现同样效果的话，没有必要严格按照数学的操作来达到。</p>
+<p>其次解除一下之前我的疑惑，in place这里要求最多允许开一个变量。4 bytes在这里并没有体现特殊的操作，对思路没什么影响。</p>
+<p>这里的layer在读过源码后，其实是指方阵一层一层的环，由外向里渐进。这也是我之前没有想到这种方法的原因，参考代码的思路是把环上的四条边当做4个一维数组，数组下标之间有联系，也与当前所处的layer有关。</p>
+<p>代码总共设了4个变量来控制数组的下标，first,last,offest,i。需要理解每一种下标存在的意义，在具体实现的时候要好好体会。</p>
+<p>还有很关键的1点是理解4个一维数组之间是如何相互赋值的，他们之间的前后关系和下标间的联系要搞清楚。我在这方面的训练较少，在实现的时候要注意体会。</p>
+<hr>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h3><h4 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h4><ol>
+<li><p>首先需要确定当前在第几层，以及总层数。因为层数决定了四条边的长度，层数越外边越长，层数越里边越短。</p>
+</li>
+<li><p>当确定层数后，就需要确定这一层要交换的四条边，即确定出”上右下左”的数组长度。</p>
+</li>
+<li><p>四个数组确定后进行顺时针90度的顺序进行交换。</p>
+</li>
+<li><p>再进行下一层的迭代</p>
+</li>
+</ol>
+<h4 id="确定前条件-不变式-后条件"><a href="#确定前条件-不变式-后条件" class="headerlink" title="确定前条件/不变式/后条件"></a>确定前条件/不变式/后条件</h4><h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><ul>
+<li>Python</li>
+</ul>
+<p>❓如何用代码定义层？矩阵的四条边在二维数组中如何表示？</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">上</th>
+<th style="text-align:center">右</th>
+<th style="text-align:center">下</th>
+<th style="text-align:center">左</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0层</td>
+<td style="text-align:center">0行:0~n-1</td>
+<td style="text-align:center">n-1列:0~n-1</td>
+<td style="text-align:center">n-1行:0~n-1</td>
+<td style="text-align:center">0列:0~n-1</td>
+</tr>
+<tr>
+<td style="text-align:center">1层</td>
+<td style="text-align:center">1行:1~n-2</td>
+<td style="text-align:center">n-2列:1~n-2</td>
+<td style="text-align:center">n-2行:1~n-2</td>
+<td style="text-align:center">1列:1~n-2</td>
+</tr>
+<tr>
+<td style="text-align:center">2层</td>
+<td style="text-align:center">2行:2~n-3</td>
+<td style="text-align:center">n-3列:2~n-3</td>
+<td style="text-align:center">n-3行:2~n-3</td>
+<td style="text-align:center">2列:2~n-3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">current_layer = i</div><div class="line"></div><div class="line">up = mat[<span class="number">0</span>][<span class="number">0</span>:n<span class="number">-1</span>]</div><div class="line">up = mat[<span class="number">1</span>][<span class="number">1</span>:n<span class="number">-2</span>]</div><div class="line">up = mat[<span class="number">2</span>][<span class="number">2</span>:n<span class="number">-3</span>]</div><div class="line"></div><div class="line">up = mat[current_layer][current_layer:n-current_layer]</div><div class="line"></div><div class="line">right = mat[current_layer:n-current_layer][n-current_layer]</div><div class="line"></div><div class="line">down = mat[n-current_layer][current_layer:n-current_layer]</div><div class="line"></div><div class="line">left = mat[current_layer:n-current_layer][current_layer]</div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<p>其实Python中也是可以通过<code>[][]</code>符号来访问二维数组中的元素。我当时想交换整个数组，连续访问list中的一段连续内容，就用切片法了。一个一个交换可能更好控制一些。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> range(n // <span class="number">2</span>):</div><div class="line">    first, last = layer, n - layer - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(first, last):</div><div class="line">        <span class="comment"># save top</span></div><div class="line">        top = matrix[layer][i]</div><div class="line">        </div><div class="line">        <span class="comment"># left -&gt; top</span></div><div class="line">        matrix[layer][i] = matrix[-i - <span class="number">1</span>][layer]</div><div class="line">        </div><div class="line">        <span class="comment"># bottom -&gt; left</span></div><div class="line">        matrix[-i - <span class="number">1</span>][layer] = matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># right -&gt; bottom</span></div><div class="line">        matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>] = matrix[i][- layer - <span class="number">1</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># top -&gt; right</span></div><div class="line">        matrix[i][- layer - <span class="number">1</span>] = top</div></pre></td></tr></table></figure>
+<p>总共有几层？</p>
+<p>n为偶数时需要交换n/2层<br>n为奇数时也只需要交换n/2层，最后一层为单个元素，不需要交换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> n % <span class="number">2</span> != <span class="number">0</span>:</div><div class="line">    layer = (n/<span class="number">2</span>) + <span class="number">1</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    layer = n  / <span class="number">2</span> </div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(layer)</div><div class="line">    ...</div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> range(n // <span class="number">2</span>):</div><div class="line">    <span class="comment"># save top</span></div><div class="line">    top = matrix[layer][i]</div><div class="line">        </div><div class="line">    <span class="comment"># left -&gt; top</span></div><div class="line">    matrix[layer][i] = matrix[-i - <span class="number">1</span>][layer]</div><div class="line">        </div><div class="line">    <span class="comment"># bottom -&gt; left</span></div><div class="line">    matrix[-i - <span class="number">1</span>][layer] = matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>]</div><div class="line">    </div><div class="line">    <span class="comment"># right -&gt; bottom</span></div><div class="line">    matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>] = matrix[i][- layer - <span class="number">1</span>]</div><div class="line">        </div><div class="line">    <span class="comment"># top -&gt; right</span></div><div class="line">    matrix[i][- layer - <span class="number">1</span>] = top</div></pre></td></tr></table></figure>
+<p><code>//</code>符号表示向下取整</p>
+<p>❓还要考虑每条边的交叉元素如何处理？</p>
+<p>交叉元素应该影响不大，因为会备份被交换的元素</p>
+<p>考虑这个问题的时候又想到了交换的顺序，因为交换的时候会把旧元素覆盖，需要先备份一个。</p>
+<p>顺序可能影响不是很大，大体原则是交换的时候把被交换的元素做好备份。</p>
+<p>参考代码片段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">first, last = layer, n - layer - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(first, last):</div><div class="line">        <span class="comment"># save top</span></div><div class="line">        top = matrix[layer][i]</div><div class="line">        </div><div class="line">        <span class="comment"># left -&gt; top</span></div><div class="line">        matrix[layer][i] = matrix[-i - <span class="number">1</span>][layer]</div><div class="line">        </div><div class="line">        <span class="comment"># bottom -&gt; left</span></div><div class="line">        matrix[-i - <span class="number">1</span>][layer] = matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>]</div><div class="line">    </div><div class="line">        <span class="comment"># right -&gt; bottom</span></div><div class="line">        matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>] = matrix[i][- layer - <span class="number">1</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># top -&gt; right</span></div><div class="line">        matrix[i][- layer - <span class="number">1</span>] = top</div></pre></td></tr></table></figure>
+<p>注意这里i的取值范围<br><code>i</code>: <code>first</code> ~ <code>last</code> = <code>n-layer-1-1</code></p>
+<p>这里每条边并没有取完整：每行的最后1个元素都留给了下一个边。 </p>
+<p>❓每层定义好了以后该怎么交换？关键是下标如何对应？</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">上</th>
+<th style="text-align:center">右</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0层</td>
+<td style="text-align:center">0行:0~n-1</td>
+<td style="text-align:center">n-1列:0~n-1</td>
+</tr>
+<tr>
+<td style="text-align:center">1层</td>
+<td style="text-align:center">1行:1~n-2</td>
+<td style="text-align:center">n-2列:1~n-2</td>
+</tr>
+<tr>
+<td style="text-align:center">2层</td>
+<td style="text-align:center">2行:2~n-3</td>
+<td style="text-align:center">n-3列:2~n-3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>涉及到Python中的复制机制</p>
+<p>❓新问题，这里用swap的方法还是“备份-覆盖”的方法？</p>
+<p>两种方法在Python中都是怎么实现的？</p>
+<ul>
+<li>swap</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/20582977/python-swapping-lists" target="_blank" rel="external">Python swapping lists - two elements in list</a></p>
+<ul>
+<li>copy</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/2612802/how-to-clone-or-copy-a-list" target="_blank" rel="external">How to clone or copy a list ?</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">右</th>
+<th style="text-align:center">下</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0层</td>
+<td style="text-align:center">n-1列:0~n-1</td>
+<td style="text-align:center">n-1行:0~n-1</td>
+</tr>
+<tr>
+<td style="text-align:center">1层</td>
+<td style="text-align:center">n-2列:1~n-2</td>
+<td style="text-align:center">n-2行:1~n-2</td>
+</tr>
+<tr>
+<td style="text-align:center">2层</td>
+<td style="text-align:center">n-3列:2~n-3</td>
+<td style="text-align:center">n-3行:2~n-3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">下</th>
+<th style="text-align:center">左</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0层</td>
+<td style="text-align:center">n-1行:0~n-1</td>
+<td style="text-align:center">0列:0~n-1</td>
+</tr>
+<tr>
+<td style="text-align:center">1层</td>
+<td style="text-align:center">n-2行:1~n-2</td>
+<td style="text-align:center">1列:1~n-2</td>
+</tr>
+<tr>
+<td style="text-align:center">2层</td>
+<td style="text-align:center">n-3行:2~n-3</td>
+<td style="text-align:center">2列:2~n-3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">左</th>
+<th style="text-align:center">上</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0层</td>
+<td style="text-align:center">0列:0~n-1</td>
+<td style="text-align:center">0行:0~n-1</td>
+</tr>
+<tr>
+<td style="text-align:center">1层</td>
+<td style="text-align:center">1列:1~n-2</td>
+<td style="text-align:center">1行:1~n-2</td>
+</tr>
+<tr>
+<td style="text-align:center">2层</td>
+<td style="text-align:center">2列:2~n-3</td>
+<td style="text-align:center">2行:2~n-3</td>
+</tr>
+<tr>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+<td style="text-align:center">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>参考代码片段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># save top</span></div><div class="line">top = matrix[layer][i]</div><div class="line"></div><div class="line"><span class="comment"># left -&gt; top</span></div><div class="line">matrix[layer][i] = matrix[-i - <span class="number">1</span>][layer]</div><div class="line">        </div><div class="line"><span class="comment"># bottom -&gt; left</span></div><div class="line">matrix[-i - <span class="number">1</span>][layer] = matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="comment"># right -&gt; bottom</span></div><div class="line">matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>] = matrix[i][- layer - <span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="comment"># top -&gt; right</span></div><div class="line">matrix[i][- layer - <span class="number">1</span>] = top</div></pre></td></tr></table></figure>
+<p>Java代码中是这么表示的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> offset = i - first;</div><div class="line"></div><div class="line"><span class="comment">// save top</span></div><div class="line"><span class="keyword">int</span> top = matrix[first][i]; </div><div class="line"></div><div class="line"><span class="comment">// left -&gt; top</span></div><div class="line">matrix[first][i] = matrix[last-offset][first];</div><div class="line"></div><div class="line"><span class="comment">// bottom -&gt; left</span></div><div class="line">matrix[last-offset][first] = matrix[last][last - offset]; </div><div class="line"></div><div class="line"><span class="comment">// right -&gt; bottom</span></div><div class="line">matrix[last][last - offset] = matrix[i][last]; </div><div class="line"></div><div class="line"><span class="comment">// top -&gt; right</span></div><div class="line">matrix[i][last] = top; <span class="comment">// right &lt;- saved top</span></div></pre></td></tr></table></figure>
+<p>看了参考代码后以自己的理解写的下标映射</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 理解一致</span></div><div class="line">top = [first][i] </div><div class="line"></div><div class="line"><span class="comment"># 应为列不动，需要遍历行，所以列为first,行从底向上为last - i</span></div><div class="line">left = [last-i][first] </div><div class="line"></div><div class="line"><span class="comment"># 应为行不动，需要遍历列，所以行为last,列从右向左为last - i</span></div><div class="line">bottom = [last][last-i]</div><div class="line"></div><div class="line"><span class="comment"># 理解一致</span></div><div class="line">right = [i][last]</div></pre></td></tr></table></figure>
+<p>我的理解在<code>layer = 0</code>时是正确的。当<code>layer = 1</code>时，就会出现问题<br>例如：当n=5时，layer = 1</p>
+<p>此时各变量的取值为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">layer = <span class="number">1</span></div><div class="line">first = <span class="number">1</span></div><div class="line">last = <span class="number">3</span></div><div class="line">i : <span class="number">1</span>,<span class="number">2</span></div></pre></td></tr></table></figure>
+<p>此时层为每条边为3个元素的环，每条边对应的原矩阵的下标为1,2,3</p>
+<p>从第1个元素开始交换, <code>i=1</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">top[first][i]  = <span class="number">1</span>,<span class="number">1</span></div><div class="line">left[last-i][first] = <span class="number">2</span>,<span class="number">1</span> <span class="comment"># 出错</span></div><div class="line"></div><div class="line"><span class="comment">#实际为</span></div><div class="line">left = <span class="number">3</span>,<span class="number">1</span></div></pre></td></tr></table></figure>
+<p>问题原因在于<code>i</code>不是每次都从0开始的</p>
+<p>所以Java才引入了<code>offset = i-first</code></p>
+<p>Python的参考代码利用了<strong>倒数</strong>这一机制，<code>left</code>和<code>bottom</code>表示如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># left</span></div><div class="line">matrix[-i - <span class="number">1</span>][first]</div><div class="line"><span class="comment"># java: matrix[last-offset][first]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># bottom</span></div><div class="line">matrix[-layer - <span class="number">1</span>][-i - <span class="number">1</span>]</div><div class="line"><span class="comment"># java: matrix[last][last - offset]</span></div></pre></td></tr></table></figure>
+<p>left的<code>[-i-1][first]</code>中列和Java版本的一样，因为倒数第一个为<code>-1</code>随着<code>i</code>的增加，行也会向上增长，所以行写作<code>-i-1</code>，</p>
+<p>bottom的<code>[-layer - 1][-i - 1]</code>中列和left的解释一样，行也可以同样理解,行也可以用<code>last表示</code>,因为<code>last = n-1-layer</code>加上<code>-layer-1</code>的相反数等于<code>n</code>所以表示是一样的。</p>
+<p>❓针对行和列，交换时的终止条件？下标的控制? 是否需要分奇偶情况讨论？</p>
+<p>n-1要减到什么地方？0要增到什么地方? 考虑这个问题是因为在选定层后要确定每一层对应的四条边。上边与下边会逐渐靠近，左边与右边会逐渐靠近，最终会在某一点重合</p>
+<p>当n=5时，下标序列为<code>0 1 2 3 4</code><br>i: 0~1  -&gt; <code>(i=0; i &lt; n/2; i++)</code><br>j: 4~3 -&gt; <code>(j=n-1; j &gt; n/2; j--)</code></p>
+<p>当n=4时，下标序列为<code>0 1 2 3</code><br>i: 0~1 -&gt; <code>(i=0; i &lt; n/2; i++)</code><br>j: 3~2 -&gt; <code>(j=n-1; j &gt;= n/2; j--)</code></p>
+<p>以我的分析看来需要对奇偶分情况讨论</p>
+<p>❗️注意这里对行和列的讨论其实和之前的层数有关</p>
+<ul>
+<li>C++</li>
+</ul>
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><ul>
+<li>Python</li>
+</ul>
+<p>版本1</p>
+<p>事隔1天后写的代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rotate_matrix</span><span class="params">(mat)</span>:</span></div><div class="line">        <span class="keyword">for</span> layer <span class="keyword">in</span> range(n // <span class="number">2</span>): </div><div class="line">                first, last = layer, n<span class="number">-1</span>-layer</div><div class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(first, last):</div><div class="line">                        <span class="comment"># save top </span></div><div class="line">                        top = mat[first][i]</div><div class="line">    </div><div class="line">                        <span class="comment"># top &lt;- left</span></div><div class="line">                        mat[first][i] = mat[-i<span class="number">-1</span>][first]</div><div class="line">                            </div><div class="line">                        <span class="comment"># left &lt;- bottom</span></div><div class="line">                        mat[-i<span class="number">-1</span>][first] = mat[last][i]</div><div class="line"></div><div class="line">                        <span class="comment"># bottom &lt;- right</span></div><div class="line">                        mat[last][i] = mat[i][last]</div><div class="line"></div><div class="line">                        <span class="comment"># right &lt;- top </span></div><div class="line">                        mat[i][last] = top</div></pre></td></tr></table></figure>
+<p>bottom有问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mat[last][-i<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+<p>版本2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rotate_matrix</span><span class="params">(mat,n)</span>:</span></div><div class="line">        <span class="keyword">for</span> layer <span class="keyword">in</span> range(n // <span class="number">2</span>):</div><div class="line">                first, last = layer, n<span class="number">-1</span>-layer</div><div class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(first, last):</div><div class="line">                        <span class="comment"># save top</span></div><div class="line">                        top = mat[first][i]</div><div class="line"></div><div class="line">                        <span class="comment"># top &lt;- left</span></div><div class="line">                        mat[first][i] = mat[-i<span class="number">-1</span>][first]</div><div class="line"></div><div class="line">                        <span class="comment"># left &lt;- bottom</span></div><div class="line">                        mat[-i<span class="number">-1</span>][first] = mat[last][-i<span class="number">-1</span>]</div><div class="line"></div><div class="line">                        <span class="comment"># bottom &lt;- right</span></div><div class="line">                        mat[last][-i<span class="number">-1</span>] = mat[i][last]</div><div class="line"></div><div class="line">                        <span class="comment"># right &lt;- top</span></div><div class="line">                        mat[i][last] = top</div><div class="line"></div><div class="line">        <span class="keyword">return</span> mat</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">        mat = [</div><div class="line">            [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">0</span>],</div><div class="line">            [<span class="number">6</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>],</div><div class="line">            [<span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</div><div class="line">            [<span class="number">16</span>, <span class="number">0</span>, <span class="number">18</span>, <span class="number">19</span>, <span class="number">20</span>],</div><div class="line">            [<span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">24</span>, <span class="number">25</span>]</div><div class="line">        ]</div><div class="line">        <span class="keyword">print</span> rotate_matrix(mat,<span class="number">5</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<p>版本1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate_matrix</span><span class="params">(<span class="keyword">int</span> ** mat, <span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> layer = <span class="number">0</span>; layer &lt; n/<span class="number">2</span>; layer++)</div><div class="line">        &#123;   </div><div class="line">                <span class="keyword">int</span> first,last = layer, n<span class="number">-1</span>-layer;</div><div class="line">                    </div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = first; i &lt; last ; i++)</div><div class="line">                &#123;    </div><div class="line">                        <span class="keyword">int</span> offest = i - first;</div><div class="line">                            </div><div class="line">                        <span class="comment">// save top </span></div><div class="line">                        <span class="keyword">int</span> top = mat[first][i];</div><div class="line">                            </div><div class="line">                        <span class="comment">// top &lt;- left</span></div><div class="line">                        mat[first][i] = mat[last-offset][first];</div><div class="line">                            </div><div class="line">                        <span class="comment">// left &lt;- bottom</span></div><div class="line">                        mat[last-offset][first] = mat[last-offset][i];</div><div class="line">                            </div><div class="line">                        <span class="comment">// bottom &lt;- right</span></div><div class="line">                        mat[last-offset][i] = mat[i][last];</div><div class="line"></div><div class="line">                        <span class="comment">// right &lt;- top </span></div><div class="line">                        mat[i][last] = top </div><div class="line">                &#125;   </div><div class="line">        &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>依然是bottom有问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mat[last][last-offset]</div></pre></td></tr></table></figure>
+<p>C++中二维数组的初始化和赋值</p>
+<p>我的写法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> N;</div><div class="line"><span class="keyword">int</span>** mat = <span class="keyword">new</span> <span class="keyword">int</span>[N];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) mat[i] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</div></pre></td></tr></table></figure>
+<p>参考代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> ** matrix = <span class="keyword">new</span> <span class="keyword">int</span>*[N];</div><div class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) matrix[i] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</div></pre></td></tr></table></figure>
+<p>注意第一步初始化<code>int **</code>时,<code>new</code>的是<code>int *</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printMatrix</span><span class="params">( <span class="keyword">int</span> ** matrix, <span class="keyword">int</span> N)</span></span></div><div class="line"><span class="function"></span>&#123;       </div><div class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i ) &#123;</div><div class="line">                <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; ++j ) &#123;</div><div class="line">                        <span class="built_in">cout</span> &lt;&lt; matrix[i][j] &lt;&lt; <span class="string">" "</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate_matrix</span><span class="params">(<span class="keyword">int</span> ** mat, <span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;       </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> layer = <span class="number">0</span>; layer &lt; n/<span class="number">2</span>; layer++)</div><div class="line">        &#123;       </div><div class="line">                <span class="keyword">int</span> first = layer;</div><div class="line">                <span class="keyword">int</span> last = n<span class="number">-1</span>-layer;</div><div class="line">                </div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = first; i &lt; last ; i++)</div><div class="line">                &#123;       </div><div class="line">                        <span class="keyword">int</span> offset = i - first;</div><div class="line">                        </div><div class="line">                        <span class="comment">// save top</span></div><div class="line">                        <span class="keyword">int</span> top = mat[first][i];</div><div class="line">                        </div><div class="line">                        <span class="comment">// top &lt;- left</span></div><div class="line">                        mat[first][i] = mat[last-offset][first];</div><div class="line">                        </div><div class="line">                        <span class="comment">// left &lt;- bottom</span></div><div class="line">                        mat[last-offset][first] = mat[last][last-offset];</div><div class="line">                        </div><div class="line">                        <span class="comment">// bottom &lt;- right</span></div><div class="line">                        mat[last][last-offset] = mat[i][last];</div><div class="line">                        </div><div class="line">                        <span class="comment">// right &lt;- top</span></div><div class="line">                        mat[i][last] = top;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">        <span class="keyword">int</span> N;</div><div class="line"></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter the legth of Matrix"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; N;</div><div class="line"></div><div class="line">        <span class="keyword">int</span>** mat = <span class="keyword">new</span> <span class="keyword">int</span>* [N];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</div><div class="line">                mat[i] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</div><div class="line"></div><div class="line"></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Enter the elements of matrix"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; N; j++)</div><div class="line">                        <span class="built_in">cin</span> &gt;&gt; mat[i][j];</div><div class="line"></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Befor rotate"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">        printMatrix(mat,<span class="number">5</span>);</div><div class="line"></div><div class="line">        rotate_matrix(mat,<span class="number">5</span>);</div><div class="line"></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"After rotate"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">        printMatrix(mat,<span class="number">5</span>);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

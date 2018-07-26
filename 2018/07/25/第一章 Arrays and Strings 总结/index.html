@@ -10,13 +10,27 @@
 
     <!--Description-->
     
+        <meta name="description" content="第一章 Arrays and Strings 总结几种循环的写法和用处单下标
+1.3 URLify
+  反向遍历    
+
+
+双下标
+1.3 URLify
+  for循环实现  index和循环变量i结合使用。i随迭代变化，index条件变化
+
+1.5 One Way
+  while循环实现
+
+1.">
+    
 
     <!--Author-->
     
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="ZJZz&#39;s Garage"/>
+        <meta property="og:title" content="第一章 Arrays and Strings 总结"/>
     
 
     <!--Open Graph Description-->
@@ -27,7 +41,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -38,7 +52,7 @@
 
     <!-- Title -->
     
-    <title>ZJZz&#39;s Garage</title>
+    <title>第一章 Arrays and Strings 总结 - ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -141,186 +155,136 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>ZJZz's Garage</h1>
-                    <hr class="small">
-                    <span class="subheading">want Café ? I need write some good blogs first.</span>
+                <div class="post-heading">
+                    <h1>第一章 Arrays and Strings 总结</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-07-25
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2018/07/25/第一章 Arrays and Strings 总结/">
-        <h2 class="post-title">
-            第一章 Arrays and Strings 总结
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-25
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/23/1.9 String Rotation/">
-        <h2 class="post-title">
-            1.9 String Rotation
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-23
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/22/1.8 Zero Matrix/">
-        <h2 class="post-title">
-            1.8 Zero Matrix
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-22
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/21/1.7 Rotate Matrix/">
-        <h2 class="post-title">
-            1.7 Rotate Matrix
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-21
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/20/1.6 String Compression/">
-        <h2 class="post-title">
-            1.6 String Compression
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-20
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/19/1.5 One Way/">
-        <h2 class="post-title">
-            1.5 One Way
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-19
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/18/1.4 Palindrome Permutation/">
-        <h2 class="post-title">
-            1.4 Palindrome Permutation
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-18
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/17/1.3 URLify/">
-        <h2 class="post-title">
-            1.3 URLify
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-17
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/16/1.2 Check Permutation/">
-        <h2 class="post-title">
-            1.2 Check Permutation
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-16
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2018/07/13/1.1 Is Unique/">
-        <h2 class="post-title">
-            1.1 Is Unique
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2018-07-13
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-    
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="第一章-Arrays-and-Strings-总结"><a href="#第一章-Arrays-and-Strings-总结" class="headerlink" title="第一章 Arrays and Strings 总结"></a>第一章 Arrays and Strings 总结</h1><h2 id="几种循环的写法和用处"><a href="#几种循环的写法和用处" class="headerlink" title="几种循环的写法和用处"></a>几种循环的写法和用处</h2><h3 id="单下标"><a href="#单下标" class="headerlink" title="单下标"></a>单下标</h3><ul>
+<li><p>1.3 URLify</p>
+<p>  反向遍历    </p>
+</li>
 </ul>
+<h3 id="双下标"><a href="#双下标" class="headerlink" title="双下标"></a>双下标</h3><ul>
+<li><p>1.3 URLify</p>
+<p>  <code>for</code>循环实现<br>  <code>index</code>和循环变量<code>i</code>结合使用。<code>i</code>随迭代变化，<code>index</code>条件变化</p>
+</li>
+<li><p>1.5 One Way</p>
+<p>  <code>while</code>循环实现</p>
+</li>
+<li><p>1.6 String Compression</p>
+<p>  <code>for</code>循环实现 相邻下标</p>
+<hr>
+</li>
+</ul>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><ul>
+<li><p>1.1 Is Unique 方法2</p>
+<p>  bitset库中几种操作函数的源码</p>
+<p>  <a href="http://www.cplusplus.com/reference/bitset/bitset/" target="_blank" rel="external">bitset - C++ Reference</a></p>
+<p>  <a href="https://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-3.4/bitset-source.html" target="_blank" rel="external">bitset-source</a></p>
+</li>
+<li><p>1.4 Palindrome Permutation<br>  不使用bitset的方法</p>
+</li>
+</ul>
+<hr>
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><ul>
+<li><p>1.7 Rotate Matrix</p>
+<p>  C++的写法</p>
+</li>
+</ul>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
+<li><p>1.7 Rotate Matrix</p>
+<p>  C++中的<code>printMatrix</code>函数,注意加<code>endl</code>和<code>空格</code>的地方</p>
+</li>
+</ul>
+<hr>
+<h2 id="初始化技巧"><a href="#初始化技巧" class="headerlink" title="初始化技巧"></a>初始化技巧</h2><ul>
+<li><p>1.1 Is Unique</p>
+<p>  创建数组长度为128的bool数组，并且初始化为False</p>
+</li>
+</ul>
+<hr>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><h3 id="共享变量"><a href="#共享变量" class="headerlink" title="共享变量"></a>共享变量</h3><ul>
+<li><p>1.2 Check Permutation</p>
+<p>  个数不限制在1/0</p>
+</li>
+<li><p>1.4 Palindrome Permutation</p>
+<p>  共享<code>countodd</code></p>
+</li>
+<li><p>1.5 One Way</p>
+<p>  共享<code>edited</code></p>
+</li>
+</ul>
+<h3 id="if判断条件的选择"><a href="#if判断条件的选择" class="headerlink" title="if判断条件的选择"></a>if判断条件的选择</h3><ul>
+<li><p>1.1 Is Unique </p>
+<p> 选择判断价值最大的条件</p>
+</li>
+</ul>
+<h3 id="Python修改字符串"><a href="#Python修改字符串" class="headerlink" title="Python修改字符串"></a>Python修改字符串</h3><ul>
+<li><p>1.3 URLify</p>
+<p>  用<code>list</code>包装字符串<br>  <code>list(&#39;ab cd e&#39;)</code></p>
+</li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />

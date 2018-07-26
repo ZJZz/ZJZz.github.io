@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="1.1 Is Unique思路
+Hint #44: Try a Hash Table
+Hint #117: Could a bit vector be useful ?
+Hint #132:  Can you solve it in O(N log N) time ? What might a so">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="1.1 Is Unique"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>1.1 Is Unique - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>1.1 Is Unique</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-07-13
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="1-1-Is-Unique"><a href="#1-1-Is-Unique" class="headerlink" title="1.1 Is Unique"></a>1.1 Is Unique</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>Hint #44: Try a Hash Table</li>
+<li>Hint #117: Could a bit vector be useful ?</li>
+<li>Hint #132:  Can you solve it in O(N log N) time ? What might a solution like that look like ?</li>
+</ul>
+<h3 id="想法1"><a href="#想法1" class="headerlink" title="想法1"></a>想法1</h3><p>创建一个dict，字母表中的每一个字母作为key,然后遍历输入的字符串，每个字母出现一次就把对应的value加1。字符串遍历完后，看dict是否里面有大于等于2的value,如果有就返回False,没有就返回True。</p>
+<h3 id="疑惑1"><a href="#疑惑1" class="headerlink" title="疑惑1"></a>疑惑1</h3><ul>
+<li>dict是否算Hash Table ? </li>
+<li>没有用到Hint中给到的bit vector,如果要用的话该怎么用？</li>
+<li>提示中O(n log n)的复杂度是怎么样的？或者说能出现nlogn这种复杂度的都做了什么操作？</li>
+</ul>
+<h3 id="参考代码1思路理解"><a href="#参考代码1思路理解" class="headerlink" title="参考代码1思路理解"></a>参考代码1思路理解</h3><p>看了给出的solution的解法，发现想法1实在是笨拙。solution的方法避免了为每一个字母创建键值对，利用了bool数组，初始化全为False,当遇见一个字符时变为True,下次再遇到时，说明这个字符串不Unique，可直接返回False。当遍历完整个字符串的时候，可以返回True。</p>
+<h3 id="参考代码1思路总结"><a href="#参考代码1思路总结" class="headerlink" title="参考代码1思路总结"></a>参考代码1思路总结</h3><ul>
+<li>这个题目没有要求保存每个字母出现的<strong>个数</strong>，只看每个字母<strong>是否唯一</strong>，所以True和False可以满足需求，刚开始设为False,出现1次设为True，再利用这个位置的值，再出现就直接返回False。</li>
+<li>也不需要遍历完整个字符串，如果前面有重复的，可直接返回Fasle</li>
+<li>代码假设长度至多为128是因为ASCII总共128个字符</li>
+</ul>
+<h3 id="参考代码2思路理解"><a href="#参考代码2思路理解" class="headerlink" title="参考代码2思路理解"></a>参考代码2思路理解</h3><p>代码2使用了位向量，整体思路应该和代码1差不多，但是位运算我不熟，所以先复习一下位运算。</p>
+<p><a href="https://www.cnblogs.com/wei325/p/4994224.html" target="_blank" rel="external">位运算快速复习</a></p>
+<figure class="highlight plain"><figcaption><span>java &#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int checker = 0;</div><div class="line">for (int i = 0; i &lt; str.length(); i++) &#123;</div><div class="line">    int val = str.charAt(i) - &apos;a&apos;;</div><div class="line">    if ((checker &amp; (1 &lt;&lt; val)) &gt; 0) return false;</div><div class="line">    checker |= (1 &lt;&lt; val);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>刚开始<code>checker=0</code>，<code>val</code>计算出的是ASCII码中每个字母与a的距离,第一次循环时，<code>checker=0</code>不会执行<code>if</code>中的语句。而是执行循环体中的最后一句。</p>
+<p>以16位为例：把 0000 0000 0000 0001 中的低位的1左移val位后，再与<code>checker</code>进行或运算。这样的结果使得<code>checker</code>中有1的那位表示这个位置的字符出现过。再进行循环后，<code>if</code>中的条件语句表示如果与a同样距离的字符再出现过就返回False。</p>
+<h3 id="参考代码2思路总结"><a href="#参考代码2思路总结" class="headerlink" title="参考代码2思路总结"></a>参考代码2思路总结</h3><p>位向量更省空间和简洁，需要体会0和1这两个特殊的值在位运算中的作用：</p>
+<ul>
+<li>0的位全为0，可以和其它数字进行or运算</li>
+<li>1的表示中只有1个1，而且在低位，可以进行左移运算。</li>
+</ul>
+<hr>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="方式1-bool数组"><a href="#方式1-bool数组" class="headerlink" title="方式1 bool数组"></a>方式1 bool数组</h3><ol>
+<li>大纲</li>
+</ol>
+<ul>
+<li>创建bool数组，初始化为False</li>
+<li>确定每个字符与字符’a’的距离，作为下标，用来修改bool数组的值</li>
+<li>遍历数组，如果为False就设为True。下次再遇到的时候就函数返回False。如果遍历完,就返回True</li>
+</ul>
+<ol>
+<li><p>确定前条件/不变式/后条件</p>
+</li>
+<li><p>代码片段</p>
+</li>
+</ol>
+<ul>
+<li>Python</li>
+</ul>
+<p>“创建bool数组，初始化为False。”<br>❓python中不需要指定数组的长度和类型，如何创建数组长度为128的bool数组，并且初始化为False。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">indict = [<span class="keyword">False</span>] * <span class="number">128</span></div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">char_set = [<span class="keyword">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">128</span>)]</div></pre></td></tr></table></figure>
+<p>“确定每个字符与字符’a’的距离，作为下标，用来修改bool数组的值”<br>❓好奇Python中是否支持ASCII码?<br>“遍历数组，如果为False就设为True。下次再遇到的时候就函数返回False”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> s1:</div><div class="line">    index = c - <span class="string">'a'</span></div><div class="line">    <span class="keyword">if</span> indict[index] == <span class="keyword">False</span>:</div><div class="line">        indict[index] = <span class="keyword">True</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"><span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> char <span class="keyword">in</span> string:</div><div class="line">    val = ord(char)</div><div class="line">    <span class="keyword">if</span> char_set[val]:</div><div class="line">    <span class="comment"># Char already found in string</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    char_set[val] = <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<p>参考代码中用了<code>val = ord(char)</code>而不是我写的<code>index = c - &#39;a&#39;</code>,<code>ord</code>函数返回的是字符在Unicode中的编码。<a href="https://www.geeksforgeeks.org/ord-function-python/" target="_blank" rel="external">ord函数介绍</a></p>
+<p>参考代码中还有一点需要注意：它只用了1个if。而我的代码用了if-else。从效率上来说,1个if会更快。我上来先判断False，但初始化的时候就全部是False，所以并不合适。真正引起程序返回的是True值。所以True才有<strong>判断的价值</strong>。</p>
+<ul>
+<li>C++</li>
+</ul>
+<p>❓C++中表示字符串长度的有现成函数吗？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bool</span> boollist[<span class="number">128</span>] = False;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len(s); i++) # 字符串长度怎么表示？</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> index = s[i]-<span class="string">'a'</span>;</div><div class="line">    <span class="keyword">if</span> boollist[index]</div><div class="line">        <span class="keyword">return</span> False;</div><div class="line">    boollist[index] = True;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> True;</div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; char_set(<span class="number">128</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> val = str[i];</div><div class="line">    <span class="keyword">if</span> (char_set[val]) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    char_set[val] = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>参考代码中用vector比纯数组多，这两个在效率上差别很明显吗❓<br>而且也没有用与’a’的差值表示下标，而是用<code>int val = str[i]</code>和<code>char_set[val]</code>表示。好像是用了类型转换，str本来是string型。</p>
+<ol>
+<li>完整代码</li>
+</ol>
+<ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_unique</span><span class="params">(str)</span>:</span></div><div class="line">    char_set = [<span class="keyword">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">128</span>)]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str)) :</div><div class="line">        val = ord(str[i])</div><div class="line">        <span class="keyword">if</span> char_set[val] == <span class="keyword">True</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        char_set[val] = <span class="keyword">True</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> is_unique(<span class="string">"abcdef"</span>)</div><div class="line"><span class="keyword">print</span> is_unique(<span class="string">"abbdef"</span>)</div></pre></td></tr></table></figure>
+<p>参考代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unique</span><span class="params">(string)</span>:</span></div><div class="line">    <span class="comment"># Assuming character set is ASCII (128 characters)</span></div><div class="line">    <span class="keyword">if</span> len(string) &gt; <span class="number">128</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">    char_set = [<span class="keyword">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">128</span>)]</div><div class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> string:</div><div class="line">        val = ord(char)</div><div class="line">        <span class="keyword">if</span> char_set[val]:</div><div class="line">            <span class="comment"># Char already found in string</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        char_set[val] = <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line">    dataT = [(<span class="string">'abcd'</span>), (<span class="string">'s4fad'</span>), (<span class="string">''</span>)]</div><div class="line">    dataF = [(<span class="string">'23ds2'</span>), (<span class="string">'hb 627jh=j ()'</span>)]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_unique</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># true check</span></div><div class="line">        <span class="keyword">for</span> test_string <span class="keyword">in</span> self.dataT:</div><div class="line">            actual = unique(test_string)</div><div class="line">            self.assertTrue(actual)</div><div class="line">        <span class="comment"># false check</span></div><div class="line">        <span class="keyword">for</span> test_string <span class="keyword">in</span> self.dataF:</div><div class="line">            actual = unique(test_string)</div><div class="line">            self.assertFalse(actual)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    unittest.main()</div></pre></td></tr></table></figure>
+<p>❓不是很理解unittest的原理和输出结果</p>
+<p><a href="http://pythontesting.net/framework/unittest/unittest-introduction/" target="_blank" rel="external">unittest introduction</a></p>
+<ul>
+<li>C++</li>
+</ul>
+<p>版本1</p>
+<p>❗️vector初始化bool数组时，默认是false还是true?<br>初始化后全为0，不是false</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_unique_vector</span><span class="params">(<span class="built_in">string</span> str)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; charset(<span class="number">128</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> val = str[i];</div><div class="line">        <span class="keyword">if</span> ( charset[val] ) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        charset[val] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">string</span> s1 = <span class="string">"abcdef"</span>;</div><div class="line">    <span class="built_in">string</span> s2 = <span class="string">"abbcde"</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ( is_unique_vector(s1) ) <span class="built_in">cout</span> &lt;&lt; <span class="string">"s1 unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"s1 not unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ( is_unique_vector(s2) ) <span class="built_in">cout</span> &lt;&lt; <span class="string">"s2 unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"s2 not unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="方式2-位运算"><a href="#方式2-位运算" class="headerlink" title="方式2 位运算"></a>方式2 位运算</h3><ol>
+<li>大纲</li>
+</ol>
+<p>①首先需要一个0<br>②然后看到1个字符需要算出1个距离，然后1左移这个距离，再与刚开始的0进行或运算<br>③按说如果每个字符出现1次，对应的位上应该是0。拿单个1去和这个数进行与运算，如果只出现了1次，与运算后的结果应为0。如果不只1次出现，那么结果应该就不为0。以此为判断条件，返回函数的判断结果</p>
+<ol>
+<li><p>确定前条件/不变式/后条件</p>
+</li>
+<li><p>代码片段</p>
+</li>
+</ol>
+<ul>
+<li>Python</li>
+</ul>
+<p>❓位运算符两边分别是什么？<br>运算符左边是待移位的数，右边是要移的位数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">checker = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(str)):</div><div class="line">    distance = ord(s[i])</div><div class="line">    <span class="keyword">if</span> ( checker &amp; (<span class="number">1</span> &lt;&lt; distance) &gt; <span class="number">0</span> ) <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">    checker |= <span class="number">1</span> &lt;&lt; distance</div><div class="line"></div><div class="line"><span class="keyword">return</span> <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> checker = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; str.length(); i++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> val = str[i];</div><div class="line">    <span class="keyword">if</span>( checker &amp; ( <span class="number">1</span> &lt;&lt; val ) &gt; <span class="number">0</span> ) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    checker |= <span class="number">1</span> &lt;&lt; val;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考代码片段</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div></pre></td></tr></table></figure>
+<p>C++中使用<code>bitset</code>来进行位操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Reduce space usage by a factor of 8 using bitvector. </span></div><div class="line"><span class="comment">//Each boolean otherwise occupies a size of 8 bits.</span></div><div class="line"><span class="built_in">bitset</span>&lt;256&gt; bits(<span class="number">0</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) </div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> val = str[i];</div><div class="line">    <span class="keyword">if</span>(bits.test(val) &gt; <span class="number">0</span>)  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	bits.<span class="built_in">set</span>(val);</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>不是很懂<code>bitset</code>这个库的具体操作:</p>
+<p><a href="https://blog.csdn.net/qll125596718/article/details/6901935" target="_blank" rel="external">C++ bitset类用法</a><br><a href="http://www.cplusplus.com/reference/bitset/bitset/" target="_blank" rel="external">bitset - C++ Reference</a></p>
+<p><code>set()</code><br>Sets bits:<br>(1) all bits: Sets (to one) all bits in the bitset.<br>(2) single bit: Sets val as the value for the bit at position pos.</p>
+<p><code>test()</code><br>Returns whether the bit at position pos is set (i.e., whether it is one).</p>
+<ol>
+<li>完整代码</li>
+</ol>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_unique_bit</span><span class="params">(<span class="built_in">string</span> str)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">bitset</span>&lt;256&gt; bit(<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> val = str[i];</div><div class="line">        <span class="keyword">if</span>(bit.test(val)) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        bit.<span class="built_in">set</span>(val);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">string</span> s1 = <span class="string">"abcdef"</span>;</div><div class="line">    <span class="built_in">string</span> s2 = <span class="string">"abbcde"</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ( is_unique_bit(s1) ) <span class="built_in">cout</span> &lt;&lt; <span class="string">"s1 unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"s1 not unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ( is_unique_bit(s2) ) <span class="built_in">cout</span> &lt;&lt; <span class="string">"s2 unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"s2 not unique"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>❗️在Xcode中提示说string没有len()函数<br>正确的函数名是length()</p>
+<p>参考代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isUniqueChars_bitvector</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;str)</span> </span>&#123;</div><div class="line">    <span class="comment">//Reduce space usage by a factor of 8 using bitvector.</span></div><div class="line">    <span class="comment">//Each boolean otherwise occupies a size of 8 bits.</span></div><div class="line">    <span class="built_in">bitset</span>&lt;256&gt; bits(<span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</div><div class="line">        <span class="keyword">int</span> val = str[i];</div><div class="line">        <span class="keyword">if</span>(bits.test(val) &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        bits.<span class="built_in">set</span>(val);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; words = &#123;<span class="string">"abcde"</span>, <span class="string">"hello"</span>, <span class="string">"apple"</span>, <span class="string">"kite"</span>, <span class="string">"padle"</span>&#125;;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="built_in">endl</span> &lt;&lt; <span class="string">"Using bit vector"</span> &lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> word : words)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; word &lt;&lt; <span class="built_in">string</span>(<span class="string">": "</span>) &lt;&lt; boolalpha &lt;&lt; isUniqueChars_bitvector(word) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>
