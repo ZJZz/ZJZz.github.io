@@ -10,13 +10,18 @@
 
     <!--Description-->
     
+        <meta name="description" content="2.8 Loop Detection思路题意理解给出一个链表，里边有循环结点，就是它的next指向前一个结点，产生一个循环。实现一个算法，返回这个循环开始的结点。
+例如：
+Input: A-&amp;gt;B-&amp;gt;C-&amp;gt;D-&amp;gt;E-&amp;gt;C [和前面一样的C]Output: C
+分析1首先这">
+    
 
     <!--Author-->
     
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="ZJZz&#39;s Garage"/>
+        <meta property="og:title" content="2.8 Loop Detection"/>
     
 
     <!--Open Graph Description-->
@@ -27,7 +32,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -38,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>CtCI - ZJZz&#39;s Garage</title>
+    <title>2.8 Loop Detection - ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -140,168 +145,114 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>#CtCI</h1>
+                <div class="post-heading">
+                    <h1>2.8 Loop Detection</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-09
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2018/09/22/3.6 Animal Shelter/">
-        <h1 class="post-title archive">
-            3.6 Animal Shelter
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-22
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2018/09/20/3.5 Sort Stack/">
-        <h1 class="post-title archive">
-            3.5 Sort Stack
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-20
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/09/19/3.4 Queue via Stack/">
-        <h1 class="post-title archive">
-            3.4 Queue via Stacks
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-19
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/09/18/3.3 Stack of Plates/">
-        <h1 class="post-title archive">
-            3.3 Stack of Plates
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-18
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/09/17/3.2 Stack Min/">
-        <h1 class="post-title archive">
-            3.2 Stack Min
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-17
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/09/16/3.1 Three in One/">
-        <h1 class="post-title archive">
-            3.1 Three in One
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-09-16
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/08/09/2.8 Loop Detection/">
-        <h1 class="post-title archive">
-            2.8 Loop Detection
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-08-09
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/08/07/2.7 Intersection/">
-        <h1 class="post-title archive">
-            2.7 Intersection
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-08-07
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/08/06/2.6 Palindrome/">
-        <h1 class="post-title archive">
-            2.6 Palindrome
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-08-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2018/08/05/2.5 Sum Lists/">
-        <h1 class="post-title archive">
-            2.5 Sum Lists
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2018-08-05
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-        <li class="next"><a href="/tags/CtCI/page/2/">Vorherige Seite  &rarr;</a></li>
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="2-8-Loop-Detection"><a href="#2-8-Loop-Detection" class="headerlink" title="2.8 Loop Detection"></a>2.8 Loop Detection</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="题意理解"><a href="#题意理解" class="headerlink" title="题意理解"></a>题意理解</h3><p>给出一个链表，里边有循环结点，就是它的next指向前一个结点，产生一个循环。实现一个算法，返回这个循环开始的结点。</p>
+<p>例如：</p>
+<p>Input: A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;C [和前面一样的C]<br>Output: C</p>
+<h3 id="分析1"><a href="#分析1" class="headerlink" title="分析1"></a>分析1</h3><p>首先这里应该是引用相同，而不是值相同。</p>
+<p>导致的结果是这里的tail不为null</p>
+<p>此时是无法计算长度的</p>
+<p>突然想到了引用计数，用hash table，为每个结点建立一个引用计数，第一个为个数为2的结点就是循环开始的结点。</p>
+<p>是否有利用循环本身的方法？</p>
+<h3 id="Hint-50"><a href="#Hint-50" class="headerlink" title="Hint 50"></a>Hint 50</h3><p>There are two parts to this problem. First, detect if the linked list has a loop. Second, figure out where the loop starts.</p>
+<h3 id="分析2"><a href="#分析2" class="headerlink" title="分析2"></a>分析2</h3><p>用hash table方法的话可以把这两部分同时解决。</p>
+<h3 id="Hint-69"><a href="#Hint-69" class="headerlink" title="Hint 69"></a>Hint 69</h3><p>To identify if there’s a cycle, try the “runner” approach. Have one pointer move faster than the other.</p>
+<h3 id="分析3"><a href="#分析3" class="headerlink" title="分析3"></a>分析3</h3><p>用runner方法的话是可以用来检测是否有循环的，跑的快的runner是会再和走的慢的指针再相遇的。</p>
+<p>剩下是runner应该快几个结点？和如何找出循环开始的地方？</p>
+<p>倒是有个效率不高的办法，固定一个，让runner遍历完链表，如果没有相遇，就移动慢的，再让runner从慢的结点开始继续遍历。</p>
+<p>不太可能，应为进入循环后无法知道停止的地方。</p>
+<p>慢的那个指针也必须进入循环，两个指针才有可能相遇。</p>
+<p>问题是相遇的位置也可能不是循环开始的地方。</p>
+<p>这个问题类似一个带回旋的过山车，进去以后会一直在回旋里转，不能两个都进去，必须留一个在外面作为标记起点开始的地方。</p>
+<h3 id="Hint-83"><a href="#Hint-83" class="headerlink" title="Hint 83"></a>Hint 83</h3><p>You can use two pointers, one moving twice as faster as the other. If there is a cycle, the two pointers will collide. They will land at the same location at the same time. Where do they land ? Why there ?</p>
+<h3 id="分析4"><a href="#分析4" class="headerlink" title="分析4"></a>分析4</h3><p>快两倍速度会产生什么关系？？ 我不是很懂。</p>
+<p>能保证在循环开始的地方遇到吗？因为两倍指针可以访问循环中的任何位置。</p>
+<h3 id="Hint-90"><a href="#Hint-90" class="headerlink" title="Hint 90"></a>Hint 90</h3><p>If you haven’t identified the pattern of where the two pointers start, try this: Use the linked list 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;6-&gt;7-&gt;8-&gt;9-&gt;?, where the ? links to another node. Try making the ? the first node. Then make ? the node 2. Then the node 3. Then the node 4. What is the pattern ? Can you explain why this happens ?</p>
+<h3 id="分析5"><a href="#分析5" class="headerlink" title="分析5"></a>分析5</h3><p>我还是不知道当两指针相遇的时候，一个是另一个的两倍速度，如何保证相遇的时候就是循环开始的地方？</p>
+<h3 id="参考代码思路理解"><a href="#参考代码思路理解" class="headerlink" title="参考代码思路理解"></a>参考代码思路理解</h3><p>这道题的思路很巧妙，看了参考代码后还理解了很长时间，其中还把fast的位置理解错误，导致规律没有发现出来。</p>
+<p>大题思想是，设置两个指针，其中fast快于slow指针2倍速度，但都是从起点head开始。</p>
+<p>遍历，当fast=slow时，停止，把slow重新调回head的位置，此时slow距循环开始的距离，和fast相遇的位置开始，fast也一步速度遍历到循环开始的结点的距离相同。</p>
+<p>此时让fast和slow以同样的速度开始遍历,当它们再次相遇的时候就是循环开始的位置。</p>
+<p>具体原理的证明我不是很明白，经学弟们的努力，才知道这叫<a href="https://blog.csdn.net/u012534831/article/details/74231581" target="_blank" rel="external">Floyd判圈法</a></p>
+<p>相关资料：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare" target="_blank" rel="external">Wiki</a></li>
+<li><a href="https://www.youtube.com/watch?v=JsVGDy0u1u8" target="_blank" rel="external">Detect and remove loop in a linked list - Floyd’s cycle finding algorithm</a></li>
 </ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><blockquote>
+<p>还未实现</p>
+</blockquote>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -362,7 +313,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

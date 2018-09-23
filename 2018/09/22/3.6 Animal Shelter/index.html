@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="3.6 Animal Shelter思路题意理解动物收养所，实现一个队列，队列中有两种类型的元素，Cat和Dog。人们要么选择停留时间最长的动物，要么选择两种类型中停留时间最长的中的1个。
+分析1问题在于把Dog和Cat分别维护后，如何知道Dog和Cat中的对头元素谁的停留时间更长，也就是如何记录整">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="3.6 Animal Shelter"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>3.6 Animal Shelter - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>3.6 Animal Shelter</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-09-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="3-6-Animal-Shelter"><a href="#3-6-Animal-Shelter" class="headerlink" title="3.6 Animal Shelter"></a>3.6 Animal Shelter</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="题意理解"><a href="#题意理解" class="headerlink" title="题意理解"></a>题意理解</h3><p>动物收养所，实现一个队列，队列中有两种类型的元素，Cat和Dog。人们要么选择停留时间最长的动物，要么选择两种类型中停留时间最长的中的1个。</p>
+<h3 id="分析1"><a href="#分析1" class="headerlink" title="分析1"></a>分析1</h3><p>问题在于把Dog和Cat分别维护后，如何知道Dog和Cat中的对头元素谁的停留时间更长，也就是如何记录整个收养所的停留时间最长的动物？</p>
+<p>一个方法是可以自定义类型，记录动物的种类和停留时间或者到达收养所的时间。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h3><p>用链队来实现，同时记录停留时间最长的Dog和Cat</p>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalShelter</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = Node()</div><div class="line">        self.newest = self.head</div><div class="line">        self.size_cat = <span class="number">0</span></div><div class="line">        self.size_dog = <span class="number">0</span></div><div class="line">        self.size_total = self.size_cat + self.size_dog</div><div class="line">        self.oldest_cat = <span class="keyword">None</span></div><div class="line">        self.oldest_dog = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, animal)</span>:</span></div><div class="line"></div><div class="line">        self.newest.next = animal</div><div class="line">        self.newest = animal</div><div class="line"></div><div class="line">        <span class="keyword">if</span> animal.data == <span class="number">1</span> <span class="keyword">and</span> self.oldest_cat == <span class="keyword">None</span>:</div><div class="line">            self.oldest_cat = animal</div><div class="line">            self.size_cat += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> animal.data == <span class="number">2</span> <span class="keyword">and</span> self.oldest_dog == <span class="keyword">None</span>:</div><div class="line">            self.oldest_dog = animal</div><div class="line">            self.size_dog += <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueAny</span><span class="params">(self)</span>:</span></div><div class="line">        oldest_animal = self.head.get_next()</div><div class="line">        self.head.set_next(oldest_animal.get_next())</div><div class="line"></div><div class="line">        <span class="keyword">if</span> oldest_animal.data == <span class="number">1</span>:</div><div class="line">            temp = oldest_animal.get_next()</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">1</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (temp != <span class="keyword">None</span>):</div><div class="line">                self.oldest_cat = temp</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">print</span> <span class="string">"all cats are adopted"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> oldest_animal.data == <span class="number">2</span>:</div><div class="line">            temp = oldest_animal.get_next()</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (temp != <span class="keyword">None</span>):</div><div class="line">                self.oldest_dog = temp</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">print</span> <span class="string">"all dogs are adopted"</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_animal</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueDog</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.size_dog == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"sorry, all dogs are adopted"</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="comment"># delete oldest dog</span></div><div class="line">        oldest_dog = self.oldest_dog</div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp.get_next() != self.oldest_dog:</div><div class="line">            temp = temp.get_next()</div><div class="line"></div><div class="line">        temp.set_next(self.oldest_dog.get_next())</div><div class="line">        self.size_dog -= <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="comment"># find next oldest dog</span></div><div class="line">        <span class="keyword">if</span> self.size_dog == <span class="number">0</span>:</div><div class="line">            self.oldest_dog = <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            self.oldest_dog = temp</div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_dog</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueCat</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.size_cat == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"sorry, all dogs are adopted"</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="comment"># delete oldest dog</span></div><div class="line">        oldest_cat = self.oldest_cat</div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp.get_next() != self.oldest_cat:</div><div class="line">            temp = temp.get_next()</div><div class="line"></div><div class="line">        temp.set_next(self.oldest_cat.get_next())</div><div class="line">        self.size_cat -= <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="comment"># find next oldest dog</span></div><div class="line">        <span class="keyword">if</span> self.size_cat == <span class="number">0</span>:</div><div class="line">            self.oldest_cat = <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            self.oldest_cat = temp</div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_cat</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_shelter</span><span class="params">(self)</span>:</span></div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp != <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">print</span> str(temp.get_data()) + <span class="string">" "</span>,</div><div class="line">            temp = temp.get_next()</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalShelter</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="keyword">int</span> size_cat;</div><div class="line">    <span class="keyword">int</span> size_dog;</div><div class="line">    Node *head;</div><div class="line">    Node *newest;</div><div class="line">    Node *oldest_cat;</div><div class="line">    Node *oldest_dog;</div><div class="line"></div><div class="line">    AnimalShelter() &#123;</div><div class="line">        <span class="keyword">this</span>-&gt;size_cat = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>-&gt;size_dog = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>-&gt;head = <span class="keyword">new</span> Node(<span class="number">-1</span>);</div><div class="line">        <span class="keyword">this</span>-&gt;newest = head;</div><div class="line">        <span class="keyword">this</span>-&gt;oldest_cat = <span class="literal">nullptr</span>;</div><div class="line">        <span class="keyword">this</span>-&gt;oldest_dog = <span class="literal">nullptr</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(Node *ani)</span> </span>&#123;</div><div class="line">        <span class="comment">// add new node into queue</span></div><div class="line">        newest-&gt;set_next(ani);</div><div class="line">        newest = ani;</div><div class="line">        <span class="comment">// first time need set old cat &amp; dog</span></div><div class="line">        <span class="keyword">if</span> (ani-&gt;get_data() == <span class="number">1</span>) &#123;</div><div class="line">            size_cat++;</div><div class="line">            <span class="keyword">if</span> (oldest_cat == <span class="literal">nullptr</span>) oldest_cat = ani;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (ani-&gt;get_data() == <span class="number">2</span>) &#123;</div><div class="line">            size_dog++;</div><div class="line">            <span class="keyword">if</span> (oldest_dog == <span class="literal">nullptr</span>) oldest_dog = ani;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">Node *<span class="title">dequeueAny</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// if empty print warning</span></div><div class="line">        <span class="keyword">if</span> (size_cat + size_dog == <span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"all animal are adopted."</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// keep first node</span></div><div class="line">            Node *oldest_ani = head-&gt;get_next();</div><div class="line">            <span class="comment">// delte that node</span></div><div class="line">            head-&gt;set_next(oldest_ani-&gt;get_next());</div><div class="line"></div><div class="line">            <span class="comment">// adjust old cat &amp; dog if neede</span></div><div class="line">            <span class="keyword">if</span> (oldest_ani-&gt;get_data() == <span class="number">1</span>) &#123;</div><div class="line">                Node *temp = head;</div><div class="line">                <span class="keyword">while</span> (temp-&gt;get_data() != <span class="number">1</span>)</div><div class="line">                    temp = temp-&gt;get_next();</div><div class="line">                oldest_cat = temp;</div><div class="line">                size_cat--;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (oldest_ani-&gt;get_data() == <span class="number">2</span>) &#123;</div><div class="line">                Node *temp = head;</div><div class="line">                <span class="keyword">while</span> (temp-&gt;get_data() != <span class="number">2</span>)</div><div class="line">                    temp = temp-&gt;get_next();</div><div class="line">                oldest_dog = temp;</div><div class="line">                size_dog--;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> oldest_ani;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">Node *<span class="title">dequeueDog</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//if there is no dog</span></div><div class="line">        <span class="keyword">if</span> (size_dog == <span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"sorry, all dogs are adopted"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// keep the oldest dog</span></div><div class="line">            Node *oldest_dog = <span class="keyword">this</span>-&gt;oldest_dog;</div><div class="line"></div><div class="line">            <span class="comment">// delete the node</span></div><div class="line">            Node *temp = head;</div><div class="line">            <span class="keyword">while</span> (temp-&gt;get_next() != oldest_dog) &#123;</div><div class="line">                temp = temp-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">            temp-&gt;set_next(oldest_dog-&gt;get_next());</div><div class="line">            size_dog--;</div><div class="line"></div><div class="line">            <span class="comment">// adjust the oldest dog</span></div><div class="line">            <span class="keyword">if</span> (size_dog &gt; <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">while</span> (temp-&gt;get_data() != <span class="number">2</span>) temp = temp-&gt;get_next();</div><div class="line">                <span class="keyword">this</span>-&gt;oldest_dog = temp;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            <span class="keyword">return</span> oldest_dog;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">Node *<span class="title">dequeueCat</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//if there is no dog</span></div><div class="line">        <span class="keyword">if</span> (size_cat == <span class="number">0</span>) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"sorry, all cats are adopted"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// keep the oldest dog</span></div><div class="line">            Node *oldest_cat = <span class="keyword">this</span>-&gt;oldest_cat;</div><div class="line">            <span class="comment">// delete the node</span></div><div class="line">            Node *temp = head;</div><div class="line">            <span class="keyword">while</span> (temp-&gt;get_next() != <span class="keyword">this</span>-&gt;oldest_cat) &#123;</div><div class="line">                temp = temp-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">            temp-&gt;set_next(oldest_cat-&gt;get_next());</div><div class="line">            size_cat--;</div><div class="line"></div><div class="line">            <span class="comment">// adjust the oldest dog</span></div><div class="line">            <span class="keyword">if</span> (size_cat &gt; <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">while</span> (temp-&gt;get_data() != <span class="number">1</span>) temp = temp-&gt;get_next();</div><div class="line">                <span class="keyword">this</span>-&gt;oldest_cat = temp;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> oldest_cat;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pirnt_shelter</span><span class="params">()</span> </span>&#123;</div><div class="line">        Node *temp = <span class="keyword">this</span>-&gt;head;</div><div class="line">        <span class="keyword">while</span> (temp != <span class="literal">nullptr</span>) &#123;</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; temp-&gt;get_data() &lt;&lt; <span class="string">" "</span>;</div><div class="line">            temp = temp-&gt;get_next();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnimalShelter</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.head = Node()</div><div class="line">        self.newest = self.head</div><div class="line">        self.size_cat = <span class="number">0</span></div><div class="line">        self.size_dog = <span class="number">0</span></div><div class="line">        self.size_total = self.size_cat + self.size_dog</div><div class="line">        self.oldest_cat = <span class="keyword">None</span></div><div class="line">        self.oldest_dog = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, animal)</span>:</span></div><div class="line"></div><div class="line">        self.newest.next = animal</div><div class="line">        self.newest = animal</div><div class="line"></div><div class="line">        <span class="keyword">if</span> animal.data == <span class="number">1</span> <span class="keyword">and</span> self.oldest_cat == <span class="keyword">None</span>:</div><div class="line">            self.oldest_cat = animal</div><div class="line">            self.size_cat += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> animal.data == <span class="number">2</span> <span class="keyword">and</span> self.oldest_dog == <span class="keyword">None</span>:</div><div class="line">            self.oldest_dog = animal</div><div class="line">            self.size_dog += <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueAny</span><span class="params">(self)</span>:</span></div><div class="line">        oldest_animal = self.head.get_next()</div><div class="line">        self.head.set_next(oldest_animal.get_next())</div><div class="line"></div><div class="line">        <span class="keyword">if</span> oldest_animal.data == <span class="number">1</span>:</div><div class="line">            temp = oldest_animal.get_next()</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">1</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (temp != <span class="keyword">None</span>):</div><div class="line">                self.oldest_cat = temp</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">print</span> <span class="string">"all cats are adopted"</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> oldest_animal.data == <span class="number">2</span>:</div><div class="line">            temp = oldest_animal.get_next()</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (temp != <span class="keyword">None</span>):</div><div class="line">                self.oldest_dog = temp</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">print</span> <span class="string">"all dogs are adopted"</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_animal</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueDog</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.size_dog == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"sorry, all dogs are adopted"</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="comment"># delete oldest dog</span></div><div class="line">        oldest_dog = self.oldest_dog</div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp.get_next() != self.oldest_dog:</div><div class="line">            temp = temp.get_next()</div><div class="line"></div><div class="line">        temp.set_next(self.oldest_dog.get_next())</div><div class="line">        self.size_dog -= <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="comment"># find next oldest dog</span></div><div class="line">        <span class="keyword">if</span> self.size_dog == <span class="number">0</span>:</div><div class="line">            self.oldest_dog = <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            self.oldest_dog = temp</div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_dog</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeueCat</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.size_cat == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> <span class="string">"sorry, all dogs are adopted"</span></div><div class="line">            <span class="keyword">return</span></div><div class="line"></div><div class="line">        <span class="comment"># delete oldest dog</span></div><div class="line">        oldest_cat = self.oldest_cat</div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp.get_next() != self.oldest_cat:</div><div class="line">            temp = temp.get_next()</div><div class="line"></div><div class="line">        temp.set_next(self.oldest_cat.get_next())</div><div class="line">        self.size_cat -= <span class="number">1</span></div><div class="line"></div><div class="line">        <span class="comment"># find next oldest dog</span></div><div class="line">        <span class="keyword">if</span> self.size_cat == <span class="number">0</span>:</div><div class="line">            self.oldest_cat = <span class="keyword">None</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> temp.data != <span class="number">2</span>:</div><div class="line">                temp = temp.get_next()</div><div class="line"></div><div class="line">            self.oldest_cat = temp</div><div class="line"></div><div class="line">        <span class="keyword">return</span> oldest_cat</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_shelter</span><span class="params">(self)</span>:</span></div><div class="line"></div><div class="line">        temp = self.head</div><div class="line">        <span class="keyword">while</span> temp != <span class="keyword">None</span>:</div><div class="line">            <span class="keyword">print</span> str(temp.get_data()) + <span class="string">" "</span>,</div><div class="line">            temp = temp.get_next()</div><div class="line">            </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line"></div><div class="line">    shelter = AnimalShelter()</div><div class="line"></div><div class="line">    c1 = Node(<span class="number">1</span>)</div><div class="line">    d1 = Node(<span class="number">2</span>)</div><div class="line">    c2 = Node(<span class="number">1</span>)</div><div class="line">    d2 = Node(<span class="number">2</span>)</div><div class="line">    c3 = Node(<span class="number">1</span>)</div><div class="line">    d3 = Node(<span class="number">2</span>)</div><div class="line"></div><div class="line">    shelter.enqueue(c1)</div><div class="line">    shelter.enqueue(d1)</div><div class="line">    shelter.dequeueCat()</div><div class="line">    shelter.dequeueDog()</div><div class="line"></div><div class="line">    <span class="keyword">print</span> <span class="string">"total: "</span> + str(shelter.size_total)</div><div class="line">    <span class="keyword">print</span> <span class="string">"cat: "</span> + str(shelter.size_cat)</div><div class="line">    <span class="keyword">print</span> <span class="string">"dog: "</span> + str(shelter.size_dog)</div><div class="line"></div><div class="line">    shelter.dequeueCat()</div><div class="line">    shelter.dequeueDog()</div><div class="line"></div><div class="line">    shelter.print_shelter()</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div></pre></td><td class="code"><pre><div class="line">class AnimalShelter &#123;</div><div class="line">public:</div><div class="line">    int size_cat;</div><div class="line">    int size_dog;</div><div class="line">    Node *head;</div><div class="line">    Node *newest;</div><div class="line">    Node *oldest_cat;</div><div class="line">    Node *oldest_dog;</div><div class="line"></div><div class="line">    AnimalShelter() &#123;</div><div class="line">        this-&gt;size_cat = 0;</div><div class="line">        this-&gt;size_dog = 0;</div><div class="line">        this-&gt;head = new Node(-1);</div><div class="line">        this-&gt;newest = head;</div><div class="line">        this-&gt;oldest_cat = nullptr;</div><div class="line">        this-&gt;oldest_dog = nullptr;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void enqueue(Node *ani) &#123;</div><div class="line">        // add new node into queue</div><div class="line">        newest-&gt;set_next(ani);</div><div class="line">        newest = ani;</div><div class="line">        // first time need set old cat &amp; dog</div><div class="line">        if (ani-&gt;get_data() == 1) &#123;</div><div class="line">            size_cat++;</div><div class="line">            <span class="keyword">if</span> (oldest_cat == nullptr) oldest_cat = ani;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if (ani-&gt;get_data() == 2) &#123;</div><div class="line">            size_dog++;</div><div class="line">            <span class="keyword">if</span> (oldest_dog == nullptr) oldest_dog = ani;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node *dequeueAny() &#123;</div><div class="line">        // <span class="keyword">if</span> empty <span class="keyword">print</span> warning</div><div class="line">        <span class="keyword">if</span> (size_cat + size_dog == <span class="number">0</span>) &#123;</div><div class="line">            cout &lt;&lt; <span class="string">"all animal are adopted."</span> &lt;&lt; endl;</div><div class="line">            <span class="keyword">return</span> nullptr;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            // keep first node</div><div class="line">            Node *oldest_ani = head-&gt;get_next();</div><div class="line">            // delte that node</div><div class="line">            head-&gt;set_next(oldest_ani-&gt;get_next());</div><div class="line"></div><div class="line">            // adjust old cat &amp; dog <span class="keyword">if</span> neede</div><div class="line">            if (oldest_ani-&gt;get_data() == 1) &#123;</div><div class="line">                Node *temp = head;</div><div class="line">                while (temp-&gt;get_data() != 1)</div><div class="line">                    temp = temp-&gt;get_next();</div><div class="line">                oldest_cat = temp;</div><div class="line">                size_cat--;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            if (oldest_ani-&gt;get_data() == 2) &#123;</div><div class="line">                Node *temp = head;</div><div class="line">                while (temp-&gt;get_data() != 2)</div><div class="line">                    temp = temp-&gt;get_next();</div><div class="line">                oldest_dog = temp;</div><div class="line">                size_dog--;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> oldest_ani;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node *dequeueDog() &#123;</div><div class="line">        //<span class="keyword">if</span> there <span class="keyword">is</span> no dog</div><div class="line">        <span class="keyword">if</span> (size_dog == <span class="number">0</span>) &#123;</div><div class="line">            cout &lt;&lt; <span class="string">"sorry, all dogs are adopted"</span> &lt;&lt; endl;</div><div class="line">            <span class="keyword">return</span> nullptr;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            // keep the oldest dog</div><div class="line">            Node *oldest_dog = this-&gt;oldest_dog;</div><div class="line"></div><div class="line">            // delete the node</div><div class="line">            Node *temp = head;</div><div class="line">            while (temp-&gt;get_next() != oldest_dog) &#123;</div><div class="line">                temp = temp-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">            temp-&gt;set_next(oldest_dog-&gt;get_next());</div><div class="line">            size_dog--;</div><div class="line"></div><div class="line">            // adjust the oldest dog</div><div class="line">            <span class="keyword">if</span> (size_dog &gt; <span class="number">0</span>) &#123;</div><div class="line">                while (temp-&gt;get_data() != 2) temp = temp-&gt;get_next();</div><div class="line">                this-&gt;oldest_dog = temp;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            <span class="keyword">return</span> oldest_dog;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node *dequeueCat() &#123;</div><div class="line">        //<span class="keyword">if</span> there <span class="keyword">is</span> no dog</div><div class="line">        <span class="keyword">if</span> (size_cat == <span class="number">0</span>) &#123;</div><div class="line">            cout &lt;&lt; <span class="string">"sorry, all cats are adopted"</span> &lt;&lt; endl;</div><div class="line">            <span class="keyword">return</span> nullptr;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            // keep the oldest dog</div><div class="line">            Node *oldest_cat = this-&gt;oldest_cat;</div><div class="line">            // delete the node</div><div class="line">            Node *temp = head;</div><div class="line">            while (temp-&gt;get_next() != this-&gt;oldest_cat) &#123;</div><div class="line">                temp = temp-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">            temp-&gt;set_next(oldest_cat-&gt;get_next());</div><div class="line">            size_cat--;</div><div class="line"></div><div class="line">            // adjust the oldest dog</div><div class="line">            <span class="keyword">if</span> (size_cat &gt; <span class="number">0</span>) &#123;</div><div class="line">                while (temp-&gt;get_data() != 1) temp = temp-&gt;get_next();</div><div class="line">                this-&gt;oldest_cat = temp;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> oldest_cat;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void pirnt_shelter() &#123;</div><div class="line">        Node *temp = this-&gt;head;</div><div class="line">        <span class="keyword">while</span> (temp != nullptr) &#123;</div><div class="line">            cout &lt;&lt; temp-&gt;get_data() &lt;&lt; " ";</div><div class="line">            temp = temp-&gt;get_next();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">int main() &#123;</div><div class="line"></div><div class="line">    auto *shelter = new AnimalShelter();</div><div class="line"></div><div class="line">    Node *c1 = new Node(<span class="number">1</span>);</div><div class="line">    Node *d1 = new Node(<span class="number">2</span>);</div><div class="line"></div><div class="line">    Node *c2 = new Node(<span class="number">1</span>);</div><div class="line">    Node *d2 = new Node(<span class="number">2</span>);</div><div class="line"></div><div class="line">    Node *c3 = new Node(<span class="number">1</span>);</div><div class="line">    Node *d3 = new Node(<span class="number">2</span>);</div><div class="line"></div><div class="line">    shelter-&gt;enqueue(c1);</div><div class="line">    shelter-&gt;enqueue(d1);</div><div class="line"></div><div class="line">    shelter-&gt;enqueue(c2);</div><div class="line">    shelter-&gt;enqueue(d2);</div><div class="line"></div><div class="line">    shelter-&gt;enqueue(c3);</div><div class="line">    shelter-&gt;enqueue(d3);</div><div class="line"></div><div class="line">    shelter-&gt;dequeueAny();</div><div class="line">    shelter-&gt;dequeueCat();</div><div class="line">    shelter-&gt;dequeueCat();</div><div class="line">    shelter-&gt;dequeueCat();</div><div class="line">    shelter-&gt;dequeueCat();</div><div class="line"></div><div class="line">    cout &lt;&lt; "total: " &lt;&lt; shelter-&gt;size_cat + shelter-&gt;size_dog &lt;&lt; endl;</div><div class="line">    cout &lt;&lt; "cat: " &lt;&lt; shelter-&gt;size_cat &lt;&lt; endl;</div><div class="line">    cout &lt;&lt; "dog: " &lt;&lt; shelter-&gt;size_dog &lt;&lt; endl;</div><div class="line"></div><div class="line">    shelter-&gt;pirnt_shelter();</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

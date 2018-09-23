@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="2.6 Palindrome思路题意理解写一个算法判断链表是否回文
+感想觉得单链表的本质是只能单向且顺序访问的序列。
+分析1回文的判断就是两边读起来一样，在数组中的做法是从两边同时访问。但是单链表的性质限制了从两端开始同时访问的这一思路。
+有没有其他的做法达到同样的效果？
+分析2如果链表结构本身无法">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="2.6 Palindrome"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>2.6 Palindrome - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>2.6 Palindrome</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-06
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="2-6-Palindrome"><a href="#2-6-Palindrome" class="headerlink" title="2.6 Palindrome"></a>2.6 Palindrome</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="题意理解"><a href="#题意理解" class="headerlink" title="题意理解"></a>题意理解</h3><p>写一个算法判断链表是否回文</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>觉得单链表的本质是只能单向且顺序访问的序列。</p>
+<h3 id="分析1"><a href="#分析1" class="headerlink" title="分析1"></a>分析1</h3><p>回文的判断就是两边读起来一样，在数组中的做法是从两边同时访问。但是单链表的性质限制了从两端开始同时访问的这一思路。</p>
+<p>有没有其他的做法达到同样的效果？</p>
+<h3 id="分析2"><a href="#分析2" class="headerlink" title="分析2"></a>分析2</h3><p>如果链表结构本身无法达到操作目的的话，就只能借助外部力量了。我现在的想法是借助一个数组，遍历链表。当链表遍历前半部分的是否存在数组里，遍历后半部分的时候就访问数组对应的位置上是否有对应的值。</p>
+<h3 id="Hint-5"><a href="#Hint-5" class="headerlink" title="Hint 5"></a>Hint 5</h3><p>A palindrome is something which is the same when written forwards and backwards. What if you reversed the linked list ?</p>
+<h3 id="分析3"><a href="#分析3" class="headerlink" title="分析3"></a>分析3</h3><p>我也想过翻转链表，是翻转前的顺序保存一次，翻转后的顺序保存一次，然后比较两个是否相等吗？</p>
+<h3 id="Hint-13"><a href="#Hint-13" class="headerlink" title="Hint 13"></a>Hint 13</h3><p>Try using a stack.</p>
+<h3 id="分析4"><a href="#分析4" class="headerlink" title="分析4"></a>分析4</h3><p>果然涉及到逆序的时候就和递归，栈有关。</p>
+<p>我想到栈的用法时链表中的元素一半入栈，另一半不入，当分成两半后，链表继续访问，存入栈的部分开始出栈。</p>
+<h3 id="Hint-29"><a href="#Hint-29" class="headerlink" title="Hint 29"></a>Hint 29</h3><p>Assume you have the length of the linked list. Can you implement this recursively ?</p>
+<h3 id="分析5"><a href="#分析5" class="headerlink" title="分析5"></a>分析5</h3><p>递归到一半然后开始return ?</p>
+<p>base case 是 index = n /2 ?</p>
+<p>这样不行，中间相邻的两个元素还可以判断。当递归返回的前面的元素的时候就会断掉。那么递归函数该怎么设计？</p>
+<h3 id="Hint-61"><a href="#Hint-61" class="headerlink" title="Hint 61"></a>Hint 61</h3><p>In the recursive approach ( we have the length fo the list ), the middle is the base case: <code>isPalindrome(middle)</code> is true. The node x to the immediate left of the middle:  What can that node do to check if x-&gt;middle-&gt;y forms a palindrome ? Now suppose that checks out. What about the previous node a ? If x-&gt;middle-&gt;y is a palindrome, how can  it check that a-&gt;x-&gt;middle-&gt;y-&gt;b is a palindrome ?</p>
+<h3 id="分析6"><a href="#分析6" class="headerlink" title="分析6"></a>分析6</h3><p>Hint 61在说我在分析5中想不明白的地方。</p>
+<p>我的一个想法是在中间元素作为base case。返回的时候返回中间右边的那个结点middle.next。这样右边这半就有了线索，没有断掉。然后开始比较，相等就继续后移，每次都返回多加一层next。这样就会把右半部分都遍历完。</p>
+<p>以null作为具有回文序列的标志。因为返回null说明右半部分遍历完了。</p>
+<h3 id="Hint-101"><a href="#Hint-101" class="headerlink" title="Hint 101"></a>Hint 101</h3><p>Go back to the previous hint. Remember: There are ways to return multiple values. You can do this with a new class.</p>
+<h3 id="分析7"><a href="#分析7" class="headerlink" title="分析7"></a>分析7</h3><p>突然明白了为什么上一题，2.5题逆序情况要用一个结构体辅助。就是为了要返回多个值。</p>
+<p>但是我在分析6中的方法不可行吗？</p>
+<h3 id="参考代码思路理解"><a href="#参考代码思路理解" class="headerlink" title="参考代码思路理解"></a>参考代码思路理解</h3><p>用栈的那个fast和slow我没怎么看懂，大概是在不知道链表长度的情况下，实现一半入栈的方式。</p>
+<p>递归的想法应该意思一样，只不过实现方式不一样。实现的时候试一下我的思路。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h3><p>用递归的方式来解决的话，有两点需要注意：</p>
+<ol>
+<li>针对结点个数的奇偶情况，找到中间结点；偶数情况要找到中间的后面一个,因为要return</li>
+<li>因为在链表中间return,所以遍历的时候注意</li>
+</ol>
+<h3 id="前条件-不变式-后条件"><a href="#前条件-不变式-后条件" class="headerlink" title="前条件/不变式/后条件"></a>前条件/不变式/后条件</h3><h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPalindromeRecurse</span><span class="params">(head, length, flag)</span>:</span></div><div class="line">    <span class="comment"># base case</span></div><div class="line">    <span class="keyword">if</span> head == <span class="keyword">None</span> <span class="keyword">or</span> length &lt;= <span class="number">0</span>:</div><div class="line">        flag = <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> head</div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        flag = <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> head.get_next()</div><div class="line"></div><div class="line">    <span class="comment"># catch return</span></div><div class="line">    latter = isPalindromeRecurse(head.get_next(), length<span class="number">-2</span>, flag)</div><div class="line"></div><div class="line">    flag = head.get_data() == latter.get_data()</div><div class="line">    <span class="comment"># deal with</span></div><div class="line">    <span class="keyword">if</span> flag == <span class="keyword">False</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"Not Palindrom"</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> latter.get_next()</div></pre></td></tr></table></figure>
+<p>参考代码中的C++用了两个指针，让其中一个遍历到结尾，一个在头指针不变，通过这样的方式来实现左右两边同时遍历。</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPalindromeRecurse</span><span class="params">(head, length, flag)</span>:</span></div><div class="line">    <span class="comment"># base case</span></div><div class="line">    <span class="keyword">if</span> head == <span class="keyword">None</span> <span class="keyword">or</span> length &lt;= <span class="number">0</span>:</div><div class="line">        flag = <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> head</div><div class="line">    <span class="keyword">if</span> length == <span class="number">1</span>:</div><div class="line">        flag = <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> head.get_next()</div><div class="line"></div><div class="line">    <span class="comment"># catch return</span></div><div class="line">    latter = isPalindromeRecurse(head.get_next(), length<span class="number">-2</span>, flag)</div><div class="line"></div><div class="line">    flag = head.get_data() == latter.get_data()</div><div class="line">    <span class="comment"># deal with</span></div><div class="line">    <span class="keyword">if</span> flag == <span class="keyword">False</span>:</div><div class="line">        <span class="keyword">print</span> <span class="string">"Not Palindrom"</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> latter.get_next()</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    </div><div class="line">        unord_list1 = UnorderedList([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>])</div><div class="line">        isPalindromeRecurse(unord_list1.head, unord_list1.size(), <span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="2.5 Sum Lists思路题意理解有两个数，分别存在两个链表中，两个数的每一位存在链表的结点里。第一个问题是逆序存储，617存成7-&amp;gt;1-&amp;gt;6。问两个数的和？第二问，顺序存储，求和？
+分析1
+逆序存
+  需要新建一个链表，动态扩充，同时遍历两个链表，结点的值相加，如果大于10就保存进">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="2.5 Sum Lists"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>2.5 Sum Lists - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>2.5 Sum Lists</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-05
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CtCI/">#CtCI</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="2-5-Sum-Lists"><a href="#2-5-Sum-Lists" class="headerlink" title="2.5 Sum Lists"></a>2.5 Sum Lists</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="题意理解"><a href="#题意理解" class="headerlink" title="题意理解"></a>题意理解</h3><p>有两个数，分别存在两个链表中，两个数的每一位存在链表的结点里。第一个问题是逆序存储，617存成7-&gt;1-&gt;6。问两个数的和？第二问，顺序存储，求和？</p>
+<h3 id="分析1"><a href="#分析1" class="headerlink" title="分析1"></a>分析1</h3><ul>
+<li><p>逆序存</p>
+<p>  需要新建一个链表，动态扩充，同时遍历两个链表，结点的值相加，如果大于10就保存进位。模10后存成新结点当前的值。注意最高位也产生进位的情况。只有当最长的链表遍历完才结束整个遍历。</p>
+</li>
+<li><p>顺序存</p>
+<p>  因为顺序存的话遍历会从最高位开始遍历，如果按逆序存的思路，当最高位为也产生进位的时候就会很麻烦，极端情况如99 + 1，之前的每一位都需要进位。所以顺序存的思路是分别遍历整个链表，得出链表的长度。然后按位的权重加和，得出每个链表表示的数，最后把两个数相加，再转成链表存储。</p>
+</li>
+</ul>
+<h3 id="Hint-7"><a href="#Hint-7" class="headerlink" title="Hint 7"></a>Hint 7</h3><p>Of course, you could convert the linked lists to integers, compute the sum, and then convert it back to a new linked list. If you did this in an interview, your interviewer would likely accept the answer, and then see if you could do this without converting it to a number and back.</p>
+<h3 id="Hint-30"><a href="#Hint-30" class="headerlink" title="Hint 30"></a>Hint 30</h3><p>Try recursion. Suppose you have two lists, A = 1-&gt;5-&gt;9(representing 951) and B = 2-&gt;3-&gt;6-&gt;7(reresenting 7632), and a function that operates on the remainder of the lists(5-&gt;9 and 3-&gt;6-&gt;7). Could you use this to create the sum method ? What is the relationship between sum (1-&gt;5-&gt;9, 2-&gt;3-&gt;6-&gt;7) and sum (5-&gt;9 and 3-&gt;6-&gt;7) ?</p>
+<h3 id="分析2"><a href="#分析2" class="headerlink" title="分析2"></a>分析2</h3><p>又是在链表中用递归…</p>
+<p> sum (1-&gt;5-&gt;9, 2-&gt;3-&gt;6-&gt;7) 和 sum (5-&gt;9 and 3-&gt;6-&gt;7) 的区别是低位的进位产生的影响。</p>
+<p> 慢慢感觉到链表的递归中缩小规模就是把<code>head.next</code>作为参数传递到下一层调用中去。这样链表的规模在不断缩小，base case是<code>head == null</code>,也就是到达了链表的末尾。</p>
+<p> 按提示的话，递归函数参数中应该有一个是否产生进位标志。</p>
+<h3 id="Hint-71"><a href="#Hint-71" class="headerlink" title="Hint 71"></a>Hint 71</h3><p>make sure you have considered linked lists that are not the same length.</p>
+<h3 id="Hint-95"><a href="#Hint-95" class="headerlink" title="Hint 95"></a>Hint 95</h3><p>Does your algorithm work on linked list like 9-&gt;7-&gt;8 and 6-&gt;8-&gt;5 ? Double check that.</p>
+<h3 id="Hint-109"><a href="#Hint-109" class="headerlink" title="Hint 109"></a>Hint 109</h3><p>For the follow-up question: The issue is that when the linked list aren’t the same length, the head of one linked list might represent the 1000’s place while the other represents the 10’s place. What if you made them same length? Is there a way to modify the linked list to do that, without changing the value it represents ?  </p>
+<h3 id="分析3"><a href="#分析3" class="headerlink" title="分析3"></a>分析3</h3><p>把不同链表变成相同的长度，我确实没有这样想过，如果要变的话就是在前端插入0。变得长度相同。</p>
+<h3 id="分析4"><a href="#分析4" class="headerlink" title="分析4"></a>分析4</h3><p>简单浏览了参考代码后，梳理一下思路。这个问题有三个关键点需要考虑到：</p>
+<ul>
+<li>链表长度是否相等？</li>
+<li>每位相加是否会产生进位？</li>
+<li>逆序存储还是正序存储？</li>
+</ul>
+<p>链表长度不同，可以在进行补0。对逆序存储来说，在短的链表补。对顺序存储来说，因为我现在的思路是把数乘权重后相加算出来，所以觉得补0可能没什么大的帮助。如果要补的话，应该在前补。</p>
+<p>关于进位的考虑，逆序存储考虑起来相对简单一些，只要设一个标志位，让进位向前传播就可以。问题在正序存储，因为是单链表，很难再算过高位后，再重新把低位产生的进位传播回去。</p>
+<p>对于正序存储，我现在的思路是把两个数算出来，相加，再转成一个链表。可能有些麻烦，需要再看一下参考代码的思路。</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>递归暗含着访问顺序，先到底，后回头。</p>
+<h3 id="参考代码思路理解"><a href="#参考代码思路理解" class="headerlink" title="参考代码思路理解"></a>参考代码思路理解</h3><p>参考代码思路利用了递归方法实现的正序存储的相加，同时借助了一个结构体。正如感想里提到的，既然单链表不能向前访问，而现在的问题存在需要向前访问的可能。那就利用递归，先从低位开始运算，再慢慢回到高位。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h3><p>只考虑顺序存储的情况，逆序比较简单。</p>
+<p>大体思路是递归到最底层,然后开始进行加法预算，然后要考虑，进位，最终链表的长度。</p>
+<p>递归到最底层，运算，产生的进位该怎么保存的</p>
+<p>还有，因为要返回新的链表，递归的时候该怎么把每个结点串起来？递归的时候return的是结点吗？那么必须返回一个自定义的类,属性包括数值,进位,下个结点。</p>
+<h3 id="前条件-不变式-后条件"><a href="#前条件-不变式-后条件" class="headerlink" title="前条件/不变式/后条件"></a>前条件/不变式/后条件</h3><h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p>这一部分的比较难想的是如何实现同时对两个链表进行递归？还要考虑到两个链表长度不同的情况</p>
+<ul>
+<li>Python</li>
+</ul>
+<p>我的写法，但是不对</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addListsReverse</span><span class="params">(head1, head2)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># reach the both bottom of the recursive call</span></div><div class="line">    <span class="comment"># but it also needs compute in the middle of linkedlist</span></div><div class="line">    <span class="keyword">if</span> head1.get_next() == <span class="keyword">None</span> <span class="keyword">and</span> head2.get_next() == <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">return</span> head1.get_data() + head2.get_data() </div><div class="line">    </div><div class="line">    sum = addListsReverse(head1.get_next(), head2.get_next())</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> sum &gt; <span class="number">10</span>:</div></pre></td></tr></table></figure>
+<ul>
+<li>参考代码思路理解</li>
+</ul>
+<p>关于链表长度不同，在正序存储的时候可以使用Padding方法来解决。</p>
+<p>正序计算的时候长度需要一致。</p>
+<p>然后递归再进行加的运算。</p>
+<p>在进行计算的时候，要考虑连接新结点和考虑进位两个问题。</p>
+<p>连接新结点，在递归返回后，通过头插法进行连接。</p>
+<p>进位的话，参考代码不同语言实现的方式不同，Java借助了一个类来在各递归层之间进行传递，C++借助了引用，Python则先算出数，再转化成链表。</p>
+<p>padding和进行加法运算的函数要分成两个部分，因为放在一个函数里无法进行递归。</p>
+<p>如果分成两个函数，处理最后的进位时，要在写padding的那个函数里进行处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">padding</span><span class="params">(list, k)</span>:</span></div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(k):</div><div class="line">        list.add(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addListHelper</span><span class="params">(head1, head2, carry)</span>:</span></div><div class="line">    <span class="keyword">if</span> head1 == <span class="keyword">None</span> <span class="keyword">and</span> head2 == <span class="keyword">None</span> <span class="keyword">and</span> carry == <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    head3 = addListHelper((head1.get_next() <span class="keyword">if</span> head1 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="keyword">None</span>), ((head2.get_next() <span class="keyword">if</span> head2 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="keyword">None</span>)), carry)</div><div class="line"></div><div class="line">    result = carry + (head1.get_data() <span class="keyword">if</span> head1 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span>) + (head2.get_data() <span class="keyword">if</span> head2 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span>)</div><div class="line"></div><div class="line">    new_node = Node( result % <span class="number">10</span> )</div><div class="line">    new_node.set_next(head3)</div><div class="line">    head3 = new_node</div><div class="line"></div><div class="line">    carry = <span class="number">1</span> <span class="keyword">if</span> result &gt; <span class="number">9</span> <span class="keyword">else</span> <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> head3</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addListsFollowUp</span><span class="params">(list1, list2)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> list1.size() &gt; list2.size():</div><div class="line">        padding(list2, list1.size() - list2.size())</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        padding(list1, list2.size() - list1.size())</div><div class="line"></div><div class="line">    carry = <span class="number">0</span></div><div class="line"></div><div class="line">    head3 = addListHelper(list1.head, list2.head, carry)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> carry == <span class="number">1</span>:</div><div class="line">        new_head = Node(carry)</div><div class="line">        new_head.set_next(head3)</div><div class="line">        head3 = new_head</div><div class="line"></div><div class="line">    <span class="keyword">return</span> head3</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<p>版本1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">padding</span><span class="params">(UnordedList * unord_list, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) unord_list.add(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Node * <span class="title">addlist_helper</span><span class="params">(Node * head1, Node * head2, <span class="keyword">int</span> &amp; carry)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(head1 == <span class="literal">nullptr</span> &amp;&amp; head2 == <span class="literal">nullptr</span> &amp;&amp; carry = <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    Node * head3 = addlist_helper(head1-&gt;next, head2-&gt;next, carry);</div><div class="line">    <span class="keyword">int</span> result = carry + head1-&gt;get_data() + head2-&gt;get_data();</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(result &gt; <span class="number">9</span>) carry = <span class="number">1</span></div><div class="line">    <span class="keyword">else</span> carry = <span class="number">0</span></div><div class="line">    </div><div class="line">    Node * new_node = Node(result % <span class="number">10</span>);</div><div class="line">    </div><div class="line">    new_node-&gt;next(head3);</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> new_node; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Node * <span class="title">addlist_followup</span><span class="params">(UnordedList * list1, UnordedList * list2)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(list1-&gt;size &gt; list2-&gt;size) padding(list2, list1-&gt;size - list2-&gt;size)</div><div class="line">    <span class="keyword">else</span> padding(list1, list2-&gt;size - list1-&gt;size)</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    Node * head3 = addlist_helper(list1-&gt;head, list2-&gt;head, carry);</div><div class="line">    </div><div class="line">    <span class="keyword">if</span>(carry == <span class="number">1</span>) &#123;</div><div class="line">        Node * temp = Node(carry);</div><div class="line">        temp-&gt;set_next(head3);</div><div class="line">        head3 = temp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考根据参考代码改进</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node * <span class="title">addlist_helper</span><span class="params">(Node * head1, Node * head2, <span class="keyword">int</span> &amp; carry)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(head1 == <span class="literal">nullptr</span> &amp;&amp; head2 == <span class="literal">nullptr</span> &amp;&amp; carry = <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    Node * head3 = addlist_helper(head1 ? head1-&gt;next : <span class="literal">nullptr</span>, head2 ? head2-&gt;next : <span class="literal">nullptr</span>, carry);</div><div class="line">    <span class="keyword">int</span> result = carry + (head1 ? head1-&gt;get_data() : <span class="number">0</span>) + (head2 ? head2-&gt;get_data() : <span class="number">0</span>) ;</div><div class="line">    </div><div class="line">    Node * new_node = Node(result % <span class="number">10</span>);</div><div class="line">    new_node-&gt;next(head3);</div><div class="line">    </div><div class="line">    carry = result &gt; <span class="number">9</span> ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> new_node; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">padding</span><span class="params">(list, k)</span>:</span></div><div class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(k):</div><div class="line">        list.add(<span class="number">0</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addListHelper</span><span class="params">(head1, head2, carry)</span>:</span></div><div class="line">    <span class="keyword">if</span> head1 == <span class="keyword">None</span> <span class="keyword">and</span> head2 == <span class="keyword">None</span> <span class="keyword">and</span> carry == <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    head3 = addListHelper((head1.get_next() <span class="keyword">if</span> head1 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="keyword">None</span>), ((head2.get_next() <span class="keyword">if</span> head2 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="keyword">None</span>)), carry)</div><div class="line"></div><div class="line">    result = carry + (head1.get_data() <span class="keyword">if</span> head1 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span>) + (head2.get_data() <span class="keyword">if</span> head2 != <span class="keyword">None</span> <span class="keyword">else</span> <span class="number">0</span>)</div><div class="line"></div><div class="line">    new_node = Node( result % <span class="number">10</span> )</div><div class="line">    new_node.set_next(head3)</div><div class="line">    head3 = new_node</div><div class="line"></div><div class="line">    carry = <span class="number">1</span> <span class="keyword">if</span> result &gt; <span class="number">9</span> <span class="keyword">else</span> <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> head3</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">addListsFollowUp</span><span class="params">(list1, list2)</span>:</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> list1.size() &gt; list2.size():</div><div class="line">        padding(list2, list1.size() - list2.size())</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        padding(list1, list2.size() - list1.size())</div><div class="line"></div><div class="line">    carry = <span class="number">0</span></div><div class="line"></div><div class="line">    head3 = addListHelper(list1.head, list2.head, carry)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> carry == <span class="number">1</span>:</div><div class="line">        new_head = Node(carry)</div><div class="line">        new_head.set_next(head3)</div><div class="line">        head3 = new_head</div><div class="line"></div><div class="line">    <span class="keyword">return</span> head3</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    unord_list1 = UnorderedList([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line">    unord_list2 = UnorderedList([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"></div><div class="line">    result_list = addListsFollowUp(unord_list1, unord_list2)</div><div class="line"></div><div class="line">    <span class="keyword">while</span> result_list != <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">print</span> result_list.get_data(),</div><div class="line">        result_list = result_list.get_next()</div><div class="line"></div><div class="line">    <span class="keyword">print</span> <span class="string">"\n"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">padding</span><span class="params">(UnordedList * unord_list, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) unord_list-&gt;add(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Node * <span class="title">addlist_helper</span><span class="params">(Node * head1, Node * head2, <span class="keyword">int</span> &amp; carry)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(head1 == <span class="literal">nullptr</span> &amp;&amp; head2 == <span class="literal">nullptr</span> &amp;&amp; carry == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Node * head3 = addlist_helper(head1 ? head1-&gt;get_next() : <span class="literal">nullptr</span>, head2 ? head2-&gt;get_next() : <span class="literal">nullptr</span>, carry);</div><div class="line">    <span class="keyword">int</span> result = carry + (head1 ? head1-&gt;get_data() : <span class="number">0</span>) + (head2 ? head2-&gt;get_data() : <span class="number">0</span>) ;</div><div class="line"></div><div class="line">    Node * new_node = <span class="keyword">new</span> Node(result % <span class="number">10</span>);</div><div class="line">    new_node-&gt;set_next(head3);</div><div class="line"></div><div class="line">    carry = result &gt; <span class="number">9</span> ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> new_node;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Node * <span class="title">addlist_followup</span><span class="params">(UnordedList * list1, UnordedList * list2)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(list1-&gt;size() &gt; list2-&gt;size()) padding(list2, list1-&gt;size() - list2-&gt;size());</div><div class="line">    <span class="keyword">else</span> padding(list1, list2-&gt;size() - list1-&gt;size());</div><div class="line"></div><div class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</div><div class="line">    Node * head3 = addlist_helper(list1-&gt;head, list2-&gt;head, carry);</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(carry == <span class="number">1</span>) &#123;</div><div class="line">        Node * temp = <span class="keyword">new</span> Node(carry);</div><div class="line">        temp-&gt;set_next(head3);</div><div class="line">        head3 = temp;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> head3;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> arr1[<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</div><div class="line">    <span class="keyword">auto</span> unord_list1 = <span class="keyword">new</span> UnordedList(arr1, <span class="number">4</span>);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> arr2[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line">    <span class="keyword">auto</span> unord_list2 = <span class="keyword">new</span> UnordedList(arr2, <span class="number">3</span>);</div><div class="line">    </div><div class="line">        Node * result = addlist_followup(unord_list1, unord_list2);</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(result != <span class="literal">nullptr</span>) &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; result-&gt;get_data();</div><div class="line">        result = result-&gt;get_next();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="链表类因为最近在做链表部分的题，比起刷几道题，感觉有必要把链表中常用的功能函数写一下，这样会更能体会链表这个结构本身的限制和功能。
+参考Problem Solving with Algorithms and Data Structures using Python这本书讲链表的部分，实现无序链表(U">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="链表类"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>链表类 - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>链表类</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2018-08-11
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/数据结构/">#数据结构</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="链表类"><a href="#链表类" class="headerlink" title="链表类"></a>链表类</h1><p>因为最近在做链表部分的题，比起刷几道题，感觉有必要把链表中常用的功能函数写一下，这样会更能体会链表这个结构本身的限制和功能。</p>
+<p>参考<a href="http://interactivepython.org/runestone/static/pythonds/index.html" target="_blank" rel="external">Problem Solving with Algorithms and Data Structures using Python</a>这本书讲链表的部分，实现无序链表(UnordedList)和有序链表(OrderedList)两种类型的链表。这里要注意两点：</p>
+<ul>
+<li>移动顺序</li>
+<li>何时需要引进第二个外部指针，以及两个指针的移动顺序</li>
+</ul>
+<p>结点Node类的定义：</p>
+<ul>
+<li>Python</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, init_data=None)</span>:</span></div><div class="line">        self.data = init_data</div><div class="line">        self.next = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_data</span><span class="params">(self, new_data)</span>:</span></div><div class="line">        self.data = new_data</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.data</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set_next</span><span class="params">(self, new_next)</span>:</span></div><div class="line">        self.next = new_next</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_next</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.next</div></pre></td></tr></table></figure>
+<ul>
+<li>C++</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></div><div class="line"></div><div class="line">    <span class="keyword">int</span> data;</div><div class="line">    Node * next;</div><div class="line"></div><div class="line">    <span class="keyword">public</span>:</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> new_data)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>-&gt;data = new_data;</div><div class="line">            <span class="keyword">this</span>-&gt;next = <span class="literal">nullptr</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_data</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>-&gt;data = data;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">int</span> <span class="title">get_data</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>-&gt;data;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_next</span><span class="params">(Node * new_next)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>-&gt;next = new_next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function">Node * <span class="title">get_next</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>-&gt;next;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>下面结合具体的实现来说明</p>
+<h2 id="无序链表"><a href="#无序链表" class="headerlink" title="无序链表"></a>无序链表</h2><ul>
+<li><p>add（头插法）</p>
+<p>  这里要注意 <strong>顺序</strong></p>
+<ol>
+<li>将新结点的next连到原链表的第一个结点</li>
+<li><p>将链表的head指向新结点</p>
+<p>顺序如果颠倒的话，原链表head后面的结点会丢失。</p>
+<p>实现如下：</p>
+</li>
+</ol>
+<ul>
+<li><p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, item)</span>:</span></div><div class="line">    temp = Node(item)</div><div class="line">    temp.set_next(self.head)</div><div class="line">    self.head = temp</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* C++
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</div><div class="line">    Node * temp = <span class="keyword">new</span> Node(item);</div><div class="line">    temp-&gt;set_next(<span class="keyword">this</span>-&gt;head);</div><div class="line">    <span class="keyword">this</span>-&gt;head = temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>remove</p>
+<p>  删除要分两部来：1.找 2.删</p>
+<p>  为了删除结点，需要修改前面的一个结点，让它指向被删除结点的后面一个结点。这时需要两个外部指针，current用来遍历，previous慢current一步。这样当current停在被删除结点的位置时，previous将会停在前面的一个位置，而previous指向的结点正是我们需要修改的结点。</p>
+<p>  在实现时，current初始化为head,previous初始化为None。用一个bool类型变量found用来控制迭代。</p>
+<p>  当没有找到要删除的结点时，需要移动current和previous。previous必须先移动，然后再移动current。这个过程也被称作”inch-worming”。</p>
+<p>  当找到要删除的结点后，需要判断这个结点是否为head结点。通过previous是否为None来判断。</p>
+<p>  注意，不管要删除的结点是否为head，修改的目标都为<code>current.get_next()</code>。</p>
+<p>  实现：</p>
+<ul>
+<li><p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, item)</span>:</span></div><div class="line">        current = self.head</div><div class="line">        previous = <span class="keyword">None</span></div><div class="line">        found = <span class="keyword">False</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">not</span> found:</div><div class="line">            <span class="keyword">if</span> current.get_data() == item:</div><div class="line">                found = <span class="keyword">True</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                previous = current</div><div class="line">                current = current.get_next()</div><div class="line">    </div><div class="line">        <span class="keyword">if</span> previous == <span class="keyword">None</span>:</div><div class="line">            self.head = current.get_next()</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            previous.set_next(current.get_next())</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* C++
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</div><div class="line">    </div><div class="line">        <span class="keyword">bool</span> found = <span class="literal">false</span>;</div><div class="line">        Node * current = <span class="keyword">this</span>-&gt;head;</div><div class="line">        Node * previous = <span class="literal">nullptr</span>;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!found) &#123;</div><div class="line">            <span class="keyword">if</span>(current-&gt;get_data() == item) &#123;</div><div class="line">                found = <span class="literal">true</span>;</div><div class="line">            &#125;  <span class="keyword">else</span> &#123;</div><div class="line">                previous = current;</div><div class="line">                current = current-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(previous == <span class="literal">nullptr</span>) &#123;</div><div class="line">            <span class="keyword">this</span>-&gt;head = current-&gt;get_next();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            previous-&gt;set_next(current-&gt;get_next());</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h2 id="有序链表"><a href="#有序链表" class="headerlink" title="有序链表"></a>有序链表</h2><p>由于链表有序，利用有序这个特点，remove和add两个函数需要改变</p>
+<ul>
+<li><p>search</p>
+<p>  当要查找的结点在链表中时，有序的特点影响不大，应为都需要从头遍历；当要查找的结点不在链表中是，利用有序这个一特点，就可尽快地结束寻找。</p>
+<p>  在实现是，通过bool型变量stop来进行控制提前结束，初始化为false。当遍历的结点大于我们要寻找的结点时(默认升序)，就可以设stop为true，来结束循环。</p>
+<p>  实现：</p>
+<ul>
+<li><p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, item)</span>:</span></div><div class="line">    current = self.head</div><div class="line">    found = <span class="keyword">False</span></div><div class="line">    stop = <span class="keyword">False</span></div><div class="line">    <span class="keyword">while</span> current != <span class="keyword">None</span> <span class="keyword">and</span> <span class="keyword">not</span> found <span class="keyword">and</span> <span class="keyword">not</span> stop:</div><div class="line">        <span class="keyword">if</span> current.get_data() == item:</div><div class="line">            found = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> current.get_data() &gt; item:</div><div class="line">                stop = <span class="keyword">True</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                current = current.get_next()</div><div class="line">    <span class="keyword">return</span> found</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* C++
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</div><div class="line">    Node * current = <span class="keyword">this</span>-&gt;head;</div><div class="line">    <span class="keyword">bool</span> found = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">bool</span> stop = <span class="literal">false</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span>(current != <span class="literal">nullptr</span> &amp;&amp; !found &amp;&amp; !stop) &#123;</div><div class="line">        <span class="keyword">if</span>(current-&gt;get_data() == item) &#123;</div><div class="line">            found = <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(current-&gt; get_data() &gt; item) &#123;</div><div class="line">            stop = <span class="literal">true</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            current = current-&gt;get_next();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> found;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>add</p>
+<p>  有序链表的add方法需要找到合适的位置,以避免破坏链表的有序性。同时也需要判断新结点的位置是否为head。</p>
+<p>  实现：</p>
+<ul>
+<li><p>Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, item)</span>:</span></div><div class="line">    <span class="comment"># 1. find the position</span></div><div class="line">    current = self.head</div><div class="line">    stop = <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> current != <span class="keyword">None</span> <span class="keyword">and</span> <span class="keyword">not</span> stop:</div><div class="line"></div><div class="line">        <span class="comment"># the condition works fine in middle of the list, fails in the head insert</span></div><div class="line">        <span class="comment"># how about add a logic operator 'or' ?</span></div><div class="line">        <span class="keyword">if</span> current.get_next().get_data() &gt; item <span class="keyword">or</span> current.get_data() &gt; item:</div><div class="line">            stop = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            current = current.get_next()</div><div class="line"></div><div class="line">    <span class="comment"># 2. add new node</span></div><div class="line">    new_node = Node(item)</div><div class="line">    <span class="keyword">if</span> current == self.head:</div><div class="line">        new_node.set_next(self.head)</div><div class="line">        self.head = new_node</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        new_node.set_next(current.get_next())</div><div class="line">        current.set_next(new_node)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>* C++
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> item)</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">bool</span> stop = <span class="literal">false</span>;</div><div class="line">        Node * current = <span class="keyword">this</span>-&gt;head;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(!stop &amp;&amp; current != <span class="literal">nullptr</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(  current-&gt;get_next()-&gt;get_data() &gt; item || current-&gt;get_data() &gt; item)</div><div class="line">            &#123;</div><div class="line">                stop = <span class="literal">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                current = current-&gt;get_next();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        Node * new_node = <span class="keyword">new</span> Node(item);</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(current == <span class="keyword">this</span>-&gt;head) &#123;</div><div class="line">            new_node-&gt;set_next(<span class="keyword">this</span>-&gt;head);</div><div class="line">            <span class="keyword">this</span>-&gt;head = new_node;</div><div class="line">        &#125;  <span class="keyword">else</span> &#123;</div><div class="line">            new_node-&gt;set_next(current-&gt;get_next());</div><div class="line">            current-&gt;set_next(new_node);</div><div class="line">            &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Kommentare:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2018 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>
