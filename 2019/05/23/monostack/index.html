@@ -10,7 +10,9 @@
 
     <!--Description-->
     
-        <meta name="description" content="语义分割U-Nethttps://forums.fast.ai/t/differences-between-u-net-and-feature-pyramid-networks-fpn/33166">
+        <meta name="description" content="单调栈What is monotonous increase stack?
+Roughly speaking, the elements in the an monotonous increase stack keeps an increasing order.
+The typical paradi">
     
 
     <!--Author-->
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="语义分割"/>
+        <meta property="og:title" content="单调栈"/>
     
 
     <!--Open Graph Description-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>语义分割 - ZJZz&#39;s Garage</title>
+    <title>单调栈 - ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -150,13 +152,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>语义分割</h1>
+                    <h1>单调栈</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2019-05-21
+                            2019-05-23
                         
                     </span>
                 </div>
@@ -177,7 +179,7 @@
                         
 
 
-<a href="/tags/DL/">#DL</a>
+<a href="/tags/Coding-Tools-View/">#Coding-Tools View</a>
 
 
                     
@@ -192,7 +194,55 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h1><h2 id="U-Net"><a href="#U-Net" class="headerlink" title="U-Net"></a>U-Net</h2><p><a href="https://forums.fast.ai/t/differences-between-u-net-and-feature-pyramid-networks-fpn/33166" target="_blank" rel="external">https://forums.fast.ai/t/differences-between-u-net-and-feature-pyramid-networks-fpn/33166</a></p>
+                <h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p><strong>What is monotonous increase stack?</strong></p>
+<p>Roughly speaking, the elements in the an monotonous increase stack keeps an increasing order.</p>
+<p><strong>The typical paradigm for monotonous increase stack:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">while</span>(!in_stk.empty() &amp;&amp; in_stk.top() &gt; A[i]) <span class="comment">// 如果栈非空且栈顶元素大于当前元素A[i]</span></div><div class="line">  &#123;</div><div class="line">    in_stk.pop();</div><div class="line">  &#125;</div><div class="line">  in_stk.push(A[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>What can monotonous increase stack do?</strong></p>
+<p>(1) find the <strong>previous less element (PLE)</strong> of each element in a vector <strong>with O(n) time</strong>:</p>
+<ul>
+<li><p>What is the previous less element of an element?</p>
+<p>  For example:<br>  [3, 7, 8, 4]<br>  The previous less element of 7 is 3.<br>  The previous less element of 8 is 7.<br>  The previous less element of 4 is 3.<br>  There is no previous less element for 3.</p>
+</li>
+<li><p>C++ code (by slitghly modifying the paradigm):</p>
+<p> Instead of directly pushing the element itself, here for simplicity, we push the <strong>index</strong>.<br> We do some record when the index is pushed into the stack.</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">   <span class="comment">// previous_less[i] = j means A[j] is the previous less element of A[i].</span></div><div class="line">  <span class="comment">// previous_less[i] = -1 means there is no previous less element of A[i].</span></div><div class="line"> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; previous_less(A.size(), <span class="number">-1</span>);</div><div class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</div><div class="line"> &#123;</div><div class="line">       <span class="keyword">while</span>(!in_stk.empty() &amp;&amp; A[in_stk.top()] &gt; A[i])</div><div class="line">       &#123;</div><div class="line">           in_stk.pop();</div><div class="line">       &#125;</div><div class="line"> </div><div class="line">       previous_less[i] = in_stk.empty()? <span class="number">-1</span>: in_stk.top();</div><div class="line">       in_stk.push(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(2) find the <strong>next less element (NLE)</strong> of each element in a vector <strong>with O(n) time</strong>:</p>
+<ul>
+<li><p>What is the next less element of an element ?</p>
+<p>  For example:<br>  [3, 7, 8, 4]<br>  The next less element of 8 is 4.<br>  The next less element of 7 is 4.<br>  There is no next less element for 3 and 4.</p>
+</li>
+<li><p>C++ code (by slighly modifying the paradigm):</p>
+<p>  We do some record when the index is poped out from the stack.</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// next_less[i] = j means A[j] is the next less element of A[i].</span></div><div class="line"><span class="comment">// next_less[i] = -1 means there is no next less element of A[i].</span></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; previous_less(A.size(), <span class="number">-1</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">while</span>(!in_stk.empty() &amp;&amp; A[in_stk.top()] &gt; A[i])</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">auto</span> x = in_stk.top(); </div><div class="line">        in_stk.pop();</div><div class="line">        next_less[x] = i;</div><div class="line">    &#125;</div><div class="line">    in_stk.push(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>What can monotonous decrease stack do?</li>
+</ul>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/next-greater-element-ii/" target="_blank" rel="external">503. Next Greater Element II</a>   </p>
+<p>(a very basic one) </p>
+<p><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="external">84. Largest Rectangle in Histogram</a> </p>
+<p>(almost the same as <a href="https://leetcode.com/problems/sum-of-subarray-minimums/" target="_blank" rel="external">907. Sum of Subarray Minimums</a>)</p>
+<p><a href="https://leetcode.com/problems/maximal-rectangle/" target="_blank" rel="external">85. Maximal Rectangle</a> </p>
+<p>(please do this problem after you solve the above one)</p>
+<p><a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" rel="external">42. Trapping Rain Water</a> </p>
+<p>(challenge)</p>
+<p><a href="https://leetcode.com/problems/remove-duplicate-letters/" target="_blank" rel="external">316. Remove Duplicate Letters</a> </p>
+<p>(challenge)</p>
+<p><a href="https://leetcode.com/problems/remove-k-digits/" target="_blank" rel="external">402. Remove K Digits</a></p>
+<p><a href="https://leetcode.com/problems/create-maximum-number/" target="_blank" rel="external">321. Create Maximum Number</a></p>
+<p><a href="https://leetcode.com/problems/132-pattern/" target="_blank" rel="external">456. 132 Pattern</a>  </p>
+<p>(challenge, instead of focusing on the elements in the stack, this problem focuses on the elements poped from the monotone stack)</p>
+<p><a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="external">239. Sliding Window Maximum</a></p>
+<p>challenge, monotone queue</p>
+<p>[768. Max Chunks To Make Sorted II] (<a href="https://leetcode.com/problems/max-chunks-to-make-sorted-ii/" target="_blank" rel="external">https://leetcode.com/problems/max-chunks-to-make-sorted-ii/</a>)</p>
+<p><a href="https://leetcode.com/problems/online-stock-span/" target="_blank" rel="external">901. Online Stock Span</a></p>
+<p><a href="https://leetcode.com/problems/unique-letter-string/" target="_blank" rel="external">828. Unique Letter String</a></p>
+<p><a href="https://leetcode.com/problems/sum-of-subsequence-widths/" target="_blank" rel="external">891. Sum of Subsequence Widths</a></p>
+<p><a href="https://leetcode.com/problems/next-greater-node-in-linked-list/" target="_blank" rel="external">1019. Next Greater Node In Linked List</a></p>
 
 
                 

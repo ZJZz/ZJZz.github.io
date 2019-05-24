@@ -10,13 +10,18 @@
 
     <!--Description-->
     
+        <meta name="description" content="数组-循环数组那么碰到循环数组的问题，无外乎三个套路。
+
+拆分（HOUSE ROBBER那道，循环道路时用的是这个技巧）
+倍增（就是在原数组后补到2倍长度，在2倍长数组的里处理，那么原本的N长的数组，我们可以变成N个新的长度为N的数组）0-&amp;gt;N-1， 1- &amp;gt;N， 2- &amp;gt;N+1 ">
+    
 
     <!--Author-->
     
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="ZJZz&#39;s Garage"/>
+        <meta property="og:title" content="数组-循环数组"/>
     
 
     <!--Open Graph Description-->
@@ -27,7 +32,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -38,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019 - ZJZz&#39;s Garage</title>
+    <title>数组-循环数组 - ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -140,168 +145,92 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019</h1>
+                <div class="post-heading">
+                    <h1>数组-循环数组</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-23
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Coding-Data-View/">#Coding-Data View</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/05/24/cpp_const/">
-        <h1 class="post-title archive">
-            C++之const
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-24
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/05/24/cpp_static/">
-        <h1 class="post-title archive">
-            C++之static
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-24
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="数组-循环数组"><a href="#数组-循环数组" class="headerlink" title="数组-循环数组"></a>数组-循环数组</h1><p>那么碰到循环数组的问题，无外乎三个套路。</p>
+<ol>
+<li>拆分（HOUSE ROBBER那道，循环道路时用的是这个技巧）</li>
+<li>倍增（就是在原数组后补到2倍长度，在2倍长数组的里处理，那么原本的N长的数组，我们可以变成N个新的长度为N的数组）<br>0-&gt;N-1， 1- &gt;N， 2- &gt;N+1 …..    N-1 -&gt; 2*n-2<br>分别对每种循环的可能做处理，最后汇总得到解，这题可以运用这个策略，但是时间复杂度为N^2</li>
+<li>取反（求最大，变成求最小）</li>
+</ol>
+<p><a href="https://www.jianshu.com/p/e09a051f5420" target="_blank" rel="external">西部小笼包</a></p>
+<p><a href="https://leetcode.com/problems/maximum-sum-circular-subarray/" target="_blank" rel="external">918. Maximum Sum Circular Subarray</a></p>
+<ol>
+<li><p>Find Minimum in Rotated Sorted Array</p>
+</li>
+<li><p>Search in Rotated Sorted Array</p>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2019/05/24/binary_search/">
-        <h1 class="post-title archive">
-            二分搜索
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-24
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/05/24/cpp_virtual/">
-        <h1 class="post-title archive">
-            C++之“虚”
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-24
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/23/circular_array/">
-        <h1 class="post-title archive">
-            数组-循环数组
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-23
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/23/monostack/">
-        <h1 class="post-title archive">
-            单调栈
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-23
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/21/object_detection/">
-        <h1 class="post-title archive">
-            目标检测
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/21/subarray_substring/">
-        <h1 class="post-title archive">
-            数组/字符串-子数组/子串
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/21/classification/">
-        <h1 class="post-title archive">
-            图像分类
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-21
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/05/21/subsequence/">
-        <h1 class="post-title archive">
-            数组/字符串-子序列
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-05-21
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-        <li class="next"><a href="/archives/2019/page/2/">Older Posts  &rarr;</a></li>
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
@@ -362,7 +291,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>

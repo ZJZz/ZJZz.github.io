@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="数组/字符串-子数组/子串数组和字符串中经常出现的一类问题是寻找某种性质的子数组或子串。它们是下标连续的一段内容，与子序列不同。
+子数组与子串之间的区别是，子数组可以结合一些数学运算，比如求和，成绩，min/max等。而子串常见的问题就是字符出现的次数，连续的字符等。
+常见的问题：
+
+寻找满足某种性">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="数组/字符串-子数组/子串"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>数组/字符串-子数组/子串 - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>数组/字符串-子数组/子串</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-21
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Coding-Data-View/">#Coding-Data View</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="数组-字符串-子数组-子串"><a href="#数组-字符串-子数组-子串" class="headerlink" title="数组/字符串-子数组/子串"></a>数组/字符串-子数组/子串</h1><p>数组和字符串中经常出现的一类问题是寻找某种性质的子数组或子串。它们是下标连续的一段内容，与<strong>子序列</strong>不同。</p>
+<p>子数组与子串之间的区别是，子数组可以结合一些数学运算，比如求和，成绩，min/max等。而子串常见的问题就是字符出现的次数，连续的字符等。</p>
+<p>常见的问题：</p>
+<ul>
+<li><p>寻找满足某种性质的子数组/子串</p>
+<ul>
+<li>最长/最短</li>
+<li>求和/乘积(数组)</li>
+</ul>
+</li>
+<li><p>满足某种性质的子数组/子串的个数</p>
+<ul>
+<li>最多K个</li>
+<li>恰好K个</li>
+</ul>
+</li>
+</ul>
+<p>蛮力方法：</p>
+<p>枚举所有子数组或者字符串</p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="external">53. Maximum Subarray</a></p>
+<p><a href="https://www.youtube.com/watch?v=2MmGzdiKR9Y&amp;t=2s" target="_blank" rel="external">Max Contiguous Subarray Sum - Cubic Time To Kadane’s Algorithm (“Maximum Subarray” on LeetCode)</a></p>
+<p>优化代码时考虑的3个要素：BUD</p>
+<ul>
+<li>Bottlenecks</li>
+<li>Unnecessary Work</li>
+<li>Duplicate Work</li>
+</ul>
+<p><a href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank" rel="external">152. Maximum Product Subarray</a></p>
+<p>加法和乘法的区别：乘法可能由负数 * 负数变成最大的 解决办法： 有一个minToCur数组来保存截止到当前位置的最小值</p>
+<p><a href="https://leetcode.com/problems/subarray-product-less-than-k/" target="_blank" rel="external">713. Subarray Product Less Than K</a></p>
+<p>当某个性质不满足时可以停在当前，并调整起始窗口的位置时，就可以考虑使用滑动窗口</p>
+<p>而<a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="external">560. Subarray Sum Equals K </a> 不满足这个性质，它不满足可以停在当前位置，所以要用别的方法</p>
+<h2 id="Prefix-Sum"><a href="#Prefix-Sum" class="headerlink" title="Prefix Sum"></a>Prefix Sum</h2><p><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="external">560. Subarray Sum Equals K </a> 计数</p>
+<p>在枚举子数组的时候，当前值超过K时，不能马上停止，因为后面有可能出现负数再把值减回来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[3 1 2 1 -1] K=3</div><div class="line"></div><div class="line">[1] [1 2]=3 [1 2 1] [1 2 1 -1]</div></pre></td></tr></table></figure>
+<p>prefixSum array</p>
+<p>prefixSum[x] = sum of array(0,x) = nums[0] + nums[1] + … + nums[x]</p>
+<p>index:                   0  1  2<br>nums:                  [1  1  1 ]<br>prefixSum[x]  [0 1  2  3] (0是为了让原来数组中的每一subarray都能对应到prefixSum中的某两个元素的差)</p>
+<p>sum of subarray(i, j)(i是可以取到0的) = prefixSum[j] - prefixSum[i-1] </p>
+<p>prefixSum[j]    = nums[0] + nums[1] + … + nums[i-1] + nums[i] + … + nums[j]<br>prefixSum[i-1] = nums[0] + nums[1] + … + nums[i-1]</p>
+<p>e.g. sum of subarray(1,2) = prefixSum[2] - prefixSum[0]</p>
+<p>有了prefixSum后问题就转化为：有多少对<i, j="">且i &lt; j,prefixSum[j] - prefixSum[i] == k ?</i,></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for each j:</div><div class="line">        how many i &lt; j satisfies prefixSum[i] = prefixSum[j] - k</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/" target="_blank" rel="external">795. Number of Subarrays with Bounded Maximum</a></p>
+<p> 在计算子数组的个数时，比如小标为[i, j]。那么以j为结尾的子数组的个数为<em>i-j+1</em>个。</p>
+<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p><a href="https://leetcode.com/problems/sum-of-subarray-minimums/" target="_blank" rel="external">907. Sum of Subarray Minimums</a></p>
+<p><a href="https://leetcode.com/problems/sum-of-subarray-minimums/discuss/178876/stack-solution-with-very-detailed-explanation-step-by-step" target="_blank" rel="external">stack solution with very  detailed explanation step by step</a></p>
+<h2 id="Subarrays-of-circular-arrays"><a href="#Subarrays-of-circular-arrays" class="headerlink" title="Subarrays of circular arrays"></a>Subarrays of circular arrays</h2><p><a href="https://leetcode.com/problems/maximum-sum-circular-subarray/" target="_blank" rel="external">918. Maximum Sum Circular Subarray</a></p>
+<p>问题会分为两种情况：</p>
+<ul>
+<li>最大数组和在一个区间内 [i,j]</li>
+<li>最大数组和在两个区间 [0, i] [j, n-1]</li>
+</ul>
+<p>第一种情况已经解决过，第二种情况可以划分为选[i+1, j-1]中最小的和</p>
+<h2 id="有序子数组"><a href="#有序子数组" class="headerlink" title="有序子数组"></a>有序子数组</h2><p><a href="https://leetcode.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="external">581. Shortest Unsorted Continuous Subarray</a></p>
+<p>Some equivalent mathematical models for describing a sorted array (assuming in ascending order). Suppose the given array is <code>nums</code> with length <code>n</code>, these models are as follows:</p>
+<ol>
+<li><p><code>nums[k] &lt;= nums[k + 1]</code> for all <code>0 &lt;= k &lt; n - 1</code>.</p>
+</li>
+<li><p><code>nums[k] == max[k]</code> for all <code>0 &lt;= k &lt;= n - 1</code>, where <code>max[k]</code> is the maximum value of the subarray <code>nums[0, k]</code>.</p>
+</li>
+<li><p><code>nums[k] == min[k]</code> for all <code>0 &lt;= k &lt;= n - 1</code>, where min[k] is the minimum value of the subarray <code>nums[k, n - 1]</code>.</p>
+</li>
+</ol>
+<p>The first model is the most common one (and probably the most familiar one) while the last two are less common. It’s easy to show that the second model is equivalent to the first by noting that for any index <code>k &lt; n - 1</code>, we have <code>max[k] &lt;= max[k + 1]</code>, then <code>nums[k] = max[k] &lt;= max[k + 1] = nums[k + 1]</code>. Similar results hold for the third model: <code>nums[k] = min[k] &lt;= min[k + 1] = nums[k + 1]</code>.</p>
+<p>With these models in place, we can show that if indices <code>i</code> and <code>j</code> satisfy the following conditions, then <code>nums[i, j]</code> will be the shortest subarray we are looking for:</p>
+<ol>
+<li><code>i</code> is the smallest index such that <code>nums[i] != min[i]</code>;</li>
+<li><code>j</code> is the largest index such that <code>nums[j] != max[j]</code>.</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findUnsortedSubarray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> n = nums.size();</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; minToEnd(n); </div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; maxFromStart(n);</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> curMin = INT_MAX;</div><div class="line">        <span class="keyword">int</span> curMax = INT_MIN;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</div><div class="line">        &#123;</div><div class="line">            curMin = min(nums[i], curMin);</div><div class="line">            minToEnd[i] = curMin; </div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">        &#123;</div><div class="line">            curMax = max(nums[i], curMax);</div><div class="line">            maxFromStart[i] = curMax;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = n<span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>( i &lt; n &amp;&amp; nums[i] &lt;= minToEnd[i]) ++i;</div><div class="line">        <span class="keyword">while</span>( j &gt; i &amp;&amp; nums[j] &gt;= maxFromStart[j]) --j;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> j - i + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[2 6 4 8 10  9  15] 原数组</div><div class="line">[2 4 4 8  9  9  15] &lt;- minToEnd // 如果和原数组保持不变，那这个数往右看都没有比它小的数        </div><div class="line">[2 6 6 8 10 10  15] -&gt; maxFromStart // 如果和原数组保持不变，那这个数往左看都没有比它大的数</div></pre></td></tr></table></figure>
+<p>单调栈也可以解决这个问题，两次遍历数组</p>
+<ul>
+<li>第一次从左向右，递增 用一个变量<code>l</code>保存弹出的下标，就是这个乱序元素本该在位置，尽量小 min </li>
+<li>第二次从右向左，递减 用一个变量<code>r</code>保存弹出的下标，就是这个乱序元素本该在位置，尽量大 max</li>
+</ul>
+<p><code>r - l + 1</code>就是这个数组的长度</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+
+</html>

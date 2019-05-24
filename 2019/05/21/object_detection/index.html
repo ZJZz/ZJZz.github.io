@@ -10,7 +10,10 @@
 
     <!--Description-->
     
-        <meta name="description" content="目标检测R-CNN系列Feature Pyramid NetworksFocal Loss">
+        <meta name="description" content="目标检测基础概念Anchor Box提出的动机：想让一个grid cell检测出多个物体(针对有重叠的物体)
+怎么实现的？
+预先定义两个不同形状的Box,然后把预测结果和这两个box联系起来，在预测结果向量中一通输出
+Each object in traing image is assigned t">
     
 
     <!--Author-->
@@ -192,7 +195,99 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h1><h2 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h2><h2 id="Feature-Pyramid-Networks"><a href="#Feature-Pyramid-Networks" class="headerlink" title="Feature Pyramid Networks"></a>Feature Pyramid Networks</h2><h2 id="Focal-Loss"><a href="#Focal-Loss" class="headerlink" title="Focal Loss"></a>Focal Loss</h2>
+                <h1 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h1><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="Anchor-Box"><a href="#Anchor-Box" class="headerlink" title="Anchor Box"></a>Anchor Box</h3><p>提出的动机：想让一个grid cell检测出多个物体(针对有重叠的物体)</p>
+<p>怎么实现的？</p>
+<p>预先定义两个不同形状的Box,然后把预测结果和这两个box联系起来，在预测结果向量中一通输出</p>
+<p><em>Each object in traing image is assigned to grid cell thant contains that object’s midpoint and anchor box for the grid cell with highest IoU</em></p>
+<p>(grid cell, anchor box )</p>
+<h2 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h2><h2 id="Feature-Pyramid-Networks"><a href="#Feature-Pyramid-Networks" class="headerlink" title="Feature Pyramid Networks"></a>Feature Pyramid Networks</h2><p><strong>FPN is not an object detector by itself. It is a feature detector that works with object detectors.</strong></p>
+<p>ConvNet为什么比传统的视觉方法好？</p>
+<blockquote>
+<p>ConvNets being capable of representing higher-level semantics, robust to variance in scale.</p>
+</blockquote>
+<p>in-network feature hierarchy为什么有问题</p>
+<blockquote>
+<p>This in-network feature hierarchy produces feature maps of different spatial resolutions, but introduces large semantic gaps caused by different depths. The high-resolution maps have low-level features that harm their representational capacity for object recognition.</p>
+</blockquote>
+<p>一句话描述FPN在做什么?</p>
+<blockquote>
+<p> In other words, we show how to create in-network feature pyramids that can be used to replace featurized image pyramids without sacrificing representational power, speed, or memory. </p>
+</blockquote>
+<p>FPN leverage了什么？</p>
+<blockquote>
+<p> On the contrary, our method leverages the architecture as a feature pyramid where predictions (e.g., object detections) are independently made on each level.</p>
+<p>Our goal is to leverage a ConvNet’s pyramidal feature hierarchy, which has semantics from low to high levels, and build a feature pyramid with high-level semantics throughout.</p>
+</blockquote>
+<h3 id="网络构造方式"><a href="#网络构造方式" class="headerlink" title="网络构造方式"></a>网络构造方式</h3><blockquote>
+<p>The construction of our pyramid involves a bottom-up pathway, a top-down pathway, and lateral connections.</p>
+</blockquote>
+<h4 id="Bottom-up-pathway"><a href="#Bottom-up-pathway" class="headerlink" title="Bottom-up pathway"></a>Bottom-up pathway</h4><p>Bottom指图片</p>
+<p>术语: <em>stage</em></p>
+<blockquote>
+<p>There are often many layers producing output maps of the same size and we say these layers are in the same network <em>stage</em>.</p>
+</blockquote>
+<p>术语: <em>pyramid level</em></p>
+<blockquote>
+<p>For our feature pyramid, we define one <em>pyramid level</em> for each stage.</p>
+</blockquote>
+<p>为什么选每个stage中的最后一层作为feature maps set的reference ? </p>
+<blockquote>
+<p>We choose the output of the last layer of each stage as our reference set of feature maps, which we will enrich to create our pyramid. This choice is natural since the deepest layer of each stage should have the strongest features.</p>
+</blockquote>
+<h4 id="Top-down-pathway-amp-lateral-connections"><a href="#Top-down-pathway-amp-lateral-connections" class="headerlink" title="Top-down pathway &amp; lateral connections"></a>Top-down pathway &amp; lateral connections</h4><blockquote>
+<p>The topdown pathway hallucinates higher resolution features by upsampling spatially coarser, but semantically stronger, feature maps from higher pyramid levels.</p>
+</blockquote>
+<p>lateral connections的作用？</p>
+<blockquote>
+<p>These features( spatially coarser, but semantically stronger, feature map ) are then enhanced with features from the bottom-up pathway via lateral connections.<br>Each lateral connection merges feature maps of the same spatial size from the bottom-up pathway and the top-down pathway.</p>
+</blockquote>
+<p>bottom-up feature map的特点</p>
+<blockquote>
+<p>The bottom-up feature map is of lower-level semantics, but its activations are more accurately localized as it was subsampled fewer times.</p>
+</blockquote>
+<p>top-down feature maps是怎么构建的？</p>
+<p><img src="/media/15585159882300.jpg" alt="fig_3"></p>
+<blockquote>
+<p>With a coarser-resolution feature map, we upsample the spatial resolution by a factor of 2 (using nearest neighbor upsampling for simplicity). The upsampled map is then merged with the corresponding bottom-up map (which undergoes a 1×1 convolutional layer to reduce channel dimensions) by element-wise addition.</p>
+<p>Finally, we append a 3×3 convolution on each merged map to generate the final feature map, which is to reduce the aliasing effect of upsampling.</p>
+</blockquote>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*edviRcl3vwlyx9TS_gRbmg.png" alt="top_down"></p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="for-RPN-Faster-R-CNN"><a href="#for-RPN-Faster-R-CNN" class="headerlink" title="for RPN(Faster R-CNN)"></a>for RPN(Faster R-CNN)</h4><blockquote>
+<p>We adapt RPN by replacing the single-scale feature map with our FPN.</p>
+</blockquote>
+<p>anchors 是什么意思？</p>
+<p>一些不同形状的框</p>
+<p>we extract multiple feature map layers with FPN and feed them into an RPN (an object detector using convolutions and anchors) in detecting objects. RPN applies 3 × 3 convolutions over the feature maps followed by separate 1 × 1 convolution for class predictions and boundary box regression. These 3 × 3 and 1 × 1 convolutional layers are called the RPN head. The same head is applied to all feature maps.</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*UvGM-OSoebgJDYAjNwX26w.png" alt="fpn_with_rpn"></p>
+<h4 id="for-Fast-RCNN"><a href="#for-Fast-RCNN" class="headerlink" title="for Fast-RCNN"></a>for Fast-RCNN</h4><blockquote>
+<p>To use it with our FPN, we need to assign RoIs of different scales to the pyramid levels.</p>
+</blockquote>
+<h5 id="Fast-R-CNN-and-Faster-R-CNN-data-flow"><a href="#Fast-R-CNN-and-Faster-R-CNN-data-flow" class="headerlink" title="Fast R-CNN and Faster R-CNN data flow"></a>Fast R-CNN and Faster R-CNN data flow</h5><p>It works with one feature map layer to create ROIs. We use the ROIs and the feature map layer to create feature patches to be fed into the ROI pooling.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1200/1*SkQF8jcGgFO9nVOiprhUEw.jpeg" alt="frcnn_dataflow"></p>
+<p>In FPN, we generate a pyramid of feature maps. We apply the RPN (described in the previous section) to generate ROIs. Based on the size of the ROI, we select the feature map layer in the most proper scale to extract the feature patches.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1200/1*Wvn0WG4XZ0w9Ed2fFYPrXw.jpeg" alt="frcnn_fpn_dataflow"></p>
+<p>The formula to pick the feature maps is based on the width w and height h of the ROI.</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*HjxtbT3QNpd_W2QU28P_XA.png" alt="pick_featuremap1"></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*tRxF2ibR7WZjrD0-xaWymw.png" alt="pick_featuremap2"></p>
+<p>So if k = 3, we select P3 as our feature maps. We apply the ROI pooling and feed the result to the Fast R-CNN head (Fast R-CNN and Faster R-CNN have the same head) to finish the prediction.</p>
+<h3 id="框架设计中元素的作用"><a href="#框架设计中元素的作用" class="headerlink" title="框架设计中元素的作用"></a>框架设计中元素的作用</h3><p>top-down enrichment发挥了什么作用？</p>
+<blockquote>
+<p>We conjecture that this is because there are large semantic gaps between different levels on the bottom-up pyramid .<br>The top-down pyramid has strong semantic features and fine resolutions.</p>
+</blockquote>
+<p>lateral connections发挥了什么作用？</p>
+<blockquote>
+<p> This top-down pyramid has strong semantic features and fine resolutions. But we argue that the locations of these features are not precise, because these maps have been downsampled and upsampled several times. <strong>More precise locations of features can be directly passed from the finer levels</strong> of the bottom-up maps via the lateral connections to the top-down maps.</p>
+</blockquote>
+<p>金字塔的表现方式有多重要？</p>
+<blockquote>
+<p>pyramid levels can increase its robustness to scale variance.</p>
+</blockquote>
+<h3 id="其他人的解读"><a href="#其他人的解读" class="headerlink" title="其他人的解读"></a>其他人的解读</h3><p><a href="https://medium.com/@jonathan_hui/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c" target="_blank" rel="external">https://medium.com/@jonathan_hui/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c</a></p>
+<h2 id="Focal-Loss"><a href="#Focal-Loss" class="headerlink" title="Focal Loss"></a>Focal Loss</h2><p><a href="https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de" target="_blank" rel="external">https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de</a></p>
+<p><a href="https://github.com/fg91/fastai/blob/master/Single%20shot%20detection%20%28SSD%29%20and%20Focal%20loss.ipynb" target="_blank" rel="external">https://github.com/fg91/fastai/blob/master/Single%20shot%20detection%20%28SSD%29%20and%20Focal%20loss.ipynb</a></p>
+<p><a href="https://github.com/fastai/fastai/blob/master/courses/dl2/pascal-multi.ipynb" target="_blank" rel="external">https://github.com/fastai/fastai/blob/master/courses/dl2/pascal-multi.ipynb</a></p>
+<p><a href="https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9" target="_blank" rel="external">https://medium.com/@sshleifer/how-to-finetune-tensorflows-object-detection-models-on-kitti-self-driving-dataset-c8fcfe3258e9</a></p>
+
 
                 
             </div>
@@ -202,7 +297,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
     <hr />
-    <h3>Kommentare:</h3>
+    <h3>Comments:</h3>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
