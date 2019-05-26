@@ -10,9 +10,18 @@
 
     <!--Description-->
     
-        <meta name="description" content="数组/字符串-子序列775. Global and Local Inversions
-local inversions相对来说好统计
-global inversions是跨位置的关系，该怎么统计？？？">
+        <meta name="description" content="数组/字符串-子序列特点：
+
+要保持相对顺序
+不一定相邻
+
+难点：
+
+不确定序列从哪里开始 ( 后缀思考，固定起点， 向后遍历所有 )
+不确定元素之间的间隔 ( 用题目性质来确定 )
+不确定序列在哪里结束 ( 前缀思考，固定终点， 向前遍历所有 )
+
+所以就只能以遍历到当前状态来考虑,多用DP来解决">
     
 
     <!--Author-->
@@ -194,9 +203,91 @@ global inversions是跨位置的关系，该怎么统计？？？">
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="数组-字符串-子序列"><a href="#数组-字符串-子序列" class="headerlink" title="数组/字符串-子序列"></a>数组/字符串-子序列</h1><p><a href="https://leetcode.com/problems/global-and-local-inversions/" target="_blank" rel="external">775. Global and Local Inversions</a></p>
-<p>local inversions相对来说好统计</p>
-<p>global inversions是跨位置的关系，该怎么统计？？？</p>
+                <h1 id="数组-字符串-子序列"><a href="#数组-字符串-子序列" class="headerlink" title="数组/字符串-子序列"></a>数组/字符串-子序列</h1><p>特点：</p>
+<ol>
+<li>要保持相对顺序</li>
+<li>不一定相邻</li>
+</ol>
+<p>难点：</p>
+<ul>
+<li>不确定序列从哪里开始 ( 后缀思考，固定起点， 向后遍历所有 )</li>
+<li>不确定元素之间的间隔 ( 用题目性质来确定 )</li>
+<li>不确定序列在哪里结束 ( 前缀思考，固定终点， 向前遍历所有 )</li>
+</ul>
+<p>所以就只能以遍历到当前状态来考虑,多用DP来解决</p>
+<p>需要考虑的问题:</p>
+<ul>
+<li>在跨元素的情况下怎么保持关系？( 用题目性质来保持 )</li>
+</ul>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="满足某种性质的子序列"><a href="#满足某种性质的子序列" class="headerlink" title="满足某种性质的子序列"></a>满足某种性质的子序列</h3><p>这些性质将子序列的元素连接起来，在定义子问题的时候需要考虑组成这些性质的要素。</p>
+<p><a href="https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/" target="_blank" rel="external">873. Length of Longest Fibonacci Subsequence</a></p>
+<p><strong>初始思路：</strong></p>
+<p><code>dp[i]</code>: 以i为结尾的最长Fibonacci子序列个数</p>
+<p>在跨元素的情况下怎么保持关系？</p>
+<p><code>dp[i]</code>和<code>dp[i-1]</code>之间的关系？</p>
+<p><strong>思路纠正：</strong></p>
+<blockquote>
+<p><code>dp[i]</code>: 以i为结尾的最长Fibonacci子序列个数</p>
+</blockquote>
+<p>这道题虽然是一个数组的问题，但是只考虑以<strong>i</strong>结尾的情况还不足以定义一个Fib序列。Fib序列至少需要两个元素才能构成，所以将子问题定义成以(i,j)结尾的情况。</p>
+<p><strong>子问题定义</strong>：<code>dp[i][j]</code>以<strong>i,j</strong>结尾的Fib子序列的最长的长度 (前缀思考方式)</p>
+<blockquote>
+<p>在跨元素的情况下怎么保持关系？</p>
+</blockquote>
+<p><strong>子问题之间的联系</strong>: 根据Fib序列的定义，用<code>A[j]-A[i]</code>将另一个构成Fib序列的<code>X</code>找出来。但不确定这个<code>X</code>是否在原数组中，</p>
+<ul>
+<li>如果原数组中存在<code>X</code>，而且它的下标<strong>k</strong>在<strong>i</strong>之前 <code>and</code> <strong>k</strong>没有越界(<code>k&gt;=0</code>)，那么(i,j)Fib序列就向前扩展到了k，增加了一个长度</li>
+<li>如果它不在，那么(i,j)构成的Fib序列只能是2</li>
+</ul>
+<p>为了便于查询下标<code>k</code>，需要用一个map来保存Value-&gt;Key的映射。</p>
+<blockquote>
+<p>怎么保证不漏掉序列？</p>
+</blockquote>
+<p><code>j</code>每往后走一次，为了不漏掉每一个扩充序列的可能，都要用<code>i</code>向前遍历一遍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for j : 0 -&gt; n-1</div><div class="line">    for i : j-1 -&gt; 0</div></pre></td></tr></table></figure>
+<p><strong>代码实现</strong>:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lenLongestFibSubseq</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> n = A.size();</div><div class="line">        </div><div class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m; </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) m[A[i]] = i;</div><div class="line">        </div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">2</span>)); <span class="comment">// corner case: 2</span></div><div class="line">        </div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++) </div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = j<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) </div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> k = A[j]-A[i];</div><div class="line">                <span class="keyword">if</span> (m.find(k) != m.end() &amp;&amp; k &lt; i)</div><div class="line">    				dp[i][j] = max(dp[i][j], dp[k][i] + <span class="number">1</span>); <span class="comment">// dp[k][i] + 1 extend to A[k] </span></div><div class="line">                res = max(res, dp[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    	</div><div class="line">    	</div><div class="line">    	<span class="keyword">return</span> res &gt; <span class="number">2</span> ? res : <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>最后的结果在哪里？</p>
+</blockquote>
+<p>虽然<code>dp[i][j]</code>记录所有可能Fib序列长度，但结果不一定就是<code>dp[n-2][n-1]</code>，而应该是<code>dp</code>数组中最大的数: <code>max(dp)</code></p>
+<hr>
+<p><a href="https://leetcode.com/problems/longest-arithmetic-sequence/" target="_blank" rel="external">1027. Longest Arithmetic Sequence</a></p>
+<p><strong>初始思路：</strong></p>
+<p><code>dp[i]</code>: 以i为结尾的最长Arithmetic子序列个数</p>
+<p>在跨元素的情况下怎么保持关系？</p>
+<p>前缀</p>
+<p>dp[i]和dp[i-1]之间的关系？</p>
+<p><strong>思路纠正</strong>：</p>
+<p><strong>子问题定义:</strong> </p>
+<p>构成等差数列的要素有：一个元素<em>a</em>和公差<em>d</em></p>
+<p>需要记录以A[i]结尾的<em>所有可能的公差</em>的等差数列,<em>最长的</em>的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map&lt;int, map&lt;int, int&gt; &gt; dp</div></pre></td></tr></table></figure>
+<p><code>dp</code>中第一个<code>int</code>表示以A[i]结尾中的<code>i</code>,然后这些序列中的公差<em>d</em>是不确定的，因为任何前后两个元素都可以形成一个潜在的等差数列，嵌套的<code>map&lt;int, int&gt;</code>中第一个<code>int</code>表示公差<em>d</em>，第二个<code>int</code>表示最多到下标<code>i</code>形成的等差数列的最长的长度。</p>
+<blockquote>
+<p>在跨元素的情况下怎么保持关系？</p>
+</blockquote>
+<p><strong>子问题之间的联系:</strong></p>
+<p>当考察到下标为<code>i</code>的元素时，需要遍历<code>i</code>之前的<strong>每一个元素</strong><code>j</code>。因为<code>j</code>之前的<strong>每一个元素<code>A[j]</code>都有可能</strong>与<code>A[i]</code>形成等差数列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for i: 0 -&gt; n-1</div><div class="line">    for j: i-1 -&gt; 0</div></pre></td></tr></table></figure>
+<p>根据等差数列的定义，求出<code>A[i] - A[j]</code>的公差<code>d</code>，然后查看到<code>j</code>为止，公差为<code>d</code>的等差数列的个数</p>
+<ul>
+<li>如果之前有值，那么因为<code>A[i]</code>的存在，扩展了这个等差数列，所以长度加1</li>
+<li>如果之前没有值，那么<code>A[j] A[i]</code>是第一个以<code>d</code>为公差的等差数列，<code>A[j][d] = 2</code></li>
+</ul>
+<p>选最大的<code>A[i][j]</code>,继续下一个<code>i</code></p>
+<blockquote>
+<p>最后的结果在哪里？</p>
+</blockquote>
+<p><code>dp</code>最大元素是最终的结果，因为以最后一个元素截止的等差数列不一定最长</p>
+<hr>
+<p><a href="https://leetcode.com/problems/wiggle-subsequence/" target="_blank" rel="external">376. Wiggle Subsequence</a> (未完待续)</p>
+<p><strong>dual status</strong> 两个dp状态</p>
+<p>dp[i]: 以i为结尾的最长wiggle子序列个数</p>
+<p>在跨元素的情况下怎么保持关系？</p>
+<p>递推关系？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[1  7  4   9  2  5]</div><div class="line">[0  1 -1   1 -1  1]</div></pre></td></tr></table></figure>
+<p>需要一个变量来保存之前的大小关系吗? 需要</p>
 
 
                 
@@ -207,7 +298,7 @@ global inversions是跨位置的关系，该怎么统计？？？">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
     <hr />
-    <h3>Comments:</h3>
+    <h3>Kommentare:</h3>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>

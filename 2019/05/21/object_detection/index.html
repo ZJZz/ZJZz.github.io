@@ -200,7 +200,12 @@ Each object in traing image is assigned t">
 <p>预先定义两个不同形状的Box,然后把预测结果和这两个box联系起来，在预测结果向量中一通输出</p>
 <p><em>Each object in traing image is assigned to grid cell thant contains that object’s midpoint and anchor box for the grid cell with highest IoU</em></p>
 <p>(grid cell, anchor box )</p>
-<h2 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h2><h2 id="Feature-Pyramid-Networks"><a href="#Feature-Pyramid-Networks" class="headerlink" title="Feature Pyramid Networks"></a>Feature Pyramid Networks</h2><p><strong>FPN is not an object detector by itself. It is a feature detector that works with object detectors.</strong></p>
+<h2 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h2><h3 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h3><p><a href="https://blog.csdn.net/lanran2/article/details/60143861" target="_blank" rel="external">https://blog.csdn.net/lanran2/article/details/60143861</a></p>
+<h3 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h3><h4 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h4><p>RPN是什么？</p>
+<blockquote>
+<p>An RPN is a fully-convolutional network that simultaneously predicts object bounds and objectness scores at each position.<br> RPN share convolutional layers with state-of-the-art object detection networks. By sharing convolutions at test-time, the marginal cost for computing proposals is small.</p>
+</blockquote>
+<h2 id="Feature-Pyramid-Networks"><a href="#Feature-Pyramid-Networks" class="headerlink" title="Feature Pyramid Networks"></a>Feature Pyramid Networks</h2><p><strong>FPN is not an object detector by itself. It is a feature detector that works with object detectors.</strong></p>
 <p>ConvNet为什么比传统的视觉方法好？</p>
 <blockquote>
 <p>ConvNets being capable of representing higher-level semantics, robust to variance in scale.</p>
@@ -283,6 +288,10 @@ Each object in traing image is assigned t">
 <p>pyramid levels can increase its robustness to scale variance.</p>
 </blockquote>
 <h3 id="其他人的解读"><a href="#其他人的解读" class="headerlink" title="其他人的解读"></a>其他人的解读</h3><p><a href="https://medium.com/@jonathan_hui/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c" target="_blank" rel="external">https://medium.com/@jonathan_hui/understanding-feature-pyramid-networks-for-object-detection-fpn-45b227b9106c</a></p>
+<h4 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h4><ul>
+<li>ROI Align</li>
+</ul>
+<p><a href="https://www.quora.com/How-does-ROTAlign-work-in-Mask-RCNN" target="_blank" rel="external">https://www.quora.com/How-does-ROTAlign-work-in-Mask-RCNN</a></p>
 <h2 id="Focal-Loss"><a href="#Focal-Loss" class="headerlink" title="Focal Loss"></a>Focal Loss</h2><p><a href="https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de" target="_blank" rel="external">https://towardsdatascience.com/retinanet-how-focal-loss-fixes-single-shot-detection-cb320e3bb0de</a></p>
 <p><a href="https://github.com/fg91/fastai/blob/master/Single%20shot%20detection%20%28SSD%29%20and%20Focal%20loss.ipynb" target="_blank" rel="external">https://github.com/fg91/fastai/blob/master/Single%20shot%20detection%20%28SSD%29%20and%20Focal%20loss.ipynb</a></p>
 <p><a href="https://github.com/fastai/fastai/blob/master/courses/dl2/pascal-multi.ipynb" target="_blank" rel="external">https://github.com/fastai/fastai/blob/master/courses/dl2/pascal-multi.ipynb</a></p>
@@ -297,7 +306,7 @@ Each object in traing image is assigned t">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
     <hr />
-    <h3>Comments:</h3>
+    <h3>Kommentare:</h3>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
