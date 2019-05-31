@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="数组-划分难点：
+
+需要对每个划分点遍历所有位置
+划分点之间相互关联，动了一个另一个可能就不满足
+
+常见划分依据:
+
+大小关系(有序)
+部分和
+
+题目1013. Partition Array Into Three Parts With Equal Sum
+ 找两个下标i,j(inclusive) ">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="数组-划分"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>数组-划分 - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>数组-划分</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-29
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Coding-Data-View/">#Coding-Data View</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="数组-划分"><a href="#数组-划分" class="headerlink" title="数组-划分"></a>数组-划分</h1><p>难点：</p>
+<ul>
+<li>需要对每个划分点遍历所有位置</li>
+<li>划分点之间相互关联，动了一个另一个可能就不满足</li>
+</ul>
+<p>常见划分依据:</p>
+<ul>
+<li>大小关系(有序)</li>
+<li>部分和</li>
+</ul>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/" target="_blank" rel="external">1013. Partition Array Into Three Parts With Equal Sum</a></p>
+<p> 找两个下标<code>i</code>,<code>j</code>(inclusive) 使得:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subarray_sum[0, i] = subarray_sum[i+1, j] = subarray_sum[j+1, n-1]</div></pre></td></tr></table></figure>
+<p>为了避免下标移动后重新计算子数组和，我想到了滑动窗口</p>
+<p>因为题目要求每个划分部分非空，所以<code>i</code>最小从<code>1</code>开始，最大到<code>n-3</code>。<code>j</code>最大从<code>n-2</code>开始，最小到<code>2</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">i: 1 -&gt; n-3</div><div class="line">    j: n-2 -&gt; 2</div></pre></td></tr></table></figure>
+<p> 这样就是O( n^2 )的时间复杂度</p>
+<p> 想复杂了！</p>
+<hr>
+<p> <a href="https://leetcode.com/problems/split-array-with-equal-sum/" target="_blank" rel="external">548. Split Array with Equal Sum</a></p>
+<p> 找三个下标<code>i</code>,<code>j</code>,<code>k</code>(exclusive)使得：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">subarray_sum[0, i-1] = subarray_sum[i+1, j-1] = subarray_sum[j+1, k-1] = subarray_sum[k-1, n-1]</div></pre></td></tr></table></figure>
+<p> 蛮力办法:</p>
+<p> 对每个可能<code>i</code>,<code>j</code>,<code>k</code>遍历。固定一个，再移动另一个。时间会到 O( n^3 )</p>
+<p> O( n^2 )的办法：</p>
+<p> 固定<code>j</code>,两边分别确定<code>i</code>,<code>k</code></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">splitArray</span><span class="params">(self, nums)</span>:</span></div><div class="line">       n = len(nums)</div><div class="line">       s = [<span class="number">0</span>] * (n + <span class="number">1</span>)</div><div class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> range(n): s[i + <span class="number">1</span>] = s[i] + nums[i]</div><div class="line">       <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(l, r)</span>:</span></div><div class="line">           <span class="keyword">return</span> set(s[m] - s[l] <span class="keyword">for</span> m <span class="keyword">in</span> range(l + <span class="number">1</span>, r + <span class="number">1</span>) <span class="keyword">if</span> s[m] - s[l] == s[r + <span class="number">1</span>] - s[m + <span class="number">1</span>])</div><div class="line">       <span class="keyword">return</span> any(check(<span class="number">0</span>, j - <span class="number">1</span>) &amp; check(j + <span class="number">1</span>, n - <span class="number">1</span>) <span class="keyword">for</span> j <span class="keyword">in</span> range(n))</div></pre></td></tr></table></figure>
+<hr>
+<p> <a href="https://leetcode.com/problems/max-chunks-to-make-sorted/" target="_blank" rel="external">769. Max Chunks To Make Sorted</a></p>
+<p>无序数组是<code>[0, 1, ..., arr.length - 1]</code>的<strong>一个排列</strong>，该怎么利用这个条件？</p>
+<p>也就是说每个数字都有固定的位置，如果不在那个位置上就说明至少有两个元素的位置是错乱的。</p>
+<p>转载: <a href="https://leetcode.com/problems/max-chunks-to-make-sorted/discuss/291167/C%2B%2B-O(n" target="_blank" rel="external">C++ 复杂度O(n)方法详解 双100%</a>-100)</p>
+<p><strong>思路</strong></p>
+<p>由于题目规定了数组是数<code>[0, N - 1]</code>的排列，所以最终排好序后，数组下标为<code>i</code>的数一定是<code>i</code>，即<code>arr[i] == i</code>。那么在初始数组中，<strong>如果<code>arr[i] != i</code>，为了让<code>arr[i]</code>回到对应的下标上，我们必须将<em>下标</em><code>i</code>和<em>下标</em><code>arr[i]</code>放到同一个分组中</strong>。</p>
+<p>具体地，例如<code>[1, 2, 0, 3, 4]</code>，从左往右遍历数组，分组数初始化<code>res = 0</code>：</p>
+<p>Step 1. 下标<code>0</code>上的数是<strong>1</strong>，<strong>1</strong>要位于下标<code>1</code>的位置上， 所以当前分组包含的下标最大值应为<code>1</code>，而当前下标为<code>0</code>，所以当前无法分组，<code>res = 0</code>；</p>
+<p>Step 2. 下标<code>1</code>上的数是<strong>2</strong>，<strong>2</strong>要位于下标<code>2</code>的位置上，所以当前分组包含的下标最大值应为<code>2</code>，而当前下标为<code>1</code>，所以当前无法分组，<code>res = 0</code>；</p>
+<p>Step 3. 下标<code>2</code>上的数是<strong>0</strong>，<strong>0</strong>要位于下标<code>0</code>的位置上，所以当前分组包含的下标最大值仍应为<code>2</code>，当前下标也为<code>2</code>，说明此位置<strong>之前</strong>的数中不包含比<strong>2</strong>大的数，可以在当前位置分组，<code>res = 1</code>；</p>
+<p>Step 4. 下标<code>3</code>上的数是<strong>3</strong>，<strong>3</strong>已经位于下标<code>3</code>的位置上，所以当前分组包含的下标最大值应为<code>3</code>，当前下标也为<code>3</code>，说明此位置<strong>之前</strong>的数中不包含比<strong>3</strong>大的数，可以在当前位置分组，<code>res = 2</code>；</p>
+<p>Step 5. 下标<code>4</code>上的数是<strong>4</strong>，<strong>4</strong>已经位于下标<code>4</code>的位置上，所以当前分组包含的下标最大值应为<code>4</code>，当前下标也为<code>4</code>，说明此位置<strong>之前</strong>的数中不包含比<strong>4</strong>大的数，可以在当前位置分组，<code>res = 3</code>；</p>
+<hr>
+<p><a href="https://leetcode.com/problems/max-chunks-to-make-sorted-ii/" target="_blank" rel="external">768. Max Chunks To Make Sorted II</a></p>
+<p>这里数组不再是<code>[0, 1, ..., arr.length - 1]</code>的一个排列，而且包含重复元素。</p>
+<p>按照<a href="https://leetcode.com/problems/max-chunks-to-make-sorted/" target="_blank" rel="external">769. Max Chunks To Make Sorted</a>的思路，应该是找到当前分组的一个最大值，769中的最大值确定的方式是通过下标index和当前的最大值<code>curMax</code>相等来确定的(<code>i == curMax</code>)</p>
+<p>这里改如何界定分组呢？</p>
+<p>可以确定的是下标应该不能再作为一个参照</p>
+<p>转载: <a href="https://leetcode.com/problems/max-chunks-to-make-sorted-ii/discuss/298511/Java-Solution-beats-99.9-with-detailed-example-and-explanation" target="_blank" rel="external">Java Solution beats 99.9% with detailed example and explanation</a></p>
+<blockquote>
+<p>Problem Invariant: For an element, <strong>if all the numbers to its left are smaller or equal to all the numbers to its right</strong>, we can always insert a split point between the element and its next element which separate the array into two parts and after we sort the two parts individually, the concatenation of them will be a sorted array.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">i:       0  1   2   3  4</div><div class="line">arr[i]   2  1 | 3   4  4</div><div class="line">maxLeft  2 &apos;2&apos;  3   4  4</div><div class="line">minRight 1  1  &apos;3&apos;  4  4</div></pre></td></tr></table></figure>
+<blockquote>
+<p>when <strong>i</strong> = 1, <code>maxLeft[i] &lt;= minRight[i + 1]</code> (<code>maxLeft[i]</code> includes the <strong>i</strong>-th number itself but <code>minRight[i +1]</code> only counts the numbers to its right), then we can insert a split point between index 1 and 2.</p>
+</blockquote>
+<hr>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+</body>
+
+</html>

@@ -293,7 +293,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">increasingTriplet</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k = <span class="number">3</span>)</span> </span>&#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inc(k - <span class="number">1</span>, INT_MAX);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</div><div class="line">        <span class="keyword">auto</span> p = lower_bound(inc.begin(), inc.end(), i);</div><div class="line">        <span class="keyword">if</span> (p == inc.end())</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        *p = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// https://leetcode.com/problems/increasing-triplet-subsequence/discuss/78997/Generalization-in-Python</span></div></pre></td></tr></table></figure>
 <hr>
 <p><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="external">300. Longest Increasing Subsequence</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> n : nums)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">auto</span> iter = lower_bound(begin(dp), end(dp), n);</div><div class="line">    <span class="keyword">if</span> (iter == end(dp))</div><div class="line">    &#123;</div><div class="line">        dp.push_back(n);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (*iter &gt; n)</div><div class="line">        *iter = n;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> dp.size();</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> n : nums)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">auto</span> iter = lower_bound(begin(dp), end(dp), n);</div><div class="line">    <span class="keyword">if</span> (iter == end(dp))</div><div class="line">    &#123;</div><div class="line">        dp.push_back(n);</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (*iter &gt; n)</div><div class="line">        *iter = n;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> dp.size();</div><div class="line"></div><div class="line"><span class="comment">// https://leetcode.com/problems/increasing-triplet-subsequence/discuss/79053/My-way-to-approach-such-a-problem.-How-to-think-about-it-Explanation-of-my-think-flow.</span></div></pre></td></tr></table></figure>
 <p>T: <em>O(NlogN)</em><br>S: <em>O(N)</em></p>
 <hr>
 <p><a href="https://leetcode.com/problems/wiggle-subsequence/" target="_blank" rel="external">376. Wiggle Subsequence</a> (未完待续)</p>
@@ -313,7 +313,7 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
     <hr />
-    <h3>Kommentare:</h3>
+    <h3>Comments:</h3>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
@@ -388,42 +388,10 @@
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
 </body>
 
 </html>

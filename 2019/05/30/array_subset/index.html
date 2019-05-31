@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="数组-选择子集常见类型
+
+不固定个数，所有满足要求的子集 (常用回溯法)
+固定个数，但是要求满足某种性质
+
+难点：
+
+当选定一个元素后，另一个并没有明确的顺序
+
+不固定个数固定个数2元组蛮力方法时间是O( n^2 )
+
+561. Array Partition I
+问题转换为下面的形式:
+
+max(">
+    
+
+    <!--Author-->
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="数组-选择子集"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ZJZz&#39;s Garage"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>数组-选择子集 - ZJZz&#39;s Garage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Hello</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>数组-选择子集</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-30
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Coding-Data-View/">#Coding-Data View</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="数组-选择子集"><a href="#数组-选择子集" class="headerlink" title="数组-选择子集"></a>数组-选择子集</h1><p>常见类型</p>
+<ul>
+<li>不固定个数，所有满足要求的子集 (常用回溯法)</li>
+<li>固定个数，但是要求满足某种性质</li>
+</ul>
+<p>难点：</p>
+<ul>
+<li>当选定一个元素后，另一个并没有明确的顺序</li>
+</ul>
+<h2 id="不固定个数"><a href="#不固定个数" class="headerlink" title="不固定个数"></a>不固定个数</h2><h2 id="固定个数"><a href="#固定个数" class="headerlink" title="固定个数"></a>固定个数</h2><h3 id="2元组"><a href="#2元组" class="headerlink" title="2元组"></a>2元组</h3><p>蛮力方法时间是O( n^2 )</p>
+<hr>
+<p><a href="https://leetcode.com/problems/array-partition-i/" target="_blank" rel="external">561. Array Partition I</a></p>
+<p>问题转换为下面的形式:</p>
+<script type="math/tex; mode=display">
+max(\sum_{i=0}^n min(a_i, b_i) )</script><p>如何在O(n)时间内求出？</p>
+<p>以另一种方式解读$ min(a_i, b_i) $， 可以理解为在$ a_i$,$b_i$中我们选择了较小的那一个，同时整个数组的和承受了$ |a_i - b_i| $的损失。</p>
+<p>而这个问题就是在让这种损失最小。</p>
+<hr>
+<p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="external">167. Two Sum II - Input array is sorted</a></p>
+<p>有序数组中的2Sum，有序改怎么利用？</p>
+<p>可以用一个数组元素值到下标的map,<code>map[A[i]] = i</code>,当遍历到某个元素时，寻找目标值减去它的元素。（没有利用有序这一条件）</p>
+<blockquote>
+<p>We use two indexes, initially pointing to the first and last element respectively. Compare the sum of these two elements with target. If the sum is equal to target, we found the exactly only solution. If it is less than target, we increase the smaller index by one. If it is greater than target, we decrease the larger index by one. Move the indexes and repeat the comparison until the solution is found. - Official Solution</p>
+</blockquote>
+<hr>
+<p><a href="https://leetcode.com/problems/k-diff-pairs-in-an-array/" target="_blank" rel="external">532. K-diff Pairs in an Array</a></p>
+<p>怎么不重复计算<code>(i,j)</code>和<code>(j,i)</code>？-&gt; 排序</p>
+<hr>
+<p><a href="https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/" target="_blank" rel="external">1010. Pairs of Songs With Total Durations Divisible by 60</a></p>
+<p>把数组中的每个元素都对60取模后，就变成了2Sum的问题，目标和为60或0。</p>
+<p>为了让0的余数也能统一处理，<code>(60 - t % 60) % 60</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1 -&gt; 59</div><div class="line">2 -&gt; 58</div><div class="line">...</div><div class="line">0 -&gt; 0</div></pre></td></tr></table></figure>
+<p>这里还需要注意一点的是这里不忽略重复元素，比如:<code>[60,60,60]</code>的结果为<code>3</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> t:time)</div><div class="line">&#123;</div><div class="line">    res += c[ (<span class="number">60</span> - t % <span class="number">60</span>) % <span class="number">60</span> ];</div><div class="line">    c[t % <span class="number">60</span>] += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>数组<code>c</code>中记录了过去遇见过的key的个数，每当遇见一个<code>t</code>，查看之前和它互余数的个数，如果个数不为0，那么就可以和之前所有的数都能构成符合要求的pair。</p>
+<hr>
+<p><a href="https://leetcode.com/problems/best-sightseeing-pair/" target="_blank" rel="external">1014. Best Sightseeing Pair</a></p>
+<p>寻找<code>i</code>,<code>j</code>使得<code>A[i] + A[j] + i - j</code>最大  </p>
+<p>涉及<code>A[i]</code>,<code>A[j]</code>,<code>i</code>,<code>j</code>四个元素</p>
+<blockquote>
+<p>Can you tell the best sightseeing spot in one pass (ie. as you iterate over the input?) What should we store or keep track of as we iterate to do this?</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// res原来最好的结果 cur过去遇见过最好的分数</span></div><div class="line">res = max(res, cur + a);</div><div class="line">            </div><div class="line"><span class="comment">// cur当前最好的值</span></div><div class="line">cur = max(cur, a) - <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<h3 id="3元组"><a href="#3元组" class="headerlink" title="3元组"></a>3元组</h3><p>蛮力方法时间是 O( n^3 )</p>
+<p>在哪里可以节约时间？-&gt; 排序。因为数组有序后使得2-Sum的搜索过程更有目的性。</p>
+<p>K-Sum的问题可以转化为2-Sum问题，复杂度与K有关，一般时间复杂度为O( n^k-1 )。</p>
+<p>比如在3-Sum问题中，要想找到符合要求的<code>(i,j,k)</code>，需要先固定一个元素，比如<code>i</code>，那么问题就转化为了目标为<code>target-A[i]</code>的2-Sum问题，而2-Sum可以在O( n )时间内解决，所以3-Sum可以在O( n^2 )时间内解决。</p>
+<hr>
+<p><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="external">15. 3Sum</a></p>
+<hr>
+<p><a href="https://leetcode.com/problems/3sum-smaller/" target="_blank" rel="external">259. 3Sum Smaller</a></p>
+<hr>
+<p><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="external">16. 3Sum Closest</a></p>
+<hr>
+<p><a href="https://leetcode.com/problems/valid-triangle-number/" target="_blank" rel="external">611. Valid Triangle Number</a></p>
+<p><a href="https://leetcode.com/problems/valid-triangle-number/discuss/128135/A-similar-O(n2" target="_blank" rel="external">A similar O( n^2 ) solution to 3-Sum </a>-solution-to-3-Sum)</p>
+<blockquote>
+<p>For this problem, once we sort the input array <code>nums</code>, the key to solve the problem is that given <code>nums[k]</code>, count the combination of <code>i</code> and <code>j</code> where <code>nums[i] + nums[j] &gt; nums[k]</code> (so that they can form a triangle).</p>
+</blockquote>
+<p>把3-Sum中<code>if</code>条件换一下，就可以应用在这个题中。</p>
+<blockquote>
+<p>If <code>nums[i] + nums[j]</code> is larger than <code>nums[k]</code>, we know that there will be <code>j - i</code> combination.</p>
+</blockquote>
+<p>注意这里计算个数的时候没有<code>+1</code>，来具体看一下计算的过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> i                  j   k</div><div class="line">[3, 19, 22, 24, 35, 82, 84]</div></pre></td></tr></table></figure>
+<p>因为<code>3 + 82 &gt; 84</code>并且所有3和82之间的数(不包括82)都是大于等于3的，所以有<code>j-i</code>种组合可以形成三角形，它们分别是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">3,  82, 84</div><div class="line">19, 82, 84</div><div class="line">22, 82, 84</div><div class="line">24, 82, 84</div><div class="line">35, 82, 84</div></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://leetcode.com/problems/maximum-product-of-three-numbers/" target="_blank" rel="external">628. Maximum Product of Three Numbers</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res = max( (biggest1 * biggest2 * biggest3), (smallest1 * smallest2 * biggest1) )</div></pre></td></tr></table></figure>
+<h3 id="4元组"><a href="#4元组" class="headerlink" title="4元组"></a>4元组</h3><p><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="external">18. 4Sum</a></p>
+<p><a href="https://leetcode.com/problems/4sum/discuss/8545/Python-140ms-beats-100-and-works-for-N-sum-(Ngreater2" target="_blank" rel="external">Python 140ms beats 100%, and works for N-sum (N&gt;=2)</a>)</p>
+<hr>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 ZJZz&#39;s Garage<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Powered by <a target="_blank" href="https://hexo.io/">Hexo</a> </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'zjz';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+
+</html>

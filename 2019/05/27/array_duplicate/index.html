@@ -10,10 +10,11 @@
 
     <!--Description-->
     
-        <meta name="description" content="数组-循环数组那么碰到循环数组的问题，无外乎三个套路。
+        <meta name="description" content="数组-重复的元素有多个重复元素1234dups([1, 2, 3])    = []dups([1, 2, 2])    = [2]dups([3, 3, 3])    = [3]dups([2, 1, 2, 1]) = [1, 2]
+注意的问题：
 
-拆分（HOUSE ROBBER那道，循环道路时用的是这个技巧）
-倍增（就是在原数组后补到2倍长度，在2倍长数组的里处理，那么原本的N长的数组，我们可以变成N个新的长度为N的数组）0-&amp;gt;N-1， 1- &amp;gt;N， 2- &amp;gt;N+1 ">
+结果是否要求有序?
+结果本身是否可以包含重复元素">
     
 
     <!--Author-->
@@ -21,7 +22,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="数组-循环数组"/>
+        <meta property="og:title" content="数组-重复的元素"/>
     
 
     <!--Open Graph Description-->
@@ -43,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>数组-循环数组 - ZJZz&#39;s Garage</title>
+    <title>数组-重复的元素 - ZJZz&#39;s Garage</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -153,13 +154,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>数组-循环数组</h1>
+                    <h1>数组-重复的元素</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2019-05-23
+                            2019-05-27
                         
                     </span>
                 </div>
@@ -195,20 +196,59 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="数组-循环数组"><a href="#数组-循环数组" class="headerlink" title="数组-循环数组"></a>数组-循环数组</h1><p>那么碰到循环数组的问题，无外乎三个套路。</p>
+                <h1 id="数组-重复的元素"><a href="#数组-重复的元素" class="headerlink" title="数组-重复的元素"></a>数组-重复的元素</h1><h2 id="有多个重复元素"><a href="#有多个重复元素" class="headerlink" title="有多个重复元素"></a>有多个重复元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dups([1, 2, 3])    = []</div><div class="line">dups([1, 2, 2])    = [2]</div><div class="line">dups([3, 3, 3])    = [3]</div><div class="line">dups([2, 1, 2, 1]) = [1, 2]</div></pre></td></tr></table></figure>
+<p>注意的问题：</p>
 <ol>
-<li>拆分（HOUSE ROBBER那道，循环道路时用的是这个技巧）</li>
-<li>倍增（就是在原数组后补到2倍长度，在2倍长数组的里处理，那么原本的N长的数组，我们可以变成N个新的长度为N的数组）<br>0-&gt;N-1， 1- &gt;N， 2- &gt;N+1 …..    N-1 -&gt; 2*n-2<br>分别对每种循环的可能做处理，最后汇总得到解，这题可以运用这个策略，但是时间复杂度为N^2</li>
-<li>取反（求最大，变成求最小）</li>
+<li>结果是否要求有序?</li>
+<li>结果本身是否可以包含重复元素?</li>
 </ol>
-<p><a href="https://www.jianshu.com/p/e09a051f5420" target="_blank" rel="external">西部小笼包</a></p>
-<p><a href="https://leetcode.com/problems/maximum-sum-circular-subarray/" target="_blank" rel="external">918. Maximum Sum Circular Subarray</a></p>
+<p>思路：</p>
 <ol>
-<li><p>Find Minimum in Rotated Sorted Array</p>
-</li>
-<li><p>Search in Rotated Sorted Array</p>
-</li>
+<li>蛮力</li>
+<li>set - O(N) - time O(N) - space </li>
+<li>Sort - O(NlogN)   </li>
 </ol>
+<p>未挖掘信息:  1 &lt;= x &lt;= len(array) </p>
+<p>0 &lt;= x-1 &lt;= len(array)-1 可作为下标</p>
+<p>Encoding</p>
+<h2 id="检查是否有重复元素"><a href="#检查是否有重复元素" class="headerlink" title="检查是否有重复元素"></a>检查是否有重复元素</h2><p><a href="https://leetcode.com/problems/contains-duplicate/" target="_blank" rel="external">217. Contains Duplicate</a></p>
+<p><code>nums[i] = nums[j] ?</code></p>
+<p>用正负</p>
+<hr>
+<p><a href="https://leetcode.com/problems/contains-duplicate-ii/" target="_blank" rel="external">219. Contains Duplicate II</a></p>
+<p><code>nums[i] = nums[j] &amp;&amp; abs(i-j) &lt;= k</code></p>
+<p>下标之间满足某种性质时,可考虑用滑动窗口</p>
+<hr>
+<p><a href="https://leetcode.com/problems/contains-duplicate-iii/" target="_blank" rel="external">220. Contains Duplicate III</a></p>
+<p><code>abs(nums[i] - nums[j]) &lt;= t  &amp;&amp; abs(i-j) &lt;= k</code></p>
+<p>要比较离<code>nums[i]</code><strong>最近</strong>的数nums[j]的差值最多为<code>t</code>，可能大于<code>nums[i]</code>,也可能小于<code>nums[i]</code>,就需要用到BST。</p>
+<p>但是有<code>abs(i-j) &lt;= k</code>，所以BST的容量最多为<code>k</code>。</p>
+<hr>
+<h2 id="删除重复元素"><a href="#删除重复元素" class="headerlink" title="删除重复元素"></a>删除重复元素</h2><p><a href="https://leetcode.com/problems/remove-element/" target="_blank" rel="external">27. Remove Element</a></p>
+<p>删除所有目标元素<code>val</code></p>
+<p>方法1：</p>
+<p>通过双指针来改变数组中的值。<code>slow</code>表示当前应该保存的长度，<code>fast</code>用来向前遍历，如果遇到和<code>val</code>相同的元素就跳过，不同的就把<code>nums[slow]</code>的值用<code>nums[fast]</code>的值覆盖掉。</p>
+<p>方法2：</p>
+<p>当要删除的元素比较少时，方法1会做了很多不必要的拷贝操作。比如: <code>nums=[1,2,3,5,4] val=4</code>。</p>
+<p>同样使用双指针，只不过这次时一前(<strong>i</strong>)一后(<strong>j</strong>)，当遍历数组时，遇到和<code>val</code>相同的元素时，可以把这个元素和数组最后的元素<code>nums[j]</code>交换，并把后指针向前移动一个位置。</p>
+<p>但是如果如果交换过来的元素仍然是你想删除的元素，那么在交换完后不要移动前指针<strong>i</strong>，这样一次循环后可以保证的是后指针<strong>j</strong>的元素可以移动到改到的位置，前指针<strong>i</strong>不一定。</p>
+<hr>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="external">26. Remove Duplicates from Sorted Array</a></p>
+<p>重复的元素<strong>只允许出现1次</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(fast &lt; N)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>( nums[fast] != nums[slow]) <span class="comment">// the duplicate run has ended </span></div><div class="line">    &#123;</div><div class="line">        slow++; <span class="comment">// keep only one of duplicate, nums[slow] is the only one </span></div><div class="line">        nums[slow] = nums[fast]; <span class="comment">// copy its value to nums[slow+1]</span></div><div class="line">    &#125;</div><div class="line">    fast++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> slow+<span class="number">1</span>;</div></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="external">80. Remove Duplicates from Sorted Array II</a></p>
+<p>重复的元素<strong>至多出现2次</strong></p>
+<p>如何保证<strong>至多</strong>？</p>
+<p>i和n两个指针，一开始齐头并进，同时指向一个位置，当当前的数值不必他前前一个数值大的时候，意味着出现了3个或3个以上的相同值，此时不满足if条件，i停留在不满足的位置，等待下一个更大的数来替换，当出现下一个更大的数字时再次满足if条件，将i所指向的位置替换为该数字，i指向下一个等待替换，此时if条件再次用以检测用来替换的数字，以保证不出现两次以上的重复。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">0</span>; </div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> e: nums)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>( i &lt; <span class="number">2</span> || e &gt; nums[i<span class="number">-2</span>] )</div><div class="line">    &#123;</div><div class="line">        nums[i] = e;</div><div class="line">        i++;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> i;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="寻找重复元素"><a href="#寻找重复元素" class="headerlink" title="寻找重复元素"></a>寻找重复元素</h2><p><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="external">287. Find the Duplicate Number</a> (重复1个元素)</p>
+<p><a href="https://leetcode.com/problems/find-all-duplicates-in-an-array/" target="_blank" rel="external">442. Find All Duplicates in an Array</a></p>
+<blockquote>
+<p>some elements appear twice and others appear once. Find all the elements that appear twice in this array.</p>
+</blockquote>
+<p>使用负负得正的标记法，注意与<a href="https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank" rel="external">448. Find All Numbers Disappeared in an Array</a>的区别。</p>
 
 
                 
